@@ -9,7 +9,7 @@ class NewsLetterSignupForm extends Component {
 				<div id="mc_embed_signup">
 					<form action="//wordpress.us8.list-manage.com/subscribe/post?u=59e7cc964813b1b18ed88a59e&amp;id=32b78d5a5b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate={true}>
 					    <div id="mc_embed_signup_scroll">
-						<h2>Subscribe to our newsletter</h2>
+						<h2>Subscribe to our newsletters</h2>
 					<div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
 					<div className="mc-field-group">
 						<label htmlFor="mce-EMAIL">Email Address  <span className="asterisk">*</span>

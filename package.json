@@ -40,7 +40,7 @@
     "build:watch": "babel src -w -d build",
     "lint": "eslint src/**; exit 0",
     "lint:watch": "esw -w src/**",
-    "prepublish": "npm run buildModule"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
