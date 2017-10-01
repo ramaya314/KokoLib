@@ -30,14 +30,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
 
     "webpackBuild": "webpack --progress --colors --p",
     "transpile": "node_modules/.bin/ babel ./src/index.js --presets babel-preset-env --out-file lib/index.js",
 
-    "buildModule": "babel src -d build",
+    "build": "babel src -d build",
+    "build:watch": "babel src -w -d build",
     "lint": "eslint src/**; exit 0",
     "lint:watch": "esw -w src/**",
     "prepublish": "npm run buildModule"
