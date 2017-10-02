@@ -1,19 +1,21 @@
 /*
-import React from 'react';
-import ReactDOM from 'react-dom';
+Guide:
+https://hackernoon.com/building-a-react-component-library-part-2-46fd4f77bb5c
 
-import NewsLetterSignupForm from './components/NewsLetterSignupForm';
-
-ReactDOM.render(
-	<NewsLetterSignupForm />,
-  document.getElementById('root')
-);
+Standards:
+https://github.com/eventbrite/javascript/tree/master/react
 */
 
 import NewsLetterSignupForm from './components/NewsLetterSignupForm';
 import TwitterTimeline from './components/TwitterTimeline';
+import MainFooter from './components/MainFooter';
+import ScrollToTopRoute from './components/ScrollToTopRoute';
+import Spacer from './components/Spacer';
 
 module.exports = {
   NewsLetterSignupForm,
-  TwitterTimeline
+  TwitterTimeline,
+  MainFooter,
+  ScrollToTopRoute,
+  Spacer
 }
