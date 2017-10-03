@@ -50,7 +50,7 @@ class SocialMediaButton extends React.PureComponent {
 					<div dangerouslySetInnerHTML={{
 					__html: `
 						<style>
-							.icon:before {
+							.kokoLib_socialMediaIcon:before {
 								display: inline-block;
 								font-family: FontAwesome;
 								font-size: 1.25em;
@@ -61,10 +61,16 @@ class SocialMediaButton extends React.PureComponent {
 								-webkit-font-smoothing: antialiased;
 								-moz-osx-font-smoothing: grayscale;
 							}
+
+							.kokoLib_socialMediaIcon:hover {
+								color: ${this.props.muiTheme.palette.accent1Color} !important;
+							}
 						</style>
 						`
 					}} />
-					<a className={"icon fa-" + this.props.icon} href={this.props.link} style={styles.link} >
+					<a className={"kokoLib_socialMediaIcon fa-" + this.props.icon} 
+						href={this.props.link} 
+						style={styles.link} >
 						<span className="label" style={{display:"none"}}>
 							{Utils.toTitleCase(this.props.name)}
 						</span>

@@ -1,10 +1,38 @@
 import React, {PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 
-class TwitterTimeline extends React.Component {
+class TwitterContainer extends React.PureComponent {
+
+  static propTypes = {
+    widgetId: PropTypes.string,
+    user: PropTypes.string,
+    chrome: PropTypes.string,
+    limit: PropTypes.number,
+  }
+
+  render() {
+    return(
+        <a className="twitter-timeline"
+          href={`https://twitter.com/${this.props.user}`}
+          data-widget-id={this.props.widgetId}
+          data-chrome={this.props.chrome}
+          data-tweet-limit={this.props.limit}
+        />
+    );
+  }
+}
+
+class TwitterTimeline extends React.PureComponent {
+
+  static propTypes = {
+    widgetId: PropTypes.string,
+    user: PropTypes.string,
+    chrome: PropTypes.string,
+    limit: PropTypes.number,
+  }
 
   componentDidMount() {
-      const twittertimeline = ReactDOM.findDOMNode(this.refs.twittertimeline);
+      const twittertimeline = ReactDOM.findDOMNode(this.twittertimeline);
       const twitterscript = document.createElement('script');
       twitterscript.src = '//platform.twitter.com/widgets.js';
       twitterscript.async = true;
@@ -16,24 +44,10 @@ class TwitterTimeline extends React.Component {
     const { user, widgetId, chrome, limit } = this.props;
     return (
       <div style={{background: "#fff"}} >
-        <a
-          ref="twittertimeline"
-          className="twitter-timeline"
-          href={`https://twitter.com/${user}`}
-          data-widget-id={widgetId}
-          data-chrome={chrome}
-          data-tweet-limit={limit}
-        />
+        <TwitterContainer {...this.props} ref={(container) => { this.twittertimeline = container; }} />
       </div>
     );
   }
-}
-
-TwitterTimeline.propTypes = {
-    widgetId: PropTypes.string,
-    user: PropTypes.string,
-    chrome: PropTypes.string,
-    limit: PropTypes.number,
 }
 
 export default TwitterTimeline

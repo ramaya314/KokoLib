@@ -2,7 +2,7 @@ import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import SocialMediaButton from '../elements/SocialMediaButton';
 
-import {fade} from 'material-ui/utils/colorManipulator';
+import tinycolor from 'tinycolor2';
 
 class SocialMediaButtons extends React.PureComponent {
 
@@ -19,10 +19,13 @@ class SocialMediaButtons extends React.PureComponent {
 
 		let palette = this.props.muiTheme.palette;
 
+		let backTinyColor = tinycolor(palette.primary1Color.toString());
+		let background = backTinyColor.isDark() ? backTinyColor.lighten(10) : backTinyColor.darken(10);
+
 		const styles = {
 			icons: {
 				position: 'relative',
-				background: fade(palette.primary1Color, 0.7),
+				background: background.toString(),
 				borderRadius: '4em',
 				display: 'inline-block',
 				padding: '0.35em 0.75em 0.35em 0.75em',
