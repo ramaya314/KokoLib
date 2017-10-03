@@ -1,19 +1,51 @@
 import React from 'react';
+import muiThemeable from 'material-ui/styles/muiThemeable';
+import SocialMediaButton from '../elements/SocialMediaButton';
+
+import {fade} from 'material-ui/utils/colorManipulator';
 
 class SocialMediaButtons extends React.PureComponent {
 
+
+    static propTypes = {
+        buttons: React.PropTypes.array
+    };
+
+    static defaultProps = {
+        buttons: []
+    };
+
+	getStyles() {
+
+		let palette = this.props.muiTheme.palette;
+
+		const styles = {
+			icons: {
+				position: 'relative',
+				background: fade(palette.primary1Color, 0.7),
+				borderRadius: '4em',
+				display: 'inline-block',
+				padding: '0.35em 0.75em 0.35em 0.75em',
+				fontSize: '1.25em',
+				cursor: 'default',
+			}
+		}
+		return styles;
+	}
+
 	render() {
+		var styles = this.getStyles();
 		return(
-			<ul className="icons">
-				<li><a className="icon fa-facebook" href={"https://www.facebook.com/" + this.props.facebookHandle + "/"}><span className="label">Facebook</span></a></li>
-				<li><a className="icon fa-twitter" href={"https://twitter.com/masondreamers"}><span className="label">Twitter</span></a></li>
-				<li><a className="icon fa-envelope" href={"mailto:gmumasondreamers@gmail.com"}><span className="label">Mail</span></a></li>
-				<li><a className="icon fa-instagram" href={"https://www.instagram.com/masondreamers/"}><span className="label">Instagram</span></a></li>
-				<li><a className="icon fa-youtube" href={"https://www.youtube.com/channel/UC8LZpYov_7kqUB_ke29zEeQ"}><span className="label">Dribbble</span></a></li>
+			<ul className="icons" style={styles.icons} >
+				{this.props.buttons.map(function(button, i) {
+					return(
+						<SocialMediaButton link={button.link} icon={button.icon} name={button.name} key={i} />
+					)
+				})}
 			</ul>
 		);
 	}
 }
 
 
-export default SocialMediaButtons;
+export default muiThemeable()(SocialMediaButtons);
