@@ -11,11 +11,15 @@ import TwitterTimeline from './components/TwitterTimeline';
 import MainFooter from './components/MainFooter';
 import ScrollToTopRoute from './components/ScrollToTopRoute';
 import Spacer from './components/Spacer';
+import PrimaryNavBar from './components/PrimaryNavBar';
+import ImageHeaderBanner from './components/ImageHeaderBanner';
 
 module.exports = {
   NewsLetterSignupForm,
   TwitterTimeline,
   MainFooter,
   ScrollToTopRoute,
-  Spacer
+  Spacer,
+  PrimaryNavBar,
+  ImageHeaderBanner
 }
