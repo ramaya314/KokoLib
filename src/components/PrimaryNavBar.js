@@ -3,7 +3,7 @@ import Waypoint from 'react-waypoint';
 import { Navbar, NavItem, NavDropdown, MenuItem, Nav,
 			Image} from 'react-bootstrap';
 
-import { LinkContainer } from 'react-router-bootstrap';
+import { IndexLinkContainer } from 'react-router-bootstrap';
 
 import Dimensions from 'react-dimensions';
 import muiThemeable from 'material-ui/styles/muiThemeable';
@@ -247,13 +247,13 @@ class PrimaryNavBar extends React.PureComponent {
 							{this.props.navigationScheme.map(function(link, i) {
 								if(link.children && link.children != null && link.children.length > 0) {
 									return(
-										<NavigationGroup {...link} key={i} index={i} />
+										<NavigationGroup {...link} key={i} index={i + 1} />
 									);
 								}
 								return(
-									<LinkContainer to={link.link} key={i}>
-										<NavItem eventKey={i} >{link.title}</NavItem>
-									</LinkContainer>
+									<IndexLinkContainer to={link.link} key={i} >
+										<NavItem eventKey={i + 1} >{link.title}</NavItem>
+									</IndexLinkContainer>
 								);
 							})}
 						</Nav>

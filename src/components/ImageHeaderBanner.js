@@ -56,13 +56,15 @@ class ImageHeaderBanner extends React.Component {
     static propTypes = {
         bannerContent: React.PropTypes.node,
         pageTitle: React.PropTypes.string,
-        bannerLogoImagePath: React.PropTypes.string
+        bannerLogoImagePath: React.PropTypes.string,
+        fixedAttachment: React.PropTypes.bool
     };
 
     static defaultProps = {
         bannerContent: null,
         pageTitle: "",
-        bannerLogoImagePath: ""
+        bannerLogoImagePath: "",
+        fixedAttachment: false
     };
 
 	getStyles() {
@@ -76,7 +78,6 @@ class ImageHeaderBanner extends React.Component {
 				backgroundImage: 'url("' + this.props.backgroundImage + '")',
 				backgroundSize: 'cover',
 				backgroundPosition: 'center',
-				//backgroundAttachment: 'fixed',
 				margin: 0,
 				padding: 0,
 				border: 0,
@@ -124,6 +125,10 @@ class ImageHeaderBanner extends React.Component {
 				textAlign: 'left',
 				zIndex: 15,
 			},
+		}
+
+		if(this.props.fixedAttachment){
+			styles.headerBanner.backgroundAttachment = "fixed";
 		}
 
 		return styles;

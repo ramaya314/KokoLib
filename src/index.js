@@ -13,6 +13,10 @@ import ScrollToTopRoute from './components/ScrollToTopRoute';
 import Spacer from './components/Spacer';
 import PrimaryNavBar from './components/PrimaryNavBar';
 import ImageHeaderBanner from './components/ImageHeaderBanner';
+import ContactForm from './components/ContactForm';
+import DataContainer from './components/DataContainer';
+import EnhancedTextField from './components/EnhancedTextField';
+import TileLinkNavigation from './components/TileLinkNavigation';
 
 module.exports = {
   NewsLetterSignupForm,
@@ -21,5 +25,9 @@ module.exports = {
   ScrollToTopRoute,
   Spacer,
   PrimaryNavBar,
-  ImageHeaderBanner
+  ImageHeaderBanner,
+  ContactForm,
+  DataContainer,
+  EnhancedTextField,
+  TileLinkNavigation
 }
