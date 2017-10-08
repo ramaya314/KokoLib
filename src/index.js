@@ -16,7 +16,6 @@ import ImageHeaderBanner from './components/ImageHeaderBanner';
 import ContactForm from './components/ContactForm';
 import DataContainer from './components/DataContainer';
 import EnhancedTextField from './components/EnhancedTextField';
-import TileLinkNavigation from './components/TileLinkNavigation';
 
 module.exports = {
   NewsLetterSignupForm,
@@ -28,6 +27,5 @@ module.exports = {
   ImageHeaderBanner,
   ContactForm,
   DataContainer,
-  EnhancedTextField,
-  TileLinkNavigation
+  EnhancedTextField
 }
