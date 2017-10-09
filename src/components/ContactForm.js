@@ -4,7 +4,9 @@ import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
 import Dialog from 'material-ui/Dialog';
 import CommunicationEmail from 'material-ui/svg-icons/communication/email';
+
 import EnhancedTextField from './EnhancedTextField';
+import DataContainer from './DataContainer';
 
 import SwipeableViews from 'react-swipeable-views';
 
@@ -97,7 +99,7 @@ class ContactForm extends React.PureComponent
 			{id: "firstName", 	value: this.state.firstNameField},
 			{id: "firstName", 	value: this.state.lastNameField},
 		];
-		dc.GET("/api/v1/SendMail", null, function(data){
+		dc.GET("/api/v1/SendMail", parameters, function(data){
 			that.setState({
 				currentView: 1
 			});
@@ -145,7 +147,7 @@ class ContactForm extends React.PureComponent
 					    	isRequired={true}
 							fullWidth={true} 
 					    	requiredErrorText="Your name is required"
-					    	onValueChange={this.handleTextFieldChange} 
+					    	onChange={this.handleTextFieldChange} 
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    <EnhancedTextField name="lastNameField" 
@@ -155,7 +157,7 @@ class ContactForm extends React.PureComponent
 					    	isRequired={true}
 							fullWidth={true} 
 					    	requiredErrorText="Your last name is required"
-					    	onValueChange={this.handleTextFieldChange}
+					    	onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    <EnhancedTextField name="emailField" 
@@ -167,7 +169,7 @@ class ContactForm extends React.PureComponent
 					    	validationType="email"
 					    	formatErrorText="Please enter a valid email address"
 					    	requiredErrorText="Your contact email is required"
-							onValueChange={this.handleTextFieldChange}
+							onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    <EnhancedTextField name="mailBodyField" 
@@ -179,7 +181,7 @@ class ContactForm extends React.PureComponent
 					    	isRequired={true}
 					    	requiredErrorText="A comment is required"
 							fullWidth={true}
-							onValueChange={this.handleTextFieldChange}
+							onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    {this.state.humanVerified || !this.props.useRecaptcha ? 

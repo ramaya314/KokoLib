@@ -96,7 +96,29 @@ class EnhancedTextField extends React.PureComponent
 
 	render() {
 		return(
-			<TextField {...this.props} onChange={this.handleChange} value={this.props.value}/>
+			<TextField id={this.props.id}
+				className={this.props.className}
+				defaultValue={this.props.defaultValue}
+				disabled={this.props.disabled}
+				errorStyle={this.props.errorStyle}
+				errorText={this.state.errorText}
+				floatingLabelFixed={this.props.floatingLabelFixed}
+				floatingLabelFocusStyle={this.props.floatingLabelFocusStyle}
+				floatingLabelStyle={this.props.floatingLabelStyle}
+				floatingLabelText={this.props.floatingLabelText}
+				fullWidth={this.props.fullWidth}
+				hintStyle={this.props.hintStyle}
+				hintText={this.props.hintText}
+				inputStyle={this.props.inputStyle}
+				multiLine={this.props.multiLine}
+				name={this.props.name}
+				rows={this.props.rows}
+				rowsMax={this.props.rowsMax}
+				style={this.props.style}
+				textareaStyle={this.props.textareaStyle}
+				type={this.props.type}
+				onChange={this.handleChange}
+				value={this.props.value}/>
 		);
 	}
 } 

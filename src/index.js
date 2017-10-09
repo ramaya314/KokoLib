@@ -6,6 +6,7 @@ Standards:
 https://github.com/eventbrite/javascript/tree/master/react
 */
 
+//react assets
 import NewsLetterSignupForm from './components/NewsLetterSignupForm';
 import TwitterTimeline from './components/TwitterTimeline';
 import MainFooter from './components/MainFooter';
@@ -16,8 +17,14 @@ import ImageHeaderBanner from './components/ImageHeaderBanner';
 import ContactForm from './components/ContactForm';
 import DataContainer from './components/DataContainer';
 import EnhancedTextField from './components/EnhancedTextField';
+import DataContainer from './components/DataContainer';
+
+//server assets
+import mailProvider from './serverAssets/providers/mailProvider';
+
 
 module.exports = {
+  //server assets
   NewsLetterSignupForm,
   TwitterTimeline,
   MainFooter,
@@ -27,5 +34,9 @@ module.exports = {
   ImageHeaderBanner,
   ContactForm,
   DataContainer,
-  EnhancedTextField
+  EnhancedTextField,
+  DataContainer,
+
+  //react assets
+  mailProvider
 }
