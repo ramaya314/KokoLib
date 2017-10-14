@@ -65,7 +65,7 @@ class MainFooter extends React.PureComponent {
   					<SocialMediaButtons {...this.props} />
 
 					<div className="copyright" style={styles.copyRight}>
-						<ul className="menu">
+						<ul className="menu" style={{padding:0}}>
 							<li style={{listStyle:"none"}} >&copy; {this.props.orgName}. All rights reserved.</li>
 						</ul>
 					</div>

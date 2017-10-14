@@ -17,14 +17,14 @@ import ImageHeaderBanner from './components/ImageHeaderBanner';
 import ContactForm from './components/ContactForm';
 import DataContainer from './components/DataContainer';
 import EnhancedTextField from './components/EnhancedTextField';
-import DataContainer from './components/DataContainer';
-
-//server assets
-import mailProvider from './serverAssets/providers/mailProvider';
+import EventListView from './components/EventListView';
+import EventFullView from './components/EventFullView';
+import PlainIconButton from './components/PlainIconButton';
+import GalleryCollection from './components/GalleryCollection';
+import StandardStyles from './components/StandardStyles';
 
 
 module.exports = {
-  //server assets
   NewsLetterSignupForm,
   TwitterTimeline,
   MainFooter,
@@ -36,7 +36,9 @@ module.exports = {
   DataContainer,
   EnhancedTextField,
   DataContainer,
-
-  //react assets
-  mailProvider
+  EventListView,
+  EventFullView,
+  PlainIconButton,
+  GalleryCollection,
+  StandardStyles
 }
