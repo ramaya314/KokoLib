@@ -48,12 +48,12 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					.navbar-inverse .navbar-nav>.active>a:focus, 
 					.navbar-inverse .navbar-nav>.active>a:hover
 					{
-						background-color: ${this.props.palette.accent2Color} !important;
+						background-color: ${this.props.palette.primary2Color} !important;
 					}
 
 					.mainNavBarTopContainer .dropdown-menu 
 					{
-					    background-color: ${this.props.palette.accent1Color};
+					    background-color: ${this.props.palette.primary2Color};
 					}
 
 					.mainNavBarTopContainer .dropdown-menu>li>a
@@ -65,7 +65,7 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					.mainNavBarTopContainer .dropdown-menu>li>a:hover
 					{
 						color: #000;
-					    background-color: ${this.props.palette.accent1Color};
+					    background-color: ${this.props.palette.primary2Color};
 					}
 
 					.mainNavBarInvisible {
