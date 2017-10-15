@@ -23,6 +23,10 @@ class StandardStyles extends React.PureComponent
 						text-decoration: none;
 						word-wrap: break-word;
 					}
+					a * {
+
+						text-decoration: none !important;
+					}
 
 					h1 
 					{
@@ -74,6 +78,18 @@ class StandardStyles extends React.PureComponent
 					}
 					.nav-pills>li.active>a:hover {
 					    background-color: ${palette.primary2Color};
+					}
+
+					.icon:before {
+						display: inline-block;
+						font-family: FontAwesome;
+						font-size: 1.25em;
+						text-decoration: none;
+						font-style: normal;
+						font-weight: normal;
+						line-height: 1;
+						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
 					}
 
 				</style>

@@ -23,6 +23,8 @@ import PlainIconButton from './components/PlainIconButton';
 import GalleryCollection from './components/GalleryCollection';
 import StandardStyles from './components/StandardStyles';
 import ResourceLink from './components/ResourceLink';
+import BlogArchive from './components/BlogArchive';
+import BlogPost from './components/BlogPost';
 import Utils from './Utils';
 
 
@@ -44,5 +46,7 @@ module.exports = {
   GalleryCollection,
   StandardStyles,
   ResourceLink,
+  BlogArchive,
+  BlogPost,
   Utils
 }

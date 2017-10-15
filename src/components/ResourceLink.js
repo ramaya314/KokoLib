@@ -9,13 +9,22 @@ class ResourceLink extends React.PureComponent
 
 	getStyles() {
 		const styles = {
-
-			container: {
-				width:250,
-				height:300,
+			anchor: {
+				textDecoration: 'none !important'
+			},
+			paper: {
+				padding:0,
 				marginLeft: 'auto',
 				marginRight: 'auto',
-				textAlign: 'right',
+				textDecoration: 'none !important'
+			},
+			container: {
+				width:'100%',
+				minHeight:300,
+				textAlign: 'left',
+				padding:0,
+				margin:0,
+				textDecoration: 'none !important'
 			},
 			image: {
 				width: '100%',
@@ -28,9 +37,10 @@ class ResourceLink extends React.PureComponent
 				fontSize:'1.2em',
 				fontWeight: 'bold',
 				marginTop: 3,
+				textDecoration: 'none !important'
 			},
 			description: {
-
+				textDecoration: 'none !important'
 			}
 		};
 		return styles;
@@ -40,15 +50,15 @@ class ResourceLink extends React.PureComponent
 		const styles = this.getStyles();
 
 		return(
-			<Paper zDepth={3} >
-				<LinkContainer to={this.props.link}>
+			<a href={this.props.link} target="_blank" style={styles.anchor}>
+				<Paper zDepth={3} style={styles.paper}>
 					<Thumbnail style={styles.container} >
-						<div style={styles.image} />
-						<p style={styles.title}>{this.props.title}</p>
-						<p style={styles.description}>{this.props.description}</p>
+							<div style={styles.image} />
+							<p style={styles.title}>{this.props.title}</p>
+							<p style={styles.description}>{this.props.description}</p>
 					</Thumbnail>
-				</LinkContainer>
-			</Paper>
+				</Paper>
+			</a>
 		);
 	}
 }
