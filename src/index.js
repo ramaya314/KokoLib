@@ -22,6 +22,8 @@ import EventFullView from './components/EventFullView';
 import PlainIconButton from './components/PlainIconButton';
 import GalleryCollection from './components/GalleryCollection';
 import StandardStyles from './components/StandardStyles';
+import ResourceLink from './components/ResourceLink';
+import Utils from './Utils';
 
 
 module.exports = {
@@ -40,5 +42,7 @@ module.exports = {
   EventFullView,
   PlainIconButton,
   GalleryCollection,
-  StandardStyles
+  StandardStyles,
+  ResourceLink,
+  Utils
 }

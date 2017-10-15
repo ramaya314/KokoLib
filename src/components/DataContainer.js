@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from 'react-loading';
 
-class DataContainer extends React.Component {
+class DataContainer extends React.PureComponent {
 
 
 	constructor(props) {
