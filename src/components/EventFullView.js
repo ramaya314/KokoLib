@@ -43,6 +43,7 @@ class EventFullView extends React.PureComponent
 					let startDateTime = dateFormat(new Date(data.start.utc), "h:MM:ss TT");
 					let endDateTime = dateFormat(new Date(data.end.utc), "h:MM:ss TT Z");
 
+					console.log(data.status);
 					return (
 		    			<Paper  style={styles.paperStyle} zDepth={3} >
 
@@ -144,20 +145,23 @@ class EventFullView extends React.PureComponent
 								</Col>
 		    				</Row>
 
+		    				{data.status !== 'completed' &&
+		    					<div>
+				    				<hr style={{margin:0}}/>
 
-		    				<hr style={{margin:0}}/>
-
-							<Row>
-								<Col xs={12} sm={12} md={6} lg={8}>
-								</Col>
-								<Col xs={12} sm={12} md={6} lg={4}>
-									<div style={{padding:20}}>
-										<Button  bsStyle="primary" bsSize="large" block onClick={() => {
-											window.open(data.url + '#tickets', '_blank');	
-										}}>Register</Button>
-									</div>
-								</Col>
-							</Row>
+									<Row>
+										<Col xs={12} sm={12} md={6} lg={8}>
+										</Col>
+										<Col xs={12} sm={12} md={6} lg={4}>
+											<div style={{padding:20}}>
+												<Button  bsStyle="primary" bsSize="large" block onClick={() => {
+													window.open(data.url + '#tickets', '_blank');	
+												}}>Register</Button>
+											</div>
+										</Col>
+									</Row>
+								</div>
+							}
 		    			</Paper>
 					);
 			}}>
