@@ -2,12 +2,25 @@ import React, { Component } from 'react';
 
 class NewsLetterSignupForm extends Component {
 
+    static propTypes = {
+        nameOne: React.PropTypes.string,
+        nameTwo: React.PropTypes.string,
+        fullActionUrl: React.PropTypes.string
+    };
+
+    static defaultProps = {
+        nameOne: "59e7cc964813b1b18ed88a59e",
+        nameTwo: "32b78d5a5b",
+        fullActionUrl: '//wordpress.us8.list-manage.com/subscribe/post?u=59e7cc964813b1b18ed88a59e&amp;id=32b78d5a5b'
+    };
+
 	render(){
+
 		return(
 			<div>
 				<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css" />
 				<div id="mc_embed_signup">
-					<form action="//wordpress.us8.list-manage.com/subscribe/post?u=59e7cc964813b1b18ed88a59e&amp;id=32b78d5a5b" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate={true}>
+					<form action={this.props.fullActionUrl} method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate={true}>
 					    <div id="mc_embed_signup_scroll">
 						<h2>Subscribe to our newsletters</h2>
 					<div className="indicates-required"><span className="asterisk">*</span> indicates required</div>
@@ -28,7 +41,7 @@ class NewsLetterSignupForm extends Component {
 						<div className="response" id="mce-error-response" style={{display:'none'}} ></div>
 						<div className="response" id="mce-success-response" style={{display:'none'}}></div>
 					</div> 
-				    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name="b_59e7cc964813b1b18ed88a59e_32b78d5a5b" tabIndex="-1" value="" /></div>
+				    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name={`b_${this.props.nameOne}_${this.props.nameTwo}`} tabIndex="-1" value="" /></div>
 				    <div className="clear">
 				    	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" />
 				    	</div>
