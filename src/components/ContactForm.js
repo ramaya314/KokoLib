@@ -84,8 +84,6 @@ class ContactForm extends React.PureComponent
 
 	sendValidMail() {
 
-
-
 		let that = this;
 
 		let subject = "Contact From " + this.state.firstNameField + ' ' + this.state.lastNameField; 
@@ -97,7 +95,7 @@ class ContactForm extends React.PureComponent
 			{id: "subject", 	value: subject},
 			{id: "mailBody", 	value: this.state.mailBodyField},
 			{id: "firstName", 	value: this.state.firstNameField},
-			{id: "firstName", 	value: this.state.lastNameField},
+			{id: "lastName", 	value: this.state.lastNameField},
 		];
 		dc.GET("/api/v1/SendMail", parameters, function(data){
 			that.setState({
