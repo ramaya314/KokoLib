@@ -57,12 +57,14 @@ class ImageHeaderBanner extends React.Component {
         bannerContent: React.PropTypes.node,
         pageTitle: React.PropTypes.string,
         bannerLogoImagePath: React.PropTypes.string,
+        backgroundImage: React.PropTypes.string,
         fixedAttachment: React.PropTypes.bool
     };
 
     static defaultProps = {
         bannerContent: null,
         pageTitle: "",
+        backgroundImage: "",
         bannerLogoImagePath: "",
         fixedAttachment: false
     };

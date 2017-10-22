@@ -34,10 +34,16 @@ class PrimaryNavBarCSS extends React.PureComponent {
 
 					@media (max-width: 767px) {
 						.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-							color:${this.props.palette.textColor};
+							color:#fff;
 						}
-						.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
-							color:${this.props.palette.accent2Color} !important;
+						.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover,
+						.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover {
+							color:${this.props.palette.accent1Color} !important;
+					    	background-color: ${this.props.palette.primary3Color};
+						}
+
+						.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a{
+					    	background-color: ${this.props.palette.primary2Color};
 						}
 					}
 
@@ -51,20 +57,27 @@ class PrimaryNavBarCSS extends React.PureComponent {
 						background-color: ${this.props.palette.primary2Color} !important;
 					}
 
-					.mainNavBarTopContainer .dropdown-menu 
+					.kokolib_navbarcontainer .dropdown-menu 
 					{
-					    background-color: ${this.props.palette.primary2Color};
+					    background-color: ${this.props.palette.primary1Color};
 					}
 
-					.mainNavBarTopContainer .dropdown-menu>li>a
+					.kokolib_navbarcontainer .dropdown-menu>li>a
 					{
 					    color: #fff;
 					}
 
-					.mainNavBarTopContainer .dropdown-menu>li>a:focus, 
-					.mainNavBarTopContainer .dropdown-menu>li>a:hover
+					.kokolib_navbarcontainer .dropdown-menu>li>a:focus, 
+					.kokolib_navbarcontainer .dropdown-menu>li>a:hover
 					{
-						color: #000;
+						color: ${this.props.palette.accent2Color};
+					    background-color: ${this.props.palette.primary3Color};
+					}
+					.kokolib_navbarcontainer .dropdown-menu>.active>a, 
+					.kokolib_navbarcontainer .dropdown-menu>.active>a:focus, 
+					.kokolib_navbarcontainer .dropdown-menu>.active>a:hover {
+
+						color: ${this.props.palette.accent1Color};
 					    background-color: ${this.props.palette.primary2Color};
 					}
 
@@ -75,6 +88,7 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					}
 
 					.mainNavBar {
+					    background-color: ${this.props.palette.primary1Color};
 						animation-name: navbaranimation;
 					    animation-duration: 0.5s;
 					}
@@ -90,12 +104,27 @@ class PrimaryNavBarCSS extends React.PureComponent {
 						color:#fff !important;
 					    border-bottom: 3px transparent solid;
 					}
+					.nav .open>a, 
+					.nav .open>a:focus, 
+					.nav .open>a:hover {
+					    border-bottom: 3px ${this.props.palette.accent1Color} solid;
+					}
 
 					.navbar-inverse .navbar-nav>.active>a, 
 					.navbar-nav>li>a:hover
 					{
 					    border-bottom: 3px ${this.props.palette.accent1Color} solid;
-					    color: ${this.props.palette.textColor} !important;
+					    color: ${this.props.palette.accent1Color} !important;
+					}
+
+					.navbar-inverse .navbar-toggle {
+						border: none;
+					}
+
+					.navbar-inverse .navbar-toggle:focus, 
+					.navbar-inverse .navbar-toggle:hover
+					{
+					    background-color: ${this.props.palette.primary2Color};
 					}
 
 
@@ -134,9 +163,9 @@ class NavigationGroup extends React.PureComponent{
 						);
 					}
 					return(
-						<LinkContainer to={link.link} key={i}>
+						<IndexLinkContainer to={link.link} key={i}>
 							<NavItem eventKey={i + (i /10)} >{link.title}</NavItem>
-						</LinkContainer>
+						</IndexLinkContainer>
 					);
 				})}
 
@@ -166,7 +195,7 @@ class PrimaryNavBar extends React.PureComponent {
 			navBarStyleChanged: false,
 			navbarExpanded: false,
 			navbarExpanded: false,
-			containerWidth: 0
+			containerWidth: 0,
 		}
 	}
 
@@ -219,10 +248,12 @@ class PrimaryNavBar extends React.PureComponent {
     	const styles = this.getStyles();
 
 		let smallScreen = this.props.containerWidth < 768;
+		let largeScreen = this.props.containerWidth >= 1200;
+		let mediumScreen = !smallScreen && !largeScreen;
 
 		let that = this;
 		return(
-			<div>
+			<div className="kokolib_navbarcontainer">
 
 				<PrimaryNavBarCSS palette={this.props.muiTheme.palette} />
 
@@ -243,6 +274,11 @@ class PrimaryNavBar extends React.PureComponent {
 						<Nav pullRight >
 
 							{this.props.navigationScheme.map(function(link, i) {
+
+								if(link.mdHidden && mediumScreen) 	return;
+								if(link.lgHidden && largeScreen) 	return;
+								if(link.smHidden && smallScreen) 	return;
+
 								if(link.children && link.children != null && link.children.length > 0) {
 									return(
 										<NavigationGroup {...link} key={i} index={i + 1} />

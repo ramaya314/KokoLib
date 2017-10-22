@@ -34,7 +34,7 @@ class SocialMediaButton extends React.PureComponent {
 				textAlign: 'center',
 				borderRadius: '100%',
 				border: 0,
-				color: 'inherit',
+				color: palette.textColor,
 			}
 		}
 		return styles;

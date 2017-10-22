@@ -4,7 +4,7 @@ class Spacer extends React.PureComponent
 {
 	render() {
 		return(
-			<div style={{marginTop: this.props.space}} />
+			<div style={{height: this.props.space}} />
 		);
 	}
 }

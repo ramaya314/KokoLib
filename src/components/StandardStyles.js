@@ -19,7 +19,7 @@ class StandardStyles extends React.PureComponent
 					}
 					a 
 					{
-						color: ${palette.accent2Color};
+						color: ${palette.primary3Color};
 						text-decoration: none;
 						word-wrap: break-word;
 					}
@@ -30,9 +30,9 @@ class StandardStyles extends React.PureComponent
 
 					h1 
 					{
-						color: ${palette.accent1Color};
+						color: ${palette.primary2Color};
 						font-weight: 600;
-						border-bottom: 2px solid ${palette.primary2Color};
+						border-bottom: 2px solid ${palette.accent1Color};
 					}
 
 					/*========= BOOTSTRAP BUTTONS ==================*/

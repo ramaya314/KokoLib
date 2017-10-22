@@ -25,6 +25,10 @@ import StandardStyles from './components/StandardStyles';
 import ResourceLink from './components/ResourceLink';
 import BlogArchive from './components/BlogArchive';
 import BlogPost from './components/BlogPost';
+import ShadowScreen from './components/ShadowScreen';
+import GradientScreen from './components/GradientScreen';
+
+
 import Utils from './Utils';
 
 
@@ -48,5 +52,8 @@ module.exports = {
   ResourceLink,
   BlogArchive,
   BlogPost,
+  ShadowScreen,
+  GradientScreen,
+  
   Utils
 }
