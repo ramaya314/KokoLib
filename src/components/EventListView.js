@@ -70,7 +70,7 @@ class EventListView extends React.PureComponent
 
 			      			{data.events.length <= 0 &&
 			      				<div style={{
-			      					fontSize: '26',
+			      					fontSize: '26px',
 			      					textAlign: 'center',
 			      					padding: 30,
 			      				}}>

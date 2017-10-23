@@ -1,18 +1,21 @@
 import React from 'react';
 import SocialMediaButtons from './SocialMediaButtons';
+import PropTypes from 'prop-types';
 
 import muiThemeable from 'material-ui/styles/muiThemeable';
 
 class MainFooter extends React.PureComponent {
 
     static propTypes = {
-        buttons: React.PropTypes.array,
-        orgName: React.PropTypes.string
+        buttons: PropTypes.array,
+        orgName: PropTypes.string,
+        transparent: PropTypes.bool
     };
 
     static defaultProps = {
         buttons: [],
-        orgName: "Your Organization"
+        orgName: "Your Organization",
+        transparent: false
     };
 
 	getStyles() {
@@ -21,7 +24,7 @@ class MainFooter extends React.PureComponent {
 
 		const styles = {
 			footer: {
-				backgroundColor: palette.primary1Color,
+				backgroundColor: (this.props.transparent ? 'transparent' : palette.primary1Color),
 				position: "relative",
 				overflow: "hidden",
 				padding: '4em 0 4em 0',

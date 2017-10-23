@@ -27,6 +27,7 @@ import BlogArchive from './components/BlogArchive';
 import BlogPost from './components/BlogPost';
 import ShadowScreen from './components/ShadowScreen';
 import GradientScreen from './components/GradientScreen';
+import BackgroundPoster from './components/BackgroundPoster'
 
 
 import Utils from './Utils';
@@ -54,6 +55,7 @@ module.exports = {
   BlogPost,
   ShadowScreen,
   GradientScreen,
+  BackgroundPoster,
   
   Utils
 }

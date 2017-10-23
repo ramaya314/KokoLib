@@ -58,6 +58,9 @@ class ShadowScreen extends React.PureComponent
 
 
 	render() {
+
+		console.log(`${this.getShadowThree()}, ${this.getShadowFour()}`);
+		
 		return(
 			<div style={{position:'relative', width:'100%', height:'100%'}}>
 				<div className="kokolib_shadowScreen_shadow" style={{

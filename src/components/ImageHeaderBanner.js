@@ -3,6 +3,7 @@ import React from 'react';
 import {Image, Grid, Row, Col} from 'react-bootstrap';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import Dimensions from 'react-dimensions';
+import PropTypes from 'prop-types';
 
 class ImageHeaderBannerCSS extends React.PureComponent {
 	render() {
@@ -58,7 +59,8 @@ class ImageHeaderBanner extends React.Component {
         pageTitle: React.PropTypes.string,
         bannerLogoImagePath: React.PropTypes.string,
         backgroundImage: React.PropTypes.string,
-        fixedAttachment: React.PropTypes.bool
+        fixedAttachment: React.PropTypes.bool,
+        addShadowScreen: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -66,7 +68,8 @@ class ImageHeaderBanner extends React.Component {
         pageTitle: "",
         backgroundImage: "",
         bannerLogoImagePath: "",
-        fixedAttachment: false
+        fixedAttachment: false,
+        addShadowScreen: true
     };
 
 	getStyles() {
@@ -112,7 +115,7 @@ class ImageHeaderBanner extends React.Component {
 				left: 0,
 				height: '100%',
 				width: '100%',
-				backgroundColor: 'rgba(0,0,0,0.2)',
+				backgroundColor: 'rgba(0,0,0,0' + (this.props.addShadowScreen ? '.2' : '') + ')',
 				zIndex:1,
 			},
 			bannerTitle: {
@@ -144,7 +147,10 @@ class ImageHeaderBanner extends React.Component {
 		return(
 
   			<div style={styles.headerBanner}>
-  				<ImageHeaderBannerCSS palette={this.props.muiTheme.palette}/>
+
+  				{this.props.addShadowScreen && 
+  					<ImageHeaderBannerCSS palette={this.props.muiTheme.palette}/>
+  				}
 
 				<div style={styles.bannerScreen} className="headerBannerScreen" />
 				<div style={styles.bannerContent}>
