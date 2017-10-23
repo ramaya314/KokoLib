@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import GradientScreen from './GradientScreen';
+import ShadowScreen from './ShadowScreen';
 import MeasuredContainer from '../elements/MeasuredContainer';
 
 class BackgroundPosterShadow extends React.PureComponent {
@@ -11,26 +12,29 @@ class BackgroundPosterShadow extends React.PureComponent {
         let largeScreen = this.props.containerWidth >= 1200;
         let mediumScreen = !smallScreen && !largeScreen;
 
-        let visibleAreaLength = largeScreen ? 150 : mediumScreen ? 400 : 600;
+        let visibleAreaLength = largeScreen ? -100 : mediumScreen ? 100 : 200;
+
+        let color = 'rgba(0, 0, 0, 0.9)';
 
         return(
-            <GradientScreen fogAmount={0.2} 
+            <GradientScreen fogAmount={0.1} 
                 leftShadow={{
                     length:60,
-                    color:'rgba(0, 0, 0, 0.9)'
+                    color:color
                 }}
                 rightShadow={{
                     length:60,
-                    color:'rgba(0, 0, 0, 0.9)'
+                    color:color
                 }}
                 topShadow={{
                     length: 100,
-                    color:'rgba(0, 0, 0, 0.9)'
+                    color:color
                 }}
                 bottomShadow={{
                     length: (this.props.containerHeight + visibleAreaLength),
-                    color:'rgba(0, 0, 0, 0.85)'
-                }} />
+                    color:color
+                }} 
+                />
         );
     }
 }

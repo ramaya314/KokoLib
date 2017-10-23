@@ -23,7 +23,7 @@ class StandardStyles extends React.PureComponent
 						text-decoration: none;
 						word-wrap: break-word;
 					}
-					a * {
+					a *:hover {
 
 						text-decoration: none !important;
 					}

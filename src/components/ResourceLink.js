@@ -10,13 +10,13 @@ class ResourceLink extends React.PureComponent
 	getStyles() {
 		const styles = {
 			anchor: {
-				textDecoration: 'none !important'
+				textDecoration: 'none'
 			},
 			paper: {
 				padding:0,
 				marginLeft: 'auto',
 				marginRight: 'auto',
-				textDecoration: 'none !important'
+				textDecoration: 'none'
 			},
 			container: {
 				width:'100%',
@@ -24,23 +24,24 @@ class ResourceLink extends React.PureComponent
 				textAlign: 'left',
 				padding:0,
 				margin:0,
-				textDecoration: 'none !important'
+				textDecoration: 'none'
 			},
 			image: {
 				width: '100%',
 				height: 200,
-				backgroundSize: 'cover',
+				backgroundSize: 'contain',
 				backgroundPosition: 'center',
+				backgroundRepeat: 'no-repeat',
 				backgroundImage: 'url(' + this.props.image + ')'
 			},
 			title: {
 				fontSize:'1.2em',
 				fontWeight: 'bold',
 				marginTop: 3,
-				textDecoration: 'none !important'
+				textDecoration: 'none'
 			},
 			description: {
-				textDecoration: 'none !important'
+				textDecoration: 'none'
 			}
 		};
 		return styles;
@@ -50,7 +51,7 @@ class ResourceLink extends React.PureComponent
 		const styles = this.getStyles();
 
 		return(
-			<a href={this.props.link} target="_blank" style={styles.anchor}>
+			<a href={this.props.link} className="kokolib_resourceLink" target="_blank" style={styles.anchor}>
 				<Paper zDepth={3} style={styles.paper}>
 					<Thumbnail style={styles.container} >
 							<div style={styles.image} />

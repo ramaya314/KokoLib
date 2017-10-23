@@ -119,6 +119,7 @@ class PrimaryNavBarCSS extends React.PureComponent {
 
 					.navbar-inverse .navbar-toggle {
 						border: none;
+    					margin-right: 40px;
 					}
 
 					.navbar-inverse .navbar-toggle:focus, 

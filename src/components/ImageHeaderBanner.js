@@ -106,7 +106,7 @@ class ImageHeaderBanner extends React.Component {
 			bannerLogo: {
 				marginLeft: 'auto',
 				marginRight: 'auto',
-				maxWidth: smallScreen ? '30%' : mediumScreen ? '25%' : '20%',
+				maxWidth: smallScreen ? '45%' : mediumScreen ? '25%' : '20%',
 				maxHeight: smallScreen ? 200 : mediumScreen ? 275 : 300,
 			},
 			bannerScreen: {
