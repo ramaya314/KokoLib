@@ -201,7 +201,6 @@ class PrimaryNavBar extends React.PureComponent {
 	}
 
 	handleWaypointOnPositionChange = ({ previousPosition, currentPosition }) => {
-		console.log(currentPosition);
 		this.setState({
 			navbarBrandVisible: currentPosition === 'above'
 		});
