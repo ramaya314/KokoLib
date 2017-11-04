@@ -2,6 +2,7 @@ import React from 'react';
 import {Image, Col, Row} from 'react-bootstrap';
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
+import DataContainer from './DataContainer';
 
 class EventThumbView extends React.PureComponent {
 
@@ -39,22 +40,44 @@ class EventThumbView extends React.PureComponent {
 		if(this.props.data.description.text && this.props.data.description.text.length > 0)
 			ellipsedText = (this.props.data.description.text).substring(0,200) + "...";
 
-		var startDateTime = dateFormat(new Date(this.props.data.start.local), "dddd, mmmm dS, yyyy");
+		var startDateTime = dateFormat(new Date(this.props.data.start.utc), "dddd, mmmm dS, yyyy");
+
+		//console.log(this.props.data);
+
+		var linkUrl = `${this.props.match.url}/`;
+		
+		if(this.props.data.fbEvent)
+			linkUrl += "fb";
+
+		linkUrl += this.props.data.id;
+
 		return(
 			<div>
-				<a  href={`${this.props.match.url}/${this.props.data.id}`} >
+				<a  href={linkUrl} >
 	    			<Paper style={styles.paperStyle} zDepth={3} >
 						{false && 
 							<pre>{JSON.stringify(this.props.data, null, 4) }</pre>
 						}
 						<Row>
 
-							{this.props.data.logo &&
-								<Col xs={12} md={6} lg={4}>
-										<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
-								</Col>
-							}
-							<Col xs={12} md={6} lg={8}>
+							<Col xs={12} sm={4} md={4} lg={2} >
+								{this.props.data.logo && !this.props.data.fbEvent &&
+									<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
+								}
+
+								{this.props.data.fbEvent && 
+									<DataContainer action="/api/v1/GetFacebookEventPicture" 
+										parameters={[
+											{id:"eventId", value: this.props.data.id}
+										]}
+										resultRender={function(pictureData) {
+											return (
+												<Image src={pictureData.location} style={styles.logoStyle}/>
+											);
+									}} />
+								}
+							</Col>
+							<Col xs={12} sm={8} md={8} lg={10}>
 								<div style={{padding:10}}>
 									<div style={styles.eventTitle}>
 										{this.props.data.name.text}
