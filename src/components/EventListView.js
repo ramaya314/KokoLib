@@ -1,6 +1,7 @@
 import React from 'react';
 import DataContainer from './DataContainer';
 import EventThumbView from './EventThumbView';
+import moment from 'moment';
 
 class EventListView extends React.PureComponent
 {
@@ -17,6 +18,13 @@ class EventListView extends React.PureComponent
         nextEvents: true
     };
 
+    getValidDate(dateString, utc) {
+    	if(utc)
+	    	return new Date(moment.utc(dateString).valueOf());
+	    else 
+	    	return new Date(moment(dateString).valueOf());
+    }
+
     processFBEventsForMerging(fbEvents) {
 
     	if(!fbEvents || fbEvents == null || fbEvents.length <= 0)
@@ -24,9 +32,11 @@ class EventListView extends React.PureComponent
 
     	var mergingEvents = [];
 
+    	let that = this;
+
 		fbEvents.forEach(function(event) {
 
-			const dateToFormat = new Date(event.start_time);
+			const dateToFormat = that.getValidDate(event.start_time);
 
 			var ev = {
 				id: event.id,
@@ -58,17 +68,23 @@ class EventListView extends React.PureComponent
     		return events;
 
 
+
 		events = events.filter(function(event) {
 			var today = new Date(Date.now());
 			var yesterday = today.setDate(today.getDate() - 1);
 
+
+			var startDate = that.getValidDate(event.start.utc);
+
+			console.log(startDate);
+
 			//past events
 			if(that.props.pastEvents && !that.props.nextEvents) 
-				return (new Date(event.start.utc)) <= yesterday;
+				return (startDate) <= yesterday;
 
 			//future events
 			if(!that.props.pastEvents && that.props.nextEvents) 
-				return (new Date(event.start.utc)) > yesterday;
+				return (startDate) > yesterday;
 
 			//all events
 			if(that.props.pastEvents && that.props.nextEvents)
@@ -79,6 +95,7 @@ class EventListView extends React.PureComponent
 				return false;
 
 		});
+
 
 		events = events.filter(function(event, i, a) {
 
@@ -95,11 +112,11 @@ class EventListView extends React.PureComponent
 					return false;
 			}
 			return true;
-		})
+		});
 
 		events = events.sort(function(a, b) {
-			var dateA = new Date(a.start.utc);
-			var dateB = new Date(b.start.utc);
+			var dateA = that.getValidDate(a.start.utc);
+			var dateB = that.getValidDate(b.start.utc);
 
 			//future events
 			//show earliest first

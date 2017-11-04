@@ -4,6 +4,7 @@ import {Image, Grid, Col, Row, Button } from 'react-bootstrap';
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
 import DataContainer from './DataContainer';
+import moment from 'moment';
 
 import RichTextEditor from 'react-rte';
 
@@ -69,6 +70,13 @@ class FacebookEventView extends React.PureComponent
 		return styles;
 	}
 
+    getValidDate(dateString, utc) {
+    	if(utc)
+	    	return new Date(moment.utc(dateString).valueOf());
+	    else 
+	    	return new Date(moment(dateString).valueOf());
+    }
+    
 	linkify(inputText) {
 		var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
@@ -94,9 +102,9 @@ class FacebookEventView extends React.PureComponent
 		var data = this.props.data;
 
 
-		let startDate = dateFormat(new Date(data.start_time), "dddd, mmmm dS, yyyy");
-		let startDateTime = dateFormat(new Date(data.start_time), "h:MM:ss TT");
-		let endDateTime = dateFormat(new Date(data.end_time), "h:MM:ss TT Z");
+		let startDate = dateFormat(this.getValidDate(data.start_time), "dddd, mmmm dS, yyyy");
+		let startDateTime = dateFormat(this.getValidDate(data.start_time), "h:MM:ss TT");
+		let endDateTime = dateFormat(this.getValidDate(data.end_time), "h:MM:ss TT Z");
 
 
 		var descriptionValue = RichTextEditor.createValueFromString(data.description.split("—").join('- '), 'markdown');
