@@ -15,7 +15,7 @@ class FacebookEventAddressArea  extends React.PureComponent {
 
 			<div style={{padding:20, paddingTop:0}} >
 				<Row>
-					<Col xs={12} sm={6}>
+					<Col xs={12} sm={this.props.place ? 6 : 12}>
 						<h2>
 							<b>Date and Time</b>
 						</h2>
@@ -27,20 +27,28 @@ class FacebookEventAddressArea  extends React.PureComponent {
 							<span>{this.props.endDateTime}</span>
 						</p>
 					</Col>
-					<Col xs={12} sm={6}>
-						<h2>
-							<b>Location</b>
-						</h2>
-						<div>
-							{this.props.name}
-						</div>
-						<div>
-							{this.props.street}
-						</div>
-						<div>
-							{`${this.props.city} ${this.props.state}, ${this.props.zip}`}
-						</div>
-					</Col>
+					{this.props.place && 
+						<Col xs={12} sm={6}>
+							<h2>
+								<b>Location</b>
+							</h2>
+							{this.props.place.name &&
+								<div>
+									{this.props.place.name}
+								</div>
+							}
+							{this.props.place.street &&
+								<div>
+									{this.props.place.street}
+								</div>
+							}
+							<div>
+								{this.props.place.city && this.props.place.city + " "}
+								{this.props.place.state && this.props.place.state + " "}
+								{this.props.place.zip && ", " + this.props.place.zip}
+							</div>
+						</Col>
+					}
 				</Row>
 			</div>
 		);
@@ -76,7 +84,7 @@ class FacebookEventView extends React.PureComponent
 	    else 
 	    	return new Date(moment(dateString).valueOf());
     }
-    
+
 	linkify(inputText) {
 		var replacedText, replacePattern1, replacePattern2, replacePattern3;
 
@@ -101,6 +109,7 @@ class FacebookEventView extends React.PureComponent
 
 		var data = this.props.data;
 
+		console.log(data);
 
 		let startDate = dateFormat(this.getValidDate(data.start_time), "dddd, mmmm dS, yyyy");
 		let startDateTime = dateFormat(this.getValidDate(data.start_time), "h:MM:ss TT");
@@ -136,15 +145,10 @@ class FacebookEventView extends React.PureComponent
 
 						<Row>
 							<Col xsHidden={true} smHidden={true}>
-								<FacebookEventAddressArea name={data.place.name}
-									startDate={startDate}
+								<FacebookEventAddressArea startDate={startDate}
 									startDateTime={startDateTime}
 									endDateTime={endDateTime}
-									street={data.place.location.street}
-									city={data.place.location.city}
-									state={data.place.location.state}
-									zip={data.place.location.zip}
-								/>
+									place={data.place} />
 							</Col>
 						</Row>
 
@@ -159,15 +163,10 @@ class FacebookEventView extends React.PureComponent
 				<Row>
 
 					<Col xs={12} sm={12} mdHidden={true} lgHidden={true} >
-						<FacebookEventAddressArea name={data.place.name}
-							startDate={startDate}
+						<FacebookEventAddressArea startDate={startDate}
 							startDateTime={startDateTime}
 							endDateTime={endDateTime}
-							street={data.place.location.street}
-							city={data.place.location.city}
-							state={data.place.location.state}
-							zip={data.place.location.zip}
-						/>
+							place={data.place} />
 					</Col>
 
 					<Col xs={12} md={12} lg={12}>
