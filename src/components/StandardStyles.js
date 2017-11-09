@@ -10,7 +10,7 @@ class StandardStyles extends React.PureComponent
 		return(
 			<div dangerouslySetInnerHTML={{
 			__html: `
-				<style>
+				<style> 
 					body 
 					{
 						background-color: ${palette.primary1Color};
@@ -31,8 +31,9 @@ class StandardStyles extends React.PureComponent
 					h1 
 					{
 						color: ${palette.primary2Color};
-						font-weight: 600;
+						font-weight: 500;
 						border-bottom: 2px solid ${palette.accent1Color};
+						font-family: ${this.props.muiTheme.headerFontFamily};
 					}
 
 					/*========= BOOTSTRAP BUTTONS ==================*/

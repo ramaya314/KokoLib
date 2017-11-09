@@ -1,7 +1,7 @@
 import React from 'react';
 import DataContainer from './DataContainer';
 import EventThumbView from './EventThumbView';
-import moment from 'moment';
+import Utils from '../Utils';
 
 class EventListView extends React.PureComponent
 {
@@ -18,13 +18,6 @@ class EventListView extends React.PureComponent
         nextEvents: true
     };
 
-    getValidDate(dateString, utc) {
-    	if(utc)
-	    	return new Date(moment.utc(dateString).valueOf());
-	    else 
-	    	return new Date(moment(dateString).valueOf());
-    }
-
     processFBEventsForMerging(fbEvents) {
 
     	if(!fbEvents || fbEvents == null || fbEvents.length <= 0)
@@ -36,7 +29,7 @@ class EventListView extends React.PureComponent
 
 		fbEvents.forEach(function(event) {
 
-			const dateToFormat = that.getValidDate(event.start_time);
+			const dateToFormat = Utils.getValidDate(event.start_time);
 
 			var ev = {
 				id: event.id,
@@ -74,7 +67,7 @@ class EventListView extends React.PureComponent
 			var yesterday = today.setDate(today.getDate() - 1);
 
 
-			var startDate = that.getValidDate(event.start.utc);
+			var startDate = Utils.getValidDate(event.start.utc);
 
 			console.log(startDate);
 
@@ -115,8 +108,8 @@ class EventListView extends React.PureComponent
 		});
 
 		events = events.sort(function(a, b) {
-			var dateA = that.getValidDate(a.start.utc);
-			var dateB = that.getValidDate(b.start.utc);
+			var dateA = Utils.getValidDate(a.start.utc);
+			var dateB = Utils.getValidDate(b.start.utc);
 
 			//future events
 			//show earliest first

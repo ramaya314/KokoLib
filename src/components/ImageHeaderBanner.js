@@ -86,7 +86,7 @@ class ImageHeaderBanner extends React.Component {
 				margin: 0,
 				padding: 0,
 				border: 0,
-				height: smallScreen ? 250 : mediumScreen ? 350 : 500,
+				height: smallScreen ? 250 : mediumScreen ? 350 : 450,
 				textAlign: 'center',
 				position: 'relative'
 			},

@@ -4,8 +4,8 @@ import TextField from 'material-ui/TextField';
 
 import validator from 'validator';
 
-import textMaskCore from 'text-mask-core';
-//var textMaskCore = require('text-mask-core')
+//import textMaskCore from 'text-mask-core';
+var textMaskCore = require('text-mask-core')
 
 
 class EnhancedTextField extends React.PureComponent 

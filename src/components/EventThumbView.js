@@ -3,7 +3,7 @@ import {Image, Col, Row} from 'react-bootstrap';
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
 import DataContainer from './DataContainer';
-import moment from 'moment';
+import Utils from '../Utils';
 
 class EventThumbView extends React.PureComponent {
 
@@ -32,14 +32,6 @@ class EventThumbView extends React.PureComponent {
 		return styles;
 	}
 
-    getValidDate(dateString, utc) {
-    	if(utc)
-	    	return new Date(moment.utc(dateString).valueOf());
-	    else 
-	    	return new Date(moment(dateString).valueOf());
-
-    }
-
 	render() {
 
 		const styles = this.getStyles();
@@ -48,7 +40,7 @@ class EventThumbView extends React.PureComponent {
 		if(this.props.data.description.text && this.props.data.description.text.length > 0)
 			ellipsedText = (this.props.data.description.text).substring(0,200) + "...";
 
-		var startDateTime = dateFormat(this.getValidDate(this.props.data.start.utc), "dddd, mmmm dS, yyyy");
+		var startDateTime = dateFormat(Utils.getValidDate(this.props.data.start.utc), "dddd, mmmm dS, yyyy");
 
 		//console.log(this.props.data);
 

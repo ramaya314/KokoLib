@@ -10,6 +10,9 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 
 class PrimaryNavBarCSS extends React.PureComponent {
 	render() {
+
+		console.log(this.props.theme);
+
 		return(
 			<div dangerouslySetInnerHTML={{
 			__html: `
@@ -79,6 +82,11 @@ class PrimaryNavBarCSS extends React.PureComponent {
 
 						color: ${this.props.palette.accent1Color};
 					    background-color: ${this.props.palette.primary2Color};
+					}
+
+					.navbar
+					{
+						font-family: ${this.props.theme.headerFontFamily ? this.props.theme.headerFontFamily : this.props.theme.fontFamily}
 					}
 
 					.mainNavBarInvisible {
@@ -255,7 +263,7 @@ class PrimaryNavBar extends React.PureComponent {
 		return(
 			<div className="kokolib_navbarcontainer">
 
-				<PrimaryNavBarCSS palette={this.props.muiTheme.palette} />
+				<PrimaryNavBarCSS palette={this.props.muiTheme.palette} theme={this.props.muiTheme} />
 
 				<Navbar inverse collapseOnSelect staticTop fixedTop fluid style={styles.navBar}  
 				className={this.getNavBarStyle()} >

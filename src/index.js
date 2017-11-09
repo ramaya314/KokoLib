@@ -28,7 +28,8 @@ import BlogPost from './components/BlogPost';
 import BlogThumb from './components/BlogThumb';
 import ShadowScreen from './components/ShadowScreen';
 import GradientScreen from './components/GradientScreen';
-import BackgroundPoster from './components/BackgroundPoster'
+import BackgroundPoster from './components/BackgroundPoster';
+import FacebookLiveStream from './components/FacebookLiveStream';
 
 
 import Utils from './Utils';
@@ -58,6 +59,7 @@ module.exports = {
   ShadowScreen,
   GradientScreen,
   BackgroundPoster,
+  FacebookLiveStream,
   
   Utils
 }

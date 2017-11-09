@@ -1,6 +1,8 @@
 
 import dateFormat from 'dateformat';
 
+import moment from 'moment';
+
 class Utils 
 {
 	static prepareGSArrayForTable(gsArray) {
@@ -65,6 +67,14 @@ class Utils
 	{
 		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	}
+
+    static getValidDate(dateString, utc) {
+    	if(utc)
+	    	return new Date(moment.utc(dateString).valueOf());
+	    else 
+	    	return new Date(moment(dateString).valueOf());
+
+    }
 }
 
 export default Utils

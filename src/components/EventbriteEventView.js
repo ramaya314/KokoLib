@@ -3,13 +3,14 @@ import React from 'react';
 import {Image, Grid, Col, Row, Button } from 'react-bootstrap';
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
+import PropTypes from 'prop-types';
 
 
 class EventbriteEventView extends React.PureComponent
 {
 
     static propTypes = {
-        data: React.PropTypes.object
+        data: PropTypes.object
     };
 
     static defaultProps = {
