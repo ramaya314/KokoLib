@@ -6,7 +6,7 @@ import dateFormat from 'dateformat';
 import DataContainer from './DataContainer';
 import moment from 'moment';
 
-import RichTextEditor from 'react-rte';
+//import RichTextEditor from 'react-rte';
 
 class FacebookEventAddressArea  extends React.PureComponent {
 
@@ -58,6 +58,13 @@ class FacebookEventAddressArea  extends React.PureComponent {
 class FacebookEventView extends React.PureComponent
 {
 
+	constructor(props) {
+		super(props);
+		this.state = {
+			description : "",
+		}
+	}   
+
     static propTypes = {
         data: React.PropTypes.object
     };
@@ -76,6 +83,21 @@ class FacebookEventView extends React.PureComponent
 			},
 		};
 		return styles;
+	}
+
+	componentDidMount() {
+
+		/*
+    	const { default: RichTextEditor } = require('react-rte');
+
+		var descriptionValue = RichTextEditor.createValueFromString(this.props.data.description.split("—").join('- '), 'markdown');
+		var htmlDescriptionValue = descriptionValue.toString("html");
+
+		htmlDescriptionValue = this.linkify(htmlDescriptionValue);
+		this.setState({
+			description: htmlDescriptionValue
+		})
+		*/
 	}
 
     getValidDate(dateString, utc) {
@@ -109,17 +131,9 @@ class FacebookEventView extends React.PureComponent
 
 		var data = this.props.data;
 
-		console.log(data);
-
 		let startDate = dateFormat(this.getValidDate(data.start_time), "dddd, mmmm dS, yyyy");
 		let startDateTime = dateFormat(this.getValidDate(data.start_time), "h:MM:ss TT");
 		let endDateTime = dateFormat(this.getValidDate(data.end_time), "h:MM:ss TT Z");
-
-
-		var descriptionValue = RichTextEditor.createValueFromString(data.description.split("—").join('- '), 'markdown');
-		var htmlDescriptionValue = descriptionValue.toString("html");
-
-		htmlDescriptionValue = this.linkify(htmlDescriptionValue);
 
 		return (
 			<Paper  style={styles.paperStyle} zDepth={3} >
@@ -174,7 +188,7 @@ class FacebookEventView extends React.PureComponent
 							<h2>
 								<b>Description</b>
 							</h2>
-							<div  dangerouslySetInnerHTML={{__html: htmlDescriptionValue}} />
+							<div  dangerouslySetInnerHTML={{__html: this.state.description}} />
 						</div>
 					</Col>
 

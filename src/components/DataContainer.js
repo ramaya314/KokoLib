@@ -10,7 +10,6 @@ class DataContainer extends React.PureComponent {
 			data: [],
 			isLoading : true,
 		}
-		this.getData();
 	}   
 
 	equalRequests = (a, b) => {
@@ -21,6 +20,10 @@ class DataContainer extends React.PureComponent {
 			return false;
 
 		return true;
+	}
+
+	componentDidMount() {
+		this.getData();
 	}
 
 	componentWillUpdate(nextProps, nextState) {

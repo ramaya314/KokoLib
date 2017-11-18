@@ -30,6 +30,7 @@ import ShadowScreen from './components/ShadowScreen';
 import GradientScreen from './components/GradientScreen';
 import BackgroundPoster from './components/BackgroundPoster';
 import FacebookLiveStream from './components/FacebookLiveStream';
+import PdfViewer from './components/PdfViewer';
 
 
 import Utils from './Utils';
@@ -60,6 +61,7 @@ module.exports = {
   GradientScreen,
   BackgroundPoster,
   FacebookLiveStream,
+  PdfViewer,
   
   Utils
 }
