@@ -6,7 +6,8 @@ import dateFormat from 'dateformat';
 import DataContainer from './DataContainer';
 import moment from 'moment';
 
-//import RichTextEditor from 'react-rte';
+import {stateFromMarkdown} from 'draft-js-import-markdown';
+import {stateToHTML} from 'draft-js-export-html';
 
 class FacebookEventAddressArea  extends React.PureComponent {
 
@@ -134,6 +135,10 @@ class FacebookEventView extends React.PureComponent
 		let startDate = dateFormat(this.getValidDate(data.start_time), "dddd, mmmm dS, yyyy");
 		let startDateTime = dateFormat(this.getValidDate(data.start_time), "h:MM:ss TT");
 		let endDateTime = dateFormat(this.getValidDate(data.end_time), "h:MM:ss TT Z");
+		let description = data.description;
+		let contentState = stateFromMarkdown(description);
+		let descriptionHtml = stateToHTML(contentState);
+		descriptionHtml = this.linkify(descriptionHtml);
 
 		return (
 			<Paper  style={styles.paperStyle} zDepth={3} >
@@ -188,7 +193,7 @@ class FacebookEventView extends React.PureComponent
 							<h2>
 								<b>Description</b>
 							</h2>
-							<div  dangerouslySetInnerHTML={{__html: this.state.description}} />
+							<div  dangerouslySetInnerHTML={{__html: descriptionHtml}} />
 						</div>
 					</Col>
 

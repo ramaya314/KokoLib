@@ -41,6 +41,9 @@
   },
   "dependencies": {
     "dateformat": "^2.0.0",
+    "draft-js": "^0.10.4",
+    "draft-js-export-html": "^1.2.0",
+    "draft-js-import-markdown": "^1.2.1",
     "moment": "^2.19.1",
     "prop-types": "^15.6.0",
     "react-moment": "^0.6.5",

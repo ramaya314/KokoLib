@@ -69,8 +69,6 @@ class EventListView extends React.PureComponent
 
 			var startDate = Utils.getValidDate(event.start.utc);
 
-			console.log(startDate);
-
 			//past events
 			if(that.props.pastEvents && !that.props.nextEvents) 
 				return (startDate) <= yesterday;

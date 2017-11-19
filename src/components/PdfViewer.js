@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 //import ReactPDF from 'react-pdf';
 
-class PdfViewer extends PureCompoenent {
+class PdfViewer extends PureComponent {
 
     static propTypes = {
         rotate: PropTypes.number,
