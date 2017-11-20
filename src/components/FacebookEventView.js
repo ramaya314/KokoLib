@@ -86,21 +86,6 @@ class FacebookEventView extends React.PureComponent
 		return styles;
 	}
 
-	componentDidMount() {
-
-		/*
-    	const { default: RichTextEditor } = require('react-rte');
-
-		var descriptionValue = RichTextEditor.createValueFromString(this.props.data.description.split("—").join('- '), 'markdown');
-		var htmlDescriptionValue = descriptionValue.toString("html");
-
-		htmlDescriptionValue = this.linkify(htmlDescriptionValue);
-		this.setState({
-			description: htmlDescriptionValue
-		})
-		*/
-	}
-
     getValidDate(dateString, utc) {
     	if(utc)
 	    	return new Date(moment.utc(dateString).valueOf());
