@@ -30,6 +30,22 @@ class ShadowScreen extends React.PureComponent
         fogAmount: 0
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            ready : false,
+            id : 0
+        }
+    }   
+
+    componentWillMount() {
+        this.setState({id: `id${new Date().getTime()}`});
+    }
+
+    componentDidMount() {
+        this.setState({ ready: true });
+    }
+
     getShadowOne() {
     	return this.getShadow(this.props.shadowOne);
     }
@@ -58,22 +74,44 @@ class ShadowScreen extends React.PureComponent
 
 
 	render() {
-
-		console.log(`${this.getShadowThree()}, ${this.getShadowFour()}`);
 		
+        var s1 = `${this.getShadowOne()}, ${this.getShadowTwo()}`;
+        var s2 = `${this.getShadowThree()}, ${this.getShadowFour()}`;
+
 		return(
 			<div style={{position:'relative', width:'100%', height:'100%'}}>
-				<div className="kokolib_shadowScreen_shadow" style={{
-					content: "",
-					height: '100%',
-					left: 0,
-					margin: '0 auto',
-					pointerEvents: 'none',
-					position: 'absolute',
-					right: 0,
-					top: 0,
-					boxShadow: `${this.getShadowOne()}, ${this.getShadowTwo()}`
-				}}/>
+
+
+                {this.state.ready &&
+
+                    <div dangerouslySetInnerHTML={{
+                    __html: `
+                        <style>
+                            .kokolib_shadowScreen_shadow {
+                                content: "";
+                                height: 100%;
+                                left: 0;
+                                margin: 0 auto;
+                                pointer-events: none;
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                            }
+
+                            .kokolib_shadowScreen_shadow_one_${this.state.id} {
+                                box-shadow: ${s1}
+                            }
+
+                            .kokolib_shadowScreen_shadow_two_${this.state.id} {
+                                box-shadow: ${s2}
+                            }
+                        </style>
+                        `
+                    }} />
+                }
+                {this.state.ready &&
+    				<div className={"kokolib_shadowScreen_shadow kokolib_shadowScreen_shadow_one_" + this.state.id} />
+				}
 				<div className="kokolib_shadowScreen_fog" style={{
 					content: "",
 					height: '100%',
@@ -85,18 +123,9 @@ class ShadowScreen extends React.PureComponent
 					top: 0,
 					background: `rgba(0,0,0,${this.props.fogAmount}`
 				}}/>
-				<div className="kokolib_shadowScreen_shadow" style={{
-					content: "",
-					height: '100%',
-					left: 0,
-					margin: '0 auto',
-					pointerEvents: 'none',
-					position: 'absolute',
-					right: 0,
-					top: 0,
-					boxShadow: `${this.getShadowThree()}, ${this.getShadowFour()}`
-				}}/>
-
+                {this.state.ready &&
+    				<div className={"kokolib_shadowScreen_shadow kokolib_shadowScreen_shadow_two_" + this.state.id} />
+				}
 			</div>
 		);
 	}

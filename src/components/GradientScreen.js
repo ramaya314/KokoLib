@@ -27,6 +27,23 @@ class GradientScreen extends React.PureComponent
         fogAmount: 0
     };
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            ready : false,
+            id : 0
+        }
+    }   
+
+    componentWillMount() {
+        this.setState({id: `id${new Date().getTime()}`});
+    }
+
+    componentDidMount() {
+        this.setState({ ready: true });
+    }
+
+
     getTopShadow() {
     	return this.getShadow(this.props.topShadow, function(length, blur, spread, color) {
     		return `inset 0px ${length}px ${blur}px ${spread}px ${color}`;
@@ -62,6 +79,7 @@ class GradientScreen extends React.PureComponent
     	}
 
     	var blur = Math.abs(shadow.length / 2);
+
     	var spread = -blur;
 
     	var shadow = formatF(shadow.length, blur, spread, shadow.color);
@@ -70,19 +88,43 @@ class GradientScreen extends React.PureComponent
     }
 
 	render() {
+
+        var s1 = `${this.getTopShadow()}, ${this.getBottomShadow()}`;
+        var s2 = `${this.getLeftShadow()}, ${this.getRightShadow()}`;
+
 		return(
 			<div style={{position:'relative', width:'100%', height:'100%'}}>
-				<div className="kokolib_shadowScreen_shadow" style={{
-					content: "",
-					height: '100%',
-					left: 0,
-					margin: '0 auto',
-					pointerEvents: 'none',
-					position: 'absolute',
-					right: 0,
-					top: 0,
-					boxShadow: `${this.getTopShadow()}, ${this.getBottomShadow()}`
-				}}/>
+
+                {this.state.ready &&
+
+                    <div dangerouslySetInnerHTML={{
+                    __html: `
+                        <style>
+                            .kokolib_gradientScreen_shadow {
+                                content: "";
+                                height: 100%;
+                                left: 0;
+                                margin: 0 auto;
+                                pointer-events: none;
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                            }
+
+                            .kokolib_gradientScreen_shadow_one_${this.state.id} {
+                                box-shadow: ${s1}
+                            }
+
+                            .kokolib_gradientScreen_shadow_two_${this.state.id} {
+                                box-shadow: ${s2}
+                            }
+                        </style>
+                        `
+                    }} />
+                }
+                {this.state.ready &&
+                    <div className={"kokolib_gradientScreen_shadow kokolib_gradientScreen_shadow_one_" + this.state.id} />
+                }
 				<div className="kokolib_shadowScreen_fog" style={{
 					content: "",
 					height: '100%',
@@ -94,18 +136,9 @@ class GradientScreen extends React.PureComponent
 					top: 0,
 					background: `rgba(0,0,0,${this.props.fogAmount}`
 				}}/>
-				<div className="kokolib_shadowScreen_shadow" style={{
-					content: "",
-					height: '100%',
-					left: 0,
-					margin: '0 auto',
-					pointerEvents: 'none',
-					position: 'absolute',
-					right: 0,
-					top: 0,
-					boxShadow: `${this.getLeftShadow()}, ${this.getRightShadow()}`
-				}}/>
-
+                {this.state.ready &&
+    				<div className={"kokolib_gradientScreen_shadow kokolib_gradientScreen_shadow_two_" + this.state.id} />
+                }
 			</div>
 		);
 	}
