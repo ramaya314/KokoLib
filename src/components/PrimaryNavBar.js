@@ -11,8 +11,6 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 class PrimaryNavBarCSS extends React.PureComponent {
 	render() {
 
-		console.log(this.props.theme);
-
 		return(
 			<div dangerouslySetInnerHTML={{
 			__html: `
