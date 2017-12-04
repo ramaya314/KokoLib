@@ -9,6 +9,7 @@ class DataContainer extends React.PureComponent {
 		this.state = {
 			data: [],
 			isLoading : true,
+			hasError: false
 		}
 	}   
 
@@ -40,9 +41,15 @@ class DataContainer extends React.PureComponent {
 			that.setState({
 				data : data,
 				isLoading: false,
+				hasError: false
 			});
 		}, function(error) {
-			console.log(error);
+			that.setState({
+				data : error,
+				isLoading: false,
+				hasError: true
+			});
+			//console.log(error);
 		});
 	}
 
@@ -100,8 +107,12 @@ class DataContainer extends React.PureComponent {
 						<pre>{JSON.stringify(this.state.data, null, 4) }</pre>
 				}
 
-      			{!this.state.isLoading && this.props.resultRender &&
+      			{!this.state.isLoading && !this.state.hasError && this.props.resultRender &&
       				this.props.resultRender(this.state.data)
+				}
+
+      			{!this.state.isLoading && this.state.hasError && this.props.errorRender &&
+      				this.props.errorRender(this.state.data)
 				}
       		</div>
 		)

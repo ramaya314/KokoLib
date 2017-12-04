@@ -26,6 +26,8 @@ import ResourceLink from './components/ResourceLink';
 import BlogArchive from './components/BlogArchive';
 import BlogPost from './components/BlogPost';
 import BlogThumb from './components/BlogThumb';
+import UrlThumb from './components/UrlThumb';
+import UrlResourceList from './components/UrlResourceList';
 import ShadowScreen from './components/ShadowScreen';
 import GradientScreen from './components/GradientScreen';
 import BackgroundPoster from './components/BackgroundPoster';
@@ -57,6 +59,8 @@ module.exports = {
   BlogArchive,
   BlogPost,
   BlogThumb,
+  UrlThumb,
+  UrlResourceList,
   ShadowScreen,
   GradientScreen,
   BackgroundPoster,
