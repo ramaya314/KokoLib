@@ -4,6 +4,7 @@ import {Image, Grid, Col, Row, Button } from 'react-bootstrap';
 import Paper from 'material-ui/Paper';
 import dateFormat from 'dateformat';
 import PropTypes from 'prop-types';
+import MetaTags from 'react-meta-tags';
 
 
 class EventbriteEventView extends React.PureComponent
@@ -39,12 +40,21 @@ class EventbriteEventView extends React.PureComponent
 		let startDateTime = dateFormat(new Date(data.start.utc), "h:MM:ss TT");
 		let endDateTime = dateFormat(new Date(data.end.utc), "h:MM:ss TT Z");
 
+		let metaDescription = data.description.text.length > 170 ? data.description.text.substr(0, 160) + "..." : data.description.text;
+
 		return (
 			<Paper  style={styles.paperStyle} zDepth={3} >
 
+				<MetaTags>
+					<title>{data.name.text}</title>
+					<meta id="meta-description" name="description" content={metaDescription} />
+					<meta id="og-title" property="og:title" content={data.name.text} />
+					<meta id="og-image" property="og:image" content={data.logo.url} />
+				</MetaTags>
+
 				<Row>
 					<Col xs={12} lg={4}>
-							<Image src={data.logo.url} style={styles.logoStyle}/>
+						<Image src={data.logo.url} style={styles.logoStyle}/>
 					</Col>
 					<Col xs={12} lg={8}>
 						<div style={{'padding' : '0px 20px'}}>

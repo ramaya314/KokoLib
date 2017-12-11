@@ -1,5 +1,6 @@
 import React from 'react';
 import Loading from 'react-loading';
+import axios from 'axios';
 
 class DataContainer extends React.PureComponent {
 
@@ -23,7 +24,7 @@ class DataContainer extends React.PureComponent {
 		return true;
 	}
 
-	componentDidMount() {
+	componentWillMount() {
 		this.getData();
 	}
 
@@ -78,18 +79,14 @@ class DataContainer extends React.PureComponent {
 		let fullRequest = host + action + parameterString;
 		var that = this;
 
-		fetch(fullRequest, {
-			method : "GET",
-		}).then(function(res) {
-			if (res.ok) {
-				res.json().then(function(json) {
-					onSuccess && onSuccess(json);
-				}); 
+		axios.get(fullRequest).then(function (response) {
+			if (response.status === 200) {
+				onSuccess && onSuccess(response.data);
 			} else {
-				onError && onError(res);
+				onError && onError(response);
 			}
-		}, function(e) {
-			onError && onError(e);
+		}).catch(function (error) {
+			onError && onError(error);
 		});
 	}
 

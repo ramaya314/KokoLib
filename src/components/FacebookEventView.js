@@ -8,6 +8,7 @@ import moment from 'moment';
 
 import {stateFromMarkdown} from 'draft-js-import-markdown';
 import {stateToHTML} from 'draft-js-export-html';
+import MetaTags from 'react-meta-tags';
 
 class FacebookEventAddressArea  extends React.PureComponent {
 
@@ -125,8 +126,16 @@ class FacebookEventView extends React.PureComponent
 		let descriptionHtml = stateToHTML(contentState);
 		descriptionHtml = this.linkify(descriptionHtml);
 
+		let metaDescription = data.description.length > 170 ? data.description.substr(0, 160) + "..." : data.description;
+
 		return (
 			<Paper  style={styles.paperStyle} zDepth={3} >
+
+				<MetaTags>
+					<title>{data.name}</title>
+					<meta id="meta-description" name="description" content={metaDescription} />
+					<meta id="og-title" property="og:title" content={data.name} />
+				</MetaTags>
 
 				<Row>
 					<Col xs={12} sm={6} md={4} lg={3}>
@@ -136,7 +145,12 @@ class FacebookEventView extends React.PureComponent
 							]}
 							resultRender={function(pictureData) {
 								return (
-									<Image src={pictureData.location} style={styles.logoStyle}/>
+									<div>
+										<MetaTags>
+											<meta id="og-image" property="og:image" content={pictureData.location} />
+										</MetaTags>
+										<Image src={pictureData.location} style={styles.logoStyle}/>
+									</div>
 								);
 						}} />
 					</Col>

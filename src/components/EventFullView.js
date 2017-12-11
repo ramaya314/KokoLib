@@ -1,5 +1,6 @@
 import React from 'react';
 
+import MetaTags from 'react-meta-tags';
 import DataContainer from './DataContainer';
 
 import {Image, Grid, Col, Row, Button } from 'react-bootstrap';
