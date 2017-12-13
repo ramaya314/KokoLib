@@ -2,20 +2,23 @@ import React from 'react';
 import DataContainer from './DataContainer';
 import EventThumbView from './EventThumbView';
 import Utils from '../Utils';
+import PropTypes from 'prop-types';
 
 class EventListView extends React.PureComponent
 {
 
     static propTypes = {
-        aditionalUsers: React.PropTypes.array,
-        pastEvents: React.PropTypes.bool,
-        nextEvents: React.PropTypes.bool
+        aditionalUsers: PropTypes.array,
+        pastEvents: PropTypes.bool,
+        nextEvents: PropTypes.bool,
+        maxResults: PropTypes.number
     };
 
     static defaultProps = {
         aditionalUsers: [],
         pastEvents: false,
-        nextEvents: true
+        nextEvents: true,
+        maxResults: -1
     };
 
     processFBEventsForMerging(fbEvents) {
@@ -151,6 +154,10 @@ class EventListView extends React.PureComponent
 
 								//console.log(data.events);
 
+								if(that.props.maxResults > 0 && data.events && data.events.length > 0) {
+									data.events = data.events.slice(0, that.props.maxResults);
+								}
+
 								return (
 
 									<div>
@@ -163,12 +170,21 @@ class EventListView extends React.PureComponent
 										}
 
 						      			{data.events.length <= 0 &&
-						      				<div style={{
-						      					fontSize: '26px',
-						      					textAlign: 'center',
-						      					padding: 30,
-						      				}}>
-						      					There are currently no events to show. Please check again later.
+						      				<div>
+												<div dangerouslySetInnerHTML={{
+												__html: `
+													<style> 
+														.ghostEventList { display:none;}
+													</style>
+													`
+												}} />
+							      				<div style={{
+							      					fontSize: '26px',
+							      					textAlign: 'center',
+							      					padding: 30,
+							      				}}>
+							      					There are currently no events to show. Please check again later.
+							      				</div>
 						      				</div>
 										}
 									</div>
