@@ -6,8 +6,41 @@ import Spacer from './Spacer';
 import PropTypes from 'prop-types';
 
 
+class UrlThumbCss extends React.PureComponent {
+	render() {
+
+		return(
+			<div dangerouslySetInnerHTML={{
+			__html: `
+				<style>
+					.kokolib_url_thumb {
+						-webkit-transition: 1s;
+						-moz-transition: 1s;
+						-o-transition: 1s;
+						transition: 1s;
+					}
+
+					.kokolib_url_thumb.focused {
+						transform:scale(1.03) !important;
+					}
+
+				</style>
+				`
+			}} />
+		);
+	}
+}
+
 class UrlThumb extends React.Component
 {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            focused: false
+        }
+    } 
+
 
     static propTypes = {
     	url: PropTypes.string,
@@ -25,6 +58,18 @@ class UrlThumb extends React.Component
         targetPageRoot: ""
     };
 
+
+    onHoverEnter = () => {
+        this.setState({
+            focused: true
+        });
+    };
+
+    onHoverLeave = () => {
+        this.setState({
+            focused: false
+        });
+    };
 
 
 	getStyles() {
@@ -83,13 +128,24 @@ class UrlThumb extends React.Component
 
     	var hasImage = this.props.image && this.props.image.length > 0;
 
+        const componentClasses = ['kokolib_url_thumb'];
+        if (this.state.focused) { componentClasses.push('focused'); }
+
     	if(this.props.url && this.props.url.length > 0)
 			return(
-				<a  href={this.props.url} target="_blank">
-					<Paper  style={styles.paperStyle} zDepth={3} >
-						{this.renderContent()}
-					</Paper>
-				</a>
+				<div>
+					<UrlThumbCss />
+					<a  href={this.props.url} target="_blank">
+
+						<div className={componentClasses.join(' ')}  
+							onMouseEnter={this.onHoverEnter}
+		                    onMouseLeave={this.onHoverLeave}>
+							<Paper  style={styles.paperStyle} zDepth={3} >
+								{this.renderContent()}
+							</Paper>
+						</div>
+					</a>
+				</div>
 			);
 		else
 			return (
