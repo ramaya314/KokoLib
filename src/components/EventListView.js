@@ -143,9 +143,11 @@ class EventListView extends React.PureComponent
 						<DataContainer action="api/v1/GetFacebookEvents" 
 							resultRender={function(fbdata) {
 
+
 								var processedFbEvents = [];
 								if(fbdata.events && fbdata.events.data)
 									processedFbEvents = that.processFBEventsForMerging(fbdata.events.data);
+
 
 								var mergedEvents = data.events.concat(processedFbEvents);
 
@@ -160,6 +162,9 @@ class EventListView extends React.PureComponent
 									<div>
 						      			{data.events.length > 0 &&
 											data.events.map(function(event, i) {
+
+												//return <div key={i} style={{ background:"red", width:100, height:100, padding:30}} />
+
 												return (
 													<EventThumbView key={i} data={event} match={that.props.match} targetPageRoot={that.props.targetPageRoot} />
 												);

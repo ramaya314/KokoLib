@@ -5,7 +5,43 @@ import dateFormat from 'dateformat';
 import DataContainer from './DataContainer';
 import Utils from '../Utils';
 
+
+
+class EventThumbViewAnimationCSS extends React.PureComponent {
+	render() {
+
+		return(
+			<div dangerouslySetInnerHTML={{
+			__html: `
+				<style>
+					.kokolib_event_thumbview {
+						-webkit-transition: 1s;
+						-moz-transition: 1s;
+						-o-transition: 1s;
+						transition: 1s;
+					}
+
+					.kokolib_event_thumbview.focused {
+						transform:scale(1.03) !important;
+					}
+
+				</style>
+				`
+			}} />
+		);
+	}
+}
+
+
 class EventThumbView extends React.PureComponent {
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            focused: false
+        }
+    } 
 
 	getStyles() {
 		const styles = {
@@ -32,7 +68,22 @@ class EventThumbView extends React.PureComponent {
 		return styles;
 	}
 
+
+    onHoverEnter = () => {
+        this.setState({
+            focused: true
+        });
+    };
+
+    onHoverLeave = () => {
+        this.setState({
+            focused: false
+        });
+    };
+
 	render() {
+
+		console.log("render");
 
 		const styles = this.getStyles();
 
@@ -63,60 +114,93 @@ class EventThumbView extends React.PureComponent {
 
 		linkUrl = linkUrl.replace("//", "/");
 
+
+        const componentClasses = ['kokolib_event_thumbview'];
+        if (this.state.focused) { componentClasses.push('focused'); }
+
 		return(
 			<div>
+				<EventThumbViewAnimationCSS />
 				<a  href={linkUrl} >
-	    			<Paper style={styles.paperStyle} zDepth={3} >
-						{false && 
-							<pre>{JSON.stringify(this.props.data, null, 4) }</pre>
-						}
-						<Row>
+					<div className={componentClasses.join(' ')}  
+						onMouseEnter={this.onHoverEnter}
+	                    onMouseLeave={this.onHoverLeave}>
 
-							<Col xs={12} sm={4} md={4} lg={2} lgHidden={!this.props.data.fbEvent} >
-								{this.props.data.logo && !this.props.data.fbEvent &&
-									<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
-								}
+		    			<Paper style={styles.paperStyle} zDepth={3} >
+							{false && 
+								<pre>{JSON.stringify(this.props.data, null, 4) }</pre>
+							}
+							<Row>
 
-								{this.props.data.fbEvent && 
-									<DataContainer action="/api/v1/GetFacebookEventPicture" 
-										parameters={[
-											{id:"eventId", value: this.props.data.id}
-										]}
-										resultRender={function(pictureData) {
-											return (
-												<Image src={pictureData.location} style={styles.logoStyle}/>
-											);
-									}} />
-								}
-							</Col>
-							<Col xs={12} sm={8} md={8} lg={this.props.data.fbEvent ? 10 : 12}>
-								<Row>
-									<Col xsHidden={true} smHidden={true} mdHidden={true} lgHidden={this.props.data.fbEvent} lg={4}>
-
+								<Col xs={12} sm={4} md={4} lg={2} lgHidden={true} >
+									{this.props.data.logo && !this.props.data.fbEvent &&
 										<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
-									</Col>
-									<Col xs={12} lg={this.props.data.fbEvent ? 12 : 8} >
-										<div style={{padding:10}}>
-											<div style={styles.eventTitle}>
-												{this.props.data.name.text}
+									}
+
+									{this.props.data.fbEvent && 
+										<DataContainer action="/api/v1/GetFacebookEventPicture" 
+											parameters={[
+												{id:"eventId", value: this.props.data.id}
+											]}
+											resultRender={function(pictureData) {
+												return (
+													<Image src={pictureData.location} style={styles.logoStyle}/>
+												);
+										}} />
+									}
+								</Col>
+								<Col xs={12} sm={8} md={8} lg={12}>
+									<Row>
+
+										<Col xsHidden={true} smHidden={true} mdHidden={true}  lg={3}>
+											{!this.props.data.fbEvent &&
+												<Image src={this.props.data.logo.url} style={styles.logoStyle} />
+											}
+											{this.props.data.fbEvent && 
+												<DataContainer action="/api/v1/GetFacebookEventPicture" 
+													parameters={[
+														{id:"eventId", value: this.props.data.id}
+													]}
+													resultRender={function(pictureData) {
+														return (
+															<Image src={pictureData.location} style={styles.logoStyle}/>
+														);
+												}} />
+											}
+										</Col>
+
+
+										<Col xs={12} lg={4} >
+											<div style={{padding:10}}>
+												<div style={styles.eventTitle}>
+													{this.props.data.name.text}
+												</div>
+												<div style={styles.eventDate}>
+													{startDateTime}
+												</div>
 											</div>
-											<div style={styles.eventDate}>
-												{startDateTime}
+										</Col>
+
+										<Col xsHidden={true} mdHidden={true} smHidden={true} lg={5} >
+											<div style={styles.descriptionBody} >
+												{ellipsedText}
 											</div>
-										</div>
-									</Col>
-								</Row>
-								<hr style={{margin:0}} />
-								<Row>
-									<div style={{padding:"5px 25px"}}>
-										<div style={styles.descriptionBody} >
-											{ellipsedText}
-										</div>
-									</div>
-								</Row>
-							</Col>
-						</Row>
-	    			</Paper>
+										</Col>
+									</Row>
+									<Row>
+										<Col xs={12} lgHidden={true} >
+											<hr style={{margin:0}} />
+												<div style={{padding:"5px 25px"}}>
+													<div style={styles.descriptionBody} >
+														{ellipsedText}
+													</div>
+												</div>
+										</Col>
+									</Row>
+								</Col>
+							</Row>
+		    			</Paper>
+	    			</div>
 				</a>
 			</div>
 		);

@@ -43,6 +43,8 @@ class ImageHeaderBannerCSS extends React.PureComponent {
 						box-shadow: inset 0 30px 40px 20px rgba(0, 0, 0, 0.4), inset 0 -150px 69px 1px rgba(0, 0, 0, 0.41);
 					}
 
+					kokolib_headerBanner_title
+
 				</style>
 				`
 			}} />
@@ -136,6 +138,11 @@ class ImageHeaderBanner extends React.Component {
 			styles.headerBanner.backgroundAttachment = "fixed";
 		}
 
+		if(this.props.muiTheme.headerFontFamily) {
+			console.log("word");
+			styles.bannerTitle.fontFamily = this.props.muiTheme.headerFontFamily;
+		}
+
 		return styles;
 	}
 
@@ -168,11 +175,9 @@ class ImageHeaderBanner extends React.Component {
 				{this.props.pageTitle && 
 					<div style={styles.bannerTitle}>
 						<Grid>
-							<Col xs={12} >
-								<Row>
-									{this.props.pageTitle}
-								</Row>
-							</Col>
+							<Row>
+								{this.props.pageTitle}
+							</Row>
 						</Grid>
 					</div>
 				}
