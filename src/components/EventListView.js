@@ -11,14 +11,16 @@ class EventListView extends React.PureComponent
         aditionalUsers: PropTypes.array,
         pastEvents: PropTypes.bool,
         nextEvents: PropTypes.bool,
-        maxResults: PropTypes.number
+        maxResults: PropTypes.number,
+        targetPageRoot: PropTypes.string
     };
 
     static defaultProps = {
         aditionalUsers: [],
         pastEvents: false,
         nextEvents: true,
-        maxResults: -1
+        maxResults: -1,
+        targetPageRoot: ""
     };
 
     processFBEventsForMerging(fbEvents) {
@@ -147,12 +149,7 @@ class EventListView extends React.PureComponent
 
 								var mergedEvents = data.events.concat(processedFbEvents);
 
-								//console.log(fbdata.events.data);
-								//console.log(mergedEvents);
-
 								data.events = that.processEventsForPresentation(mergedEvents);
-
-								//console.log(data.events);
 
 								if(that.props.maxResults > 0 && data.events && data.events.length > 0) {
 									data.events = data.events.slice(0, that.props.maxResults);
@@ -164,7 +161,7 @@ class EventListView extends React.PureComponent
 						      			{data.events.length > 0 &&
 											data.events.map(function(event, i) {
 												return (
-													<EventThumbView key={i} data={event} match={that.props.match}/>
+													<EventThumbView key={i} data={event} match={that.props.match} targetPageRoot={that.props.targetPageRoot} />
 												);
 											})
 										}

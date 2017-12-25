@@ -44,12 +44,24 @@ class EventThumbView extends React.PureComponent {
 
 		//console.log(this.props.data);
 
-		var linkUrl = `${this.props.match.url}/`;
+		var linkUrl = "";
+
+
+		if(this.props.match && this.props.match.url && this.props.match.url.length > 1) {
+			linkUrl += `${this.props.match.url}/`;
+		}
+
+		if(this.props.targetPageRoot && this.props.targetPageRoot.length > 0) {
+			linkUrl += `${this.props.targetPageRoot}/`;
+		} 
+
 		
 		if(this.props.data.fbEvent)
 			linkUrl += "fb";
 
 		linkUrl += this.props.data.id;
+
+		linkUrl = linkUrl.replace("//", "/");
 
 		return(
 			<div>
@@ -60,7 +72,7 @@ class EventThumbView extends React.PureComponent {
 						}
 						<Row>
 
-							<Col xs={12} sm={4} md={4} lg={2} >
+							<Col xs={12} sm={4} md={4} lg={2} lgHidden={!this.props.data.fbEvent} >
 								{this.props.data.logo && !this.props.data.fbEvent &&
 									<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
 								}
@@ -77,19 +89,31 @@ class EventThumbView extends React.PureComponent {
 									}} />
 								}
 							</Col>
-							<Col xs={12} sm={8} md={8} lg={10}>
-								<div style={{padding:10}}>
-									<div style={styles.eventTitle}>
-										{this.props.data.name.text}
+							<Col xs={12} sm={8} md={8} lg={this.props.data.fbEvent ? 10 : 12}>
+								<Row>
+									<Col xsHidden={true} smHidden={true} mdHidden={true} lgHidden={this.props.data.fbEvent} lg={4}>
+
+										<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
+									</Col>
+									<Col xs={12} lg={this.props.data.fbEvent ? 12 : 8} >
+										<div style={{padding:10}}>
+											<div style={styles.eventTitle}>
+												{this.props.data.name.text}
+											</div>
+											<div style={styles.eventDate}>
+												{startDateTime}
+											</div>
+										</div>
+									</Col>
+								</Row>
+								<hr style={{margin:0}} />
+								<Row>
+									<div style={{padding:"5px 25px"}}>
+										<div style={styles.descriptionBody} >
+											{ellipsedText}
+										</div>
 									</div>
-									<div style={styles.eventDate}>
-										{startDateTime}
-									</div>
-									<hr />
-									<div style={styles.descriptionBody} >
-										{ellipsedText}
-									</div>
-								</div>
+								</Row>
 							</Col>
 						</Row>
 	    			</Paper>
