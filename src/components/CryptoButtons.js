@@ -1,19 +1,19 @@
 import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
-import SocialMediaButton from '../elements/SocialMediaButton';
 import PropTypes from 'prop-types';
+import CryptoButton from '../elements/CryptoButton';
 
 import tinycolor from 'tinycolor2';
 
-class SocialMediaButtons extends React.PureComponent {
+class CryptoButtons extends React.PureComponent {
 
 
     static propTypes = {
-        buttons: PropTypes.array
+        cryptoLinks: PropTypes.array
     };
 
     static defaultProps = {
-        buttons: []
+        cryptoLinks: []
     };
 
 	getStyles() {
@@ -24,14 +24,18 @@ class SocialMediaButtons extends React.PureComponent {
 		let background = backTinyColor.isDark() ? backTinyColor.lighten(10) : backTinyColor.darken(10);
 
 		const styles = {
+			container: {
+
+			},
 			icons: {
 				position: 'relative',
-				background: background.toString(),
-				borderRadius: '4em',
 				display: 'inline-block',
 				padding: '0.35em 0.75em 0.35em 0.75em',
 				fontSize: '1.25em',
 				cursor: 'default',
+			},
+			label: {
+				display: "inline-block"
 			}
 		}
 		return styles;
@@ -40,16 +44,20 @@ class SocialMediaButtons extends React.PureComponent {
 	render() {
 		var styles = this.getStyles();
 		return(
+			<div>
+			<div style={styles.label} >
+				Donate:
+			</div>
 			<ul className="icons" style={styles.icons} >
-				{this.props.buttons.map(function(button, i) {
+				{this.props.cryptoLinks.map(function(button, i) {
 					return(
-						<SocialMediaButton link={button.link} icon={button.icon} name={button.name} key={i} />
+						<CryptoButton {...button} key={i} />
 					)
 				})}
 			</ul>
+			</div>
 		);
 	}
 }
 
-
-export default muiThemeable()(SocialMediaButtons);
+export default muiThemeable()(CryptoButtons);

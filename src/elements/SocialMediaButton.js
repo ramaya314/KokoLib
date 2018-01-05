@@ -1,13 +1,14 @@
 import React from 'react';
 import muiThemeable from 'material-ui/styles/muiThemeable';
 import Utils from '../Utils';
+import PropTypes from 'prop-types';
 
 class SocialMediaButton extends React.PureComponent {
 
     static propTypes = {
-        icon: React.PropTypes.string,
-        link: React.PropTypes.string,
-        name: React.PropTypes.string
+        icon: PropTypes.string,
+        link: PropTypes.string,
+        name: PropTypes.string
     };
 
     static defaultProps = {

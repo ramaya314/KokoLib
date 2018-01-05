@@ -1,5 +1,6 @@
 import React from 'react';
 import SocialMediaButtons from './SocialMediaButtons';
+import CryptoButtons from './CryptoButtons';
 import PropTypes from 'prop-types';
 
 import muiThemeable from 'material-ui/styles/muiThemeable';
@@ -8,12 +9,14 @@ class MainFooter extends React.PureComponent {
 
     static propTypes = {
         buttons: PropTypes.array,
+        cryptoLinks: PropTypes.array,
         orgName: PropTypes.string,
         transparent: PropTypes.bool
     };
 
     static defaultProps = {
-        buttons: [],
+        buttons: [],   
+        cryptoLinks: [],
         orgName: "Your Organization",
         transparent: false
     };
@@ -60,7 +63,7 @@ class MainFooter extends React.PureComponent {
 
 		return(
 
-  			<div style={styles.footer}>
+  			<div style={styles.footer} >
 
   				<div style={styles.footerBefore} />
   				<div className="contact" style={styles.contact}>
@@ -72,6 +75,11 @@ class MainFooter extends React.PureComponent {
 							<li style={{listStyle:"none"}} >&copy; {this.props.orgName}. All rights reserved.</li>
 						</ul>
 					</div>
+					
+  					{this.props.cryptoLinks && this.props.cryptoLinks.length > 0 &&
+  						<CryptoButtons {...this.props} />
+  					}
+
 				</div>
   			</div>
 		);
