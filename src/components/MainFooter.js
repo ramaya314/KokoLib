@@ -70,16 +70,17 @@ class MainFooter extends React.PureComponent {
 
   					<SocialMediaButtons {...this.props} />
 
+					
+  					{this.props.cryptoLinks && this.props.cryptoLinks.length > 0 &&
+  						<CryptoButtons {...this.props} />
+  					}
+
 					<div className="copyright" style={styles.copyRight}>
 						<ul className="menu" style={{padding:0}}>
 							<li style={{listStyle:"none"}} >&copy; {this.props.orgName}. All rights reserved.</li>
 						</ul>
 					</div>
 					
-  					{this.props.cryptoLinks && this.props.cryptoLinks.length > 0 &&
-  						<CryptoButtons {...this.props} />
-  					}
-
 				</div>
   			</div>
 		);
