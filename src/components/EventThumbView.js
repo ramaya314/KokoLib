@@ -83,7 +83,6 @@ class EventThumbView extends React.PureComponent {
 
 	render() {
 
-		console.log("render");
 
 		const styles = this.getStyles();
 
@@ -118,6 +117,9 @@ class EventThumbView extends React.PureComponent {
         const componentClasses = ['kokolib_event_thumbview'];
         if (this.state.focused) { componentClasses.push('focused'); }
 
+		console.log("render");
+
+												//return <div style={{ background:"red", width:100, height:100, padding:30}} />
 		return(
 			<div>
 				<EventThumbViewAnimationCSS />
@@ -131,7 +133,6 @@ class EventThumbView extends React.PureComponent {
 								<pre>{JSON.stringify(this.props.data, null, 4) }</pre>
 							}
 							<Row>
-
 								<Col xs={12} sm={4} md={4} lg={2} lgHidden={true} >
 									{this.props.data.logo && !this.props.data.fbEvent &&
 										<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
@@ -153,7 +154,7 @@ class EventThumbView extends React.PureComponent {
 									<Row>
 
 										<Col xsHidden={true} smHidden={true} mdHidden={true}  lg={3}>
-											{!this.props.data.fbEvent &&
+											{!this.props.data.fbEvent && this.props.data.logo && this.props.data.logo.url &&
 												<Image src={this.props.data.logo.url} style={styles.logoStyle} />
 											}
 											{this.props.data.fbEvent && 

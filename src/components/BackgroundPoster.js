@@ -14,27 +14,22 @@ class BackgroundPosterShadow extends React.PureComponent {
 
         let visibleAreaLength = largeScreen ? -100 : mediumScreen ? 100 : 200;
 
-        let color = 'rgba(0, 0, 0, 0.9)';
+        let color = 'rgba(0, 0, 0, 0.95)';
+
+        //return <div />;
 
         return(
-            <GradientScreen fogAmount={0.1} 
-                leftShadow={{
-                    length:60,
-                    color:color
-                }}
-                rightShadow={{
-                    length:60,
-                    color:color
-                }}
-                topShadow={{
-                    length: 100,
-                    color:color
-                }}
-                bottomShadow={{
-                    length: (this.props.containerHeight + visibleAreaLength),
-                    color:color
-                }} 
-                />
+            <div className="kokolib_shadowScreen_fog" style={{
+                content: "",
+                height: '100%',
+                left: 0,
+                margin: '0 auto',
+                pointerEvents: 'none',
+                position: 'absolute',
+                right: 0,
+                top: 0,
+                background: `rgba(255,255,255,0.3)`
+            }}/>
         );
         
     }

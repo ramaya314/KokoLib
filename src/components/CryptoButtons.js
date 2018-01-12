@@ -30,6 +30,8 @@ class CryptoButtons extends React.PureComponent {
 			icons: {
 				position: 'relative',
 				display: 'inline-block',
+				background: background.toString(),
+				borderRadius: '4em',
 				padding: '0.35em 0.75em 0.35em 0.75em',
 				fontSize: '1.25em',
 				cursor: 'default',
@@ -45,10 +47,11 @@ class CryptoButtons extends React.PureComponent {
 		var styles = this.getStyles();
 		return(
 			<div>
-			<div style={styles.label} >
-				Donate:
-			</div>
 			<ul className="icons" style={styles.icons} >
+
+				<div style={styles.label} >
+					Donate:
+				</div>
 				{this.props.cryptoLinks.map(function(button, i) {
 					return(
 						<CryptoButton {...button} key={i} />

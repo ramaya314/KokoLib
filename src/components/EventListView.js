@@ -65,11 +65,13 @@ class EventListView extends React.PureComponent
     	if(!events || events.length <= 0)
     		return events;
 
-
+    	//console.log(events);
 
 		events = events.filter(function(event) {
 			var today = new Date(Date.now());
-			var yesterday = today.setDate(today.getDate() - 1);
+			var yesterdayCompareDate = new Date(Date.now());
+			var yesterday = yesterdayCompareDate.setDate(yesterdayCompareDate.getDate() - 1);
+
 
 
 			var startDate = Utils.getValidDate(event.start.utc);
@@ -80,7 +82,7 @@ class EventListView extends React.PureComponent
 
 			//future events
 			if(!that.props.pastEvents && that.props.nextEvents) 
-				return (startDate) > yesterday;
+				return (startDate) > today;
 
 			//all events
 			if(that.props.pastEvents && that.props.nextEvents)
@@ -110,6 +112,7 @@ class EventListView extends React.PureComponent
 			return true;
 		});
 
+
 		events = events.sort(function(a, b) {
 			var dateA = Utils.getValidDate(a.start.utc);
 			var dateB = Utils.getValidDate(b.start.utc);
@@ -121,6 +124,7 @@ class EventListView extends React.PureComponent
 
 			return (dateA < dateB) ? 1 : (dateA > dateB) ? -1 : 0;
 		});
+
 
 		return events;
     }
@@ -153,9 +157,11 @@ class EventListView extends React.PureComponent
 
 								data.events = that.processEventsForPresentation(mergedEvents);
 
+
 								if(that.props.maxResults > 0 && data.events && data.events.length > 0) {
 									data.events = data.events.slice(0, that.props.maxResults);
 								}
+
 
 								return (
 

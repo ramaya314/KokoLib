@@ -1,5 +1,6 @@
 import React from 'react';
 import Waypoint from 'react-waypoint';
+import PropTypes from 'prop-types';
 import { Navbar, NavItem, NavDropdown, MenuItem, Nav,
 			Image} from 'react-bootstrap';
 
@@ -107,7 +108,7 @@ class PrimaryNavBarCSS extends React.PureComponent {
 						margin: 0px -15px;
 					}
 					.navbar-nav>li>a {
-						color:#fff !important;
+						color:${this.props.palette.textColor} !important;
 					    border-bottom: 3px transparent solid;
 					}
 					.nav .open>a, 
@@ -132,6 +133,10 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					.navbar-inverse .navbar-toggle:hover
 					{
 					    background-color: ${this.props.palette.primary2Color};
+					}
+
+					.navbar-default .navbar-toggle {
+						border: 0;
 					}
 
 
@@ -184,15 +189,19 @@ class NavigationGroup extends React.PureComponent{
 class PrimaryNavBar extends React.PureComponent {
 
     static propTypes = {
-        logoImagePath: React.PropTypes.string,
-        visibilityToggleOffset: React.PropTypes.number,
-        navigationScheme: React.PropTypes.array
+        logoImagePath: PropTypes.string,
+        visibilityToggleOffset: PropTypes.number,
+        navigationScheme: PropTypes.array,
+        alwaysOpaque: PropTypes.bool,
+        inverse: PropTypes.bool
     };
 
     static defaultProps = {
         logoImagePath: "",
         visibilityToggleOffset: 0,
-        navigationScheme: []
+        navigationScheme: [],
+        alwaysOpaque: false,
+        inverse: false
     };
 
 	constructor(props) {
@@ -208,7 +217,7 @@ class PrimaryNavBar extends React.PureComponent {
 
 	handleWaypointOnPositionChange = ({ previousPosition, currentPosition }) => {
 		this.setState({
-			navbarBrandVisible: currentPosition === 'above'
+			navbarBrandVisible: this.props.alwaysOpaque || currentPosition === 'above'
 		});
 		currentPosition === 'above' && this.setState({
 			navBarStyleChanged: true
@@ -263,7 +272,7 @@ class PrimaryNavBar extends React.PureComponent {
 
 				<PrimaryNavBarCSS palette={this.props.muiTheme.palette} theme={this.props.muiTheme} />
 
-				<Navbar inverse collapseOnSelect staticTop fixedTop fluid style={styles.navBar}  
+				<Navbar collapseOnSelect inverse={this.props.inverse} staticTop fixedTop fluid style={styles.navBar}  
 				className={this.getNavBarStyle()} >
 					<Navbar.Header>
 						{this.state.navbarBrandVisible && 

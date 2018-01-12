@@ -134,7 +134,7 @@ class GradientScreen extends React.PureComponent
 					position: 'absolute',
 					right: 0,
 					top: 0,
-					background: `rgba(0,0,0,${this.props.fogAmount}`
+					background: `rgba(0,0,0,${this.props.fogAmount})`
 				}}/>
                 {this.state.ready &&
     				<div className={"kokolib_gradientScreen_shadow kokolib_gradientScreen_shadow_two_" + this.state.id} />
