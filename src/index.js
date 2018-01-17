@@ -33,6 +33,7 @@ import GradientScreen from './components/GradientScreen';
 import BackgroundPoster from './components/BackgroundPoster';
 import FacebookLiveStream from './components/FacebookLiveStream';
 import PdfViewer from './components/PdfViewer';
+import AlbumView from './components/AlbumView';
 
 
 import Utils from './Utils';
@@ -54,6 +55,7 @@ module.exports = {
   EventFullView,
   PlainIconButton,
   GalleryCollection,
+  AlbumView,
   StandardStyles,
   ResourceLink,
   BlogArchive,

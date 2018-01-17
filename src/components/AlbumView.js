@@ -3,8 +3,27 @@ import Gallery from 'react-grid-gallery';
 import {Col, Button } from 'react-bootstrap';
 import DataContainer from './DataContainer';
 
+import PropTypes from 'prop-types';
+
 class AlbumView extends React.Component
 {
+
+    static propTypes = {
+        album: PropTypes.object,
+        onBack: PropTypes.func
+    };
+
+    static defaultProps = {
+        album: null,
+        onBack: null
+    };
+
+    onBackClick = () => {
+    	if(!this.props.onBack)
+			window.location = '/gallery';	
+		else
+			this.props.onBack();
+    }
 
 	render() {
 
@@ -34,9 +53,7 @@ class AlbumView extends React.Component
 					}}>
 					</DataContainer>
 
-					<Button bsStyle="primary" bsSize="large" block onClick={() => {
-						window.location = '/gallery';	
-					}}>Back to Gallery</Button>
+					<Button bsStyle="primary" bsSize="large" block onClick={this.onBackClick} >Back to Gallery</Button>
 				</Col>
 			</div>
 		);

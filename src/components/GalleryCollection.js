@@ -64,7 +64,7 @@ class GalleryCollection extends React.Component
 												{id, name, num_photos, published, title, summary, location, nickname, photos}
 											*/}
 
-											<LinkContainer to={`${that.props.match.url}/${album.id}`}>
+											<LinkContainer to={(`${that.props.match.url}/${album.id}`).replace('//', '/')}>
 												<Thumbnail style={styles.albumThumbContainer} >
 													<div style={{ ...styles.albumThumbImage, backgroundImage: 'url(' + album.media.media$content[0].url + ')'}} />
 													<p style={styles.albumThumbTitle}>{album.title}</p>
@@ -82,7 +82,7 @@ class GalleryCollection extends React.Component
 
 
 
-					<Route path={`${this.props.match.url}/:albumId`}  render={({match}) => {
+					<Route path={(`${this.props.match.url}/:albumId`).replace('//', '/')}  render={({match}) => {
 
 						let selectedAlbum = null;
 						console.log(this.props.data);

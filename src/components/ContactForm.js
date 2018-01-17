@@ -12,6 +12,8 @@ import SwipeableViews from 'react-swipeable-views';
 
 import Recaptcha from 'react-recaptcha';
 
+import PropTypes from 'prop-types';
+
 
 //recaptcha hooks
 const captchaLoadCallback = () => {};
@@ -23,8 +25,8 @@ class ContactForm extends React.PureComponent
 {
 
     static propTypes = {
-        useRecaptcha: React.PropTypes.bool,
-        recipientEmail: React.PropTypes.string,
+        useRecaptcha: PropTypes.bool,
+        recipientEmail: PropTypes.string,
     };
 
     static defaultProps = {
