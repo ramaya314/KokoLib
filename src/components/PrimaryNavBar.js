@@ -12,6 +12,18 @@ import muiThemeable from 'material-ui/styles/muiThemeable';
 class PrimaryNavBarCSS extends React.PureComponent {
 	render() {
 
+		var textColor = (this.props.palette.navBarTextColor || this.props.palette.textColor);
+		var selectedTextColor = (this.props.palette.navBarSelectedTextColor || this.props.palette.accent1Color);
+		var hoverTextColor = (this.props.palette.navBarHoverTextColor || this.props.palette.accent2Color);
+
+		var backgroundColor = (this.props.palette.navBarBackgroundColor || this.props.palette.primary1Color);
+		var hoverBackgroundColor = (this.props.palette.navBarHoverBackgroundColor || this.props.palette.primary3Color);
+		var selectedBackgroundColor = (this.props.palette.navBarSelectedBackgroundColor || this.props.palette.primary2Color);
+
+		var decorationColor = (this.props.palette.navBarDecorationColor || this.props.palette.accent1Color);
+
+		var font =  this.props.theme.headerFontFamily ? this.props.theme.headerFontFamily : this.props.theme.fontFamily;
+
 		return(
 			<div dangerouslySetInnerHTML={{
 			__html: `
@@ -21,13 +33,13 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					    	background-color: transparent;
 					    }
 					    to {
-					    	background-color: ${this.props.palette.primary1Color};
+					    	background-color: ${backgroundColor};
 					    }
 					}
 
 					@keyframes navbaranimationreverse {
 					    from {
-					    	background-color: ${this.props.palette.primary1Color};
+					    	background-color: ${backgroundColor};
 					    }
 					    to {
 					    	background-color: transparent;
@@ -40,12 +52,12 @@ class PrimaryNavBarCSS extends React.PureComponent {
 						}
 						.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover,
 						.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a:hover {
-							color:${this.props.palette.accent1Color} !important;
-					    	background-color: ${this.props.palette.primary3Color};
+							color:${hoverTextColor} !important;
+					    	background-color: ${hoverBackgroundColor};
 						}
 
 						.navbar-inverse .navbar-nav .open .dropdown-menu>.active>a{
-					    	background-color: ${this.props.palette.primary2Color};
+					    	background-color: ${selectedBackgroundColor};
 						}
 					}
 
@@ -56,12 +68,12 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					.navbar-inverse .navbar-nav>.active>a:focus, 
 					.navbar-inverse .navbar-nav>.active>a:hover
 					{
-						background-color: ${this.props.palette.primary2Color} !important;
+						background-color: ${selectedBackgroundColor} !important;
 					}
 
 					.kokolib_navbarcontainer .dropdown-menu 
 					{
-					    background-color: ${this.props.palette.primary1Color};
+					    background-color: ${backgroundColor};
 					}
 
 					.kokolib_navbarcontainer .dropdown-menu>li>a
@@ -72,20 +84,20 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					.kokolib_navbarcontainer .dropdown-menu>li>a:focus, 
 					.kokolib_navbarcontainer .dropdown-menu>li>a:hover
 					{
-						color: ${this.props.palette.accent2Color};
-					    background-color: ${this.props.palette.primary3Color};
+						color: ${hoverTextColor};
+					    background-color: ${hoverBackgroundColor};
 					}
 					.kokolib_navbarcontainer .dropdown-menu>.active>a, 
 					.kokolib_navbarcontainer .dropdown-menu>.active>a:focus, 
 					.kokolib_navbarcontainer .dropdown-menu>.active>a:hover {
 
-						color: ${this.props.palette.accent1Color};
-					    background-color: ${this.props.palette.primary2Color};
+						color: ${selectedTextColor};
+					    background-color: ${selectedBackgroundColor};
 					}
 
 					.navbar
 					{
-						font-family: ${this.props.theme.headerFontFamily ? this.props.theme.headerFontFamily : this.props.theme.fontFamily}
+						font-family: ${font}
 					}
 
 					.mainNavBarInvisible {
@@ -95,7 +107,7 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					}
 
 					.mainNavBar {
-					    background-color: ${this.props.palette.primary1Color};
+					    background-color: ${backgroundColor};
 						animation-name: navbaranimation;
 					    animation-duration: 0.5s;
 					}
@@ -108,20 +120,20 @@ class PrimaryNavBarCSS extends React.PureComponent {
 						margin: 0px -15px;
 					}
 					.navbar-nav>li>a {
-						color:${this.props.palette.textColor} !important;
+						color:${textColor} !important;
 					    border-bottom: 3px transparent solid;
 					}
 					.nav .open>a, 
 					.nav .open>a:focus, 
 					.nav .open>a:hover {
-					    border-bottom: 3px ${this.props.palette.accent1Color} solid;
+					    border-bottom: 3px ${decorationColor} solid;
 					}
 
 					.navbar-inverse .navbar-nav>.active>a, 
 					.navbar-nav>li>a:hover
 					{
-					    border-bottom: 3px ${this.props.palette.accent1Color} solid;
-					    color: ${this.props.palette.accent1Color} !important;
+					    border-bottom: 3px ${decorationColor} solid;
+					    color: ${selectedTextColor} !important;
 					}
 
 					.navbar-inverse .navbar-toggle {
@@ -132,7 +144,7 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					.navbar-inverse .navbar-toggle:focus, 
 					.navbar-inverse .navbar-toggle:hover
 					{
-					    background-color: ${this.props.palette.primary2Color};
+					    background-color: ${hoverBackgroundColor};
 					}
 
 					.navbar-default .navbar-toggle {
