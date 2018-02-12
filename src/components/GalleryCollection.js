@@ -58,7 +58,7 @@ class GalleryCollection extends React.Component
 							{this.props.data.map(function(album, i) {
 								return(
 									<div key={i}>
-										<Col xs={12} sm={6} md={4} lg={3}>
+										<Col xs={12} sm={6} md={4} lg={3} style={{paddingLeft:2,paddingRight:2}}>
 
 											{/*
 												{id, name, num_photos, published, title, summary, location, nickname, photos}

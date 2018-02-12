@@ -9,7 +9,7 @@ class BlogArchiveYearEntry extends Component {
 		super(...args);
 
 		this.state = {
-			open: false
+			open: true
 		};
 	}
 
@@ -64,7 +64,7 @@ class BlogArchiveMonthEntry extends Component {
 		super(...args);
 
 		this.state = {
-			open: false
+			open: true
 		};
 	}
 
@@ -118,8 +118,8 @@ class BlogArchivePostEntry extends Component {
 		return(
 				<NavItem eventKey={this.props.index} 
 					onClick={ ()=> that.props.onSelectPost(that.props.post)} >
-					<div style={{textIndent: -15}}>
-						{this.props.post.title}
+					<div style={{textIndent: -15, fontSize: '1.1em'}}>
+						<b>{this.props.post.title}</b>
 					</div>
 				</NavItem>
 
@@ -141,6 +141,7 @@ class BlogArchive extends Component {
 	render() {
 
 		var rawData = this.props.data;
+		
 		var pData = Utils.getBlogArchiveFromBlogData(rawData);
 
 		if(pData === null) return <div />

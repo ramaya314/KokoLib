@@ -40,7 +40,7 @@ class Utils
 		if(!data || data === null)
 			return null;
 
-		var items = data.items;
+		var items = data.items || data;
 		if(!items || items === null || items.length <= 0)
 			return null;
 
