@@ -49,6 +49,7 @@ class BlogPost extends React.Component
 						<MetaTags>
 							<meta id="ogTitle" property="og:title" content={this.props.data.title} />
 							<meta id="ogImage" property="og:image" content={metaImageSource} />
+							<meta id="ogSecureImage" property="og:image:secure_url" content={metaImageSource} />
 							<meta id="ogDescription" property="og:description" content={metaDescription} />
 							<meta id="ogType"  property="og:type" content="article" />
 						</MetaTags>
