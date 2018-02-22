@@ -1,6 +1,6 @@
 {
   "name": "kokolib",
-  "version": "1.0.27",
+  "version": "1.0.28",
   "description": "React component library",
   "main": "build/index.js",
   "devDependencies": {
@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "cheerio": "^1.0.0-rc.2",
     "dateformat": "^2.0.0",
     "draft-js": "^0.10.4",
     "draft-js-export-html": "^1.2.0",

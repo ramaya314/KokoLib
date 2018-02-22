@@ -3,6 +3,8 @@ import dateFormat from 'dateformat';
 
 import moment from 'moment';
 
+import cheerio from 'cheerio';
+
 class Utils 
 {
 	static prepareGSArrayForTable(gsArray) {
@@ -74,6 +76,16 @@ class Utils
 	    else 
 	    	return new Date(moment(dateString).valueOf());
 
+    }
+
+    static stripHtml(htmlString) {
+    	return htmlString.replace(/<[^>]+>/g, '');
+    }
+
+    static getFirstImageSourceFromHtml(htmlString) {
+		const $ = cheerio.load(htmlString);
+		var matches = $('img').attr('src');
+    	return matches;
     }
 }
 

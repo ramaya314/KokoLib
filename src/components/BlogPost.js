@@ -4,6 +4,7 @@ import {Col, Row} from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import Spacer from './Spacer';
 import DataContainer from './DataContainer';
+import Utils from '../Utils';
 
 import MetaTags from 'react-meta-tags';
 
@@ -31,27 +32,26 @@ class BlogPost extends React.Component
 
     	var createdDate = dateFormat(new Date(this.props.data.published), "mmmm dd, yyyy");
 
+    	var metaDescription = Utils.stripHtml(this.props.data.content).trim().replace(/(\r\n|\n|\r)/gm, "");
+
+    	if(metaDescription.length > 300)
+    		metaDescription = metaDescription.substr(295) + "...";
+
+    	console.log(metaDescription);
+
+    	var metaImageSource = Utils.getFirstImageSourceFromHtml(this.props.data.content);
+
+
 		return(
 			<Paper  style={styles.paperStyle} zDepth={3} >
 				<Row>
 					<Col xs={12}>
-
-						<DataContainer action="api/v1/GetPageMeta" 
-							parameters={[
-								{id:"url", value: that.props.data.url}
-							]}
-							resultRender={function(metadata) {
-								console.log(metadata);
-								return (
-									<MetaTags>
-										<meta id="og-title" property="og:title" content={metadata.title} />
-										<meta id="og-image" property="og:image" content={metadata.image} />
-										<meta id="og-description" property="og:description" content={metadata.description} />
-									</MetaTags>
-								)
-						}}>
-						</DataContainer>
-
+						<MetaTags>
+							<meta id="ogTitle" property="og:title" content={this.props.data.title} />
+							<meta id="ogImage" property="og:image" content={metaImageSource} />
+							<meta id="ogDescription" property="og:description" content={metaDescription} />
+							<meta id="ogType"  property="og:type" content="article" />
+						</MetaTags>
 						<h1> {this.props.data.title}</h1>
 					</Col>
 				</Row>
