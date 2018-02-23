@@ -148,13 +148,18 @@ class BlogArchive extends Component {
 
 		let that = this;
 
+		let years = Object.keys(pData);
+		years.sort(function(a, b) {
+			return a < b;
+		});
+
 		return(
 			<Nav bsStyle="pills" 
 				stacked 
 				activeKey={this.state.currentActiveYear} 
 				className="stickySecondaryNav">
 
-				{Object.keys(pData).map(function(year, i) {
+				{years.map(function(year, i) {
 					return(
 						<BlogArchiveYearEntry year={year} 
 							months={pData[year]} 

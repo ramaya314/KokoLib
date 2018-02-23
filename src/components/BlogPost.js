@@ -37,7 +37,7 @@ class BlogPost extends React.Component
     	if(metaDescription.length > 300)
     		metaDescription = metaDescription.substr(295) + "...";
 
-    	console.log(metaDescription);
+    	//console.log(metaDescription);
 
     	var metaImageSource = Utils.getFirstImageSourceFromHtml(this.props.data.content);
 
