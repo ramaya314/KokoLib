@@ -5,8 +5,6 @@ import DataContainer from './DataContainer';
 import FacebookVideoStream from './FacebookVideoStream';
 import Utils from '../Utils';
 
-import PropTypes from 'prop-types';
-
 class FacebookLiveStream extends React.PureComponent
 {
 
