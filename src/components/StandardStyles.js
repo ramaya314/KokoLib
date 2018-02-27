@@ -19,7 +19,7 @@ class StandardStyles extends React.PureComponent
 					}
 					a 
 					{
-						color: ${palette.primary3Color};
+						color: ${palette.anchorColor || palette.primary3Color};
 						text-decoration: none;
 						word-wrap: break-word;
 					}
