@@ -194,9 +194,12 @@ class BlogPost extends React.Component
 
     	var metaImageSource = Utils.getFirstImageSourceFromHtml(this.props.data.content);
 
-    	var shareUrl = window.location.href;
-    	if(shareUrl.indexOf(this.props.data.id) < 0)
-    		shareUrl = (`${shareUrl}/${this.props.data.id}`).replace("//", "/");
+    	var shareUrl = "";
+    	if(window && window.location && window.location.href) {
+	    	var shareUrl = window.location.href;
+	    	if(shareUrl.indexOf(this.props.data.id) < 0)
+	    		shareUrl = (`${shareUrl}/${this.props.data.id}`).replace("//", "/");
+    	}
 
 		return(
 			<Paper  style={styles.paperStyle} zDepth={3} >
