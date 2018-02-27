@@ -194,11 +194,27 @@ class BlogPost extends React.Component
 
     	var metaImageSource = Utils.getFirstImageSourceFromHtml(this.props.data.content);
 
+
+
     	var shareUrl = "";
     	if(window && window.location && window.location.href) {
-	    	var shareUrl = window.location.href;
+
+    		console.log(window.location);
+
+    		if(this.props.targetPageRoot && this.props.targetPageRoot.length > 0) {
+    			shareUrl = `${window.location.protocol}//${window.location.host}/${this.props.targetPageRoot}`
+    		} else {
+		    	shareUrl = window.location.href;
+    		}
+
 	    	if(shareUrl.indexOf(this.props.data.id) < 0)
-	    		shareUrl = (`${shareUrl}/${this.props.data.id}`).replace("//", "/");
+	    		shareUrl = `${shareUrl}/${this.props.data.id}`;
+
+	    	//fix double slashes and then fix the inevitable single slash on the protocol
+    		shareUrl = shareUrl.split("//").join("/").split("\\\\").join("\\").replace(":/", "://");
+
+    		console.log(shareUrl);
+
     	}
 
 		return(
