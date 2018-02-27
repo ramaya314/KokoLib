@@ -5,8 +5,18 @@ import DataContainer from './DataContainer';
 import FacebookVideoStream from './FacebookVideoStream';
 import Utils from '../Utils';
 
+import PropTypes from 'prop-types';
+
 class FacebookLiveStream extends React.PureComponent
 {
+
+    static propTypes = {
+        daysToLive: PropTypes.number
+    };
+
+    static defaultProps = {
+        daysToLive: 7
+    };
 
 	render() {
 
@@ -26,7 +36,7 @@ class FacebookLiveStream extends React.PureComponent
 								return true;
 
 							var startDate = Utils.getValidDate(stream.broadcast_start_time);
-							var cutoffDate = startDate.setDate(startDate.getDate() + 2);
+							var cutoffDate = startDate.setDate(startDate.getDate() + that.props.daysToLive);
 							var today = new Date(Date.now());
 
 							return cutoffDate > today;
