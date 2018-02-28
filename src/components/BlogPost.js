@@ -186,20 +186,17 @@ class BlogPost extends React.Component
     	var createdDate = dateFormat(new Date(this.props.data.published), "mmmm dd, yyyy");
 
     	var fullMetaDescription = Utils.stripHtml(this.props.data.content).trim().replace(/(\r\n|\n|\r)/gm, "");
+
     	var metaDescription = fullMetaDescription;
     	if(metaDescription.length > 300)
-    		metaDescription = metaDescription.substr(295) + "...";
-
-    	//console.log(metaDescription);
+    		metaDescription = metaDescription.substr(0, 295) + "...";
 
     	var metaImageSource = Utils.getFirstImageSourceFromHtml(this.props.data.content);
 
-
+    	console.log(metaImageSource);
 
     	var shareUrl = "";
     	if(window && window.location && window.location.href) {
-
-    		console.log(window.location);
 
     		if(this.props.targetPageRoot && this.props.targetPageRoot.length > 0) {
     			shareUrl = `${window.location.protocol}//${window.location.host}/${this.props.targetPageRoot}`
@@ -213,8 +210,6 @@ class BlogPost extends React.Component
 	    	//fix double slashes and then fix the inevitable single slash on the protocol
     		shareUrl = shareUrl.split("//").join("/").split("\\\\").join("\\").replace(":/", "://");
 
-    		console.log(shareUrl);
-
     	}
 
 		return(
@@ -223,8 +218,12 @@ class BlogPost extends React.Component
 					<Col xs={12}>
 						<MetaTags>
 							<meta id="ogTitle" property="og:title" content={this.props.data.title} />
-							<meta id="ogImage" property="og:image" content={metaImageSource} />
-							<meta id="ogSecureImage" property="og:image:secure_url" content={metaImageSource} />
+							{metaImageSource && metaImageSource.length > 0 && 
+								<div>
+									<meta id="ogImage" property="og:image" content={metaImageSource} />
+									<meta id="ogSecureImage" property="og:image:secure_url" content={metaImageSource} />
+								</div>
+							}
 							<meta id="ogDescription" property="og:description" content={metaDescription} />
 							<meta id="ogType"  property="og:type" content="article" />
 						</MetaTags>
