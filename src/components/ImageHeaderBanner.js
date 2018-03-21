@@ -139,7 +139,6 @@ class ImageHeaderBanner extends React.Component {
 		}
 
 		if(this.props.muiTheme.headerFontFamily) {
-			console.log("word");
 			styles.bannerTitle.fontFamily = this.props.muiTheme.headerFontFamily;
 		}
 

@@ -193,8 +193,6 @@ class BlogPost extends React.Component
 
     	var metaImageSource = Utils.getFirstImageSourceFromHtml(this.props.data.content);
 
-    	console.log(metaImageSource);
-
     	var shareUrl = "";
     	if(window && window.location && window.location.href) {
 
@@ -219,10 +217,10 @@ class BlogPost extends React.Component
 						<MetaTags>
 							<meta id="ogTitle" property="og:title" content={this.props.data.title} />
 							{metaImageSource && metaImageSource.length > 0 && 
-								<div>
-									<meta id="ogImage" property="og:image" content={metaImageSource} />
-									<meta id="ogSecureImage" property="og:image:secure_url" content={metaImageSource} />
-								</div>
+								<meta id="ogImage" property="og:image" content={metaImageSource} />
+							}
+							{metaImageSource && metaImageSource.length > 0 && 
+								<meta id="ogSecureImage" property="og:image:secure_url" content={metaImageSource} />
 							}
 							<meta id="ogDescription" property="og:description" content={metaDescription} />
 							<meta id="ogType"  property="og:type" content="article" />
