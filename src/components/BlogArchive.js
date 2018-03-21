@@ -32,7 +32,7 @@ class BlogArchiveYearEntry extends Component {
 
 		return(
 			<div>
-				<NavItem eventKey={this.props.index} 
+				<NavItem eventKey={this.props.index} className="kokolib_blogArchive_yearEntry"
 					onClick={ ()=> this.setState({ open: !this.state.open })}>
 					<span className={"icon fa-angle-" + (this.state.open ?"down" : "right")}></span>
 					<span>  {this.props.year} ({this.getCount()})</span>
@@ -84,7 +84,7 @@ class BlogArchiveMonthEntry extends Component {
 
 		return(
 			<div>
-				<NavItem eventKey={this.props.index} 
+				<NavItem eventKey={this.props.index}  className="kokolib_blogArchive_monthEntry"
 					onClick={ ()=> this.setState({ open: !this.state.open })}>
 					<span className={"icon fa-angle-" + (this.state.open ?"down" : "right")}></span>
 					<span>  {this.props.month} ({this.getCount()})</span>
@@ -116,12 +116,15 @@ class BlogArchivePostEntry extends Component {
 		let that = this;
 
 		return(
-				<NavItem eventKey={this.props.index} 
-					onClick={ ()=> that.props.onSelectPost(that.props.post)} >
-					<div style={{textIndent: -15, fontSize: '1.1em'}}>
-						<b>{this.props.post.title}</b>
-					</div>
-				</NavItem>
+				<div>
+					<NavItem eventKey={this.props.index}  className="kokolib_blogArchive_monthEntry"
+						onClick={ ()=> that.props.onSelectPost(that.props.post)} >
+						<div style={{textIndent: -15, fontSize: '1.1em'}}>
+							<b>{this.props.post.title}</b>
+						</div>
+					</NavItem>
+					<hr style={{margin:2}}/>
+				</div>
 
 		);
 	}
