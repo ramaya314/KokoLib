@@ -35,6 +35,21 @@ import FacebookLiveStream from './components/FacebookLiveStream';
 import PdfViewer from './components/PdfViewer';
 import AlbumView from './components/AlbumView';
 
+//containers
+import BlogArchiveContainer from './containers/BlogArchiveContainer';
+import BlogPostContainer from './containers/BlogPostContainer';
+
+//reducers
+//We export reducers individually and as a package to give the developer options
+//we can also import all the reducers at once with KokoLibReducers
+//however if this is done, we must use flat-combine-reducers package to combine
+//site reducers with our library reducers, 
+//otherwise the state will be nested and not accessible by our containers
+import KokoLibReducers from './reducers';
+import BlogArchiveReducer from './reducers/BlogArchiveReducer';
+import ActiveBlogPostReducer from './reducers/ActiveBlogPostReducer';
+import BlogNextPageTokenReducer from './reducers/BlogNextPageTokenReducer';
+
 
 import Utils from './Utils';
 
@@ -68,6 +83,16 @@ module.exports = {
   BackgroundPoster,
   FacebookLiveStream,
   PdfViewer,
+
+  //containers
+  BlogArchiveContainer,
+  BlogPostContainer,
+
+  //reducers
+  BlogArchiveReducer,
+  ActiveBlogPostReducer,
+  BlogNextPageTokenReducer,
+  KokoLibReducers,
   
   Utils
 }
