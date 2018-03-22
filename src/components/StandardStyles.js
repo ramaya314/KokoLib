@@ -62,6 +62,9 @@ class StandardStyles extends React.PureComponent
 							font-size: 0.6em;
 
 						}
+						.kokolib_event_thumbview > div {
+							margin:0px !important;
+						}
 					}
 					.reactTableContainer
 					{

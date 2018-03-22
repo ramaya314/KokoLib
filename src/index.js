@@ -34,6 +34,7 @@ import BackgroundPoster from './components/BackgroundPoster';
 import FacebookLiveStream from './components/FacebookLiveStream';
 import PdfViewer from './components/PdfViewer';
 import AlbumView from './components/AlbumView';
+import Countdown from './components/Countdown';
 
 //containers
 import BlogArchiveContainer from './containers/BlogArchiveContainer';
@@ -83,6 +84,7 @@ module.exports = {
   BackgroundPoster,
   FacebookLiveStream,
   PdfViewer,
+  Countdown,
 
   //containers
   BlogArchiveContainer,
