@@ -147,6 +147,7 @@ class EventListView extends React.PureComponent
 						<DataContainer action="api/v1/GetFacebookEvents" 
 							resultRender={function(fbdata) {
 
+								console.log(fbdata);
 
 								var processedFbEvents = [];
 								if(fbdata.events && fbdata.events.data)

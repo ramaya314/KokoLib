@@ -144,12 +144,23 @@ class FacebookEventView extends React.PureComponent
 								{id:"eventId", value: data.id}
 							]}
 							resultRender={function(pictureData) {
+
+								if(!pictureData.cover)
+									return <div />;
+
 								return (
 									<div>
 										<MetaTags>
-											<meta id="og-image" property="og:image" content={pictureData.location} />
+											<meta id="og-image" property="og:image" content={pictureData.cover.source} />
 										</MetaTags>
-										<Image src={pictureData.location} style={styles.logoStyle}/>
+										<div style={{
+											width: '100%',
+											height:250,
+											backgroundImage: `url("${pictureData.cover.source}")`,
+											backgroundSize: 'cover',
+											backgroundRepeat: 'no-repeat',
+											backgroundPosition: 'center'
+										}} />
 									</div>
 								);
 						}} />

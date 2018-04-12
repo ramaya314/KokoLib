@@ -144,8 +144,25 @@ class EventThumbView extends React.PureComponent {
 												{id:"eventId", value: this.props.data.id}
 											]}
 											resultRender={function(pictureData) {
+
+
+												if(!pictureData.cover)
+													return <div />;
+
+														return (
+															<div style={{
+																width: '100%',
+																height:250,
+																backgroundImage: `url("${pictureData.cover.source}")`,
+																backgroundSize: 'cover',
+																backgroundRepeat: 'no-repeat',
+																backgroundPosition: 'center'
+															}} />
+
+														)
+
 												return (
-													<Image src={pictureData.location} style={styles.logoStyle}/>
+													<Image src={pictureData.cover.source} style={styles.logoStyle}/>
 												);
 										}} />
 									}
@@ -163,8 +180,28 @@ class EventThumbView extends React.PureComponent {
 														{id:"eventId", value: this.props.data.id}
 													]}
 													resultRender={function(pictureData) {
+
+														if(!pictureData.cover)
+															return <div />;
+
+														console.log(pictureData.cover.source);
+												
+
 														return (
-															<Image src={pictureData.location} style={styles.logoStyle}/>
+															<div style={{
+																width: '100%',
+																height:250,
+																backgroundImage: `url("${pictureData.cover.source}")`,
+																backgroundSize: 'cover',
+																backgroundRepeat: 'no-repeat',
+																backgroundPosition: 'center'
+															}} />
+
+
+														)
+
+														return (
+															<Image src={pictureData.cover.source} style={styles.logoStyle}/>
 														);
 												}} />
 											}
