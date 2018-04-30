@@ -1,5 +1,5 @@
 import React from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 import PropTypes from 'prop-types';
 import CryptoButton from '../elements/CryptoButton';
 
@@ -63,4 +63,4 @@ class CryptoButtons extends React.PureComponent {
 	}
 }
 
-export default muiThemeable()(CryptoButtons);
+export default withTheme()(CryptoButtons);

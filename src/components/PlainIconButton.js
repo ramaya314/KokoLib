@@ -1,13 +1,15 @@
 import React, { PureComponent } from 'react';
 
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
+
+import PropTypes from 'prop-types';
 
 class PlainIconButton extends PureComponent {
- 
+
     static propTypes = {
-        content: React.PropTypes.string,
-        link: React.PropTypes.string,
-        iconContent: React.PropTypes.string
+        content: PropTypes.string,
+        link: PropTypes.string,
+        iconContent: PropTypes.string
     };
 
     static defaultProps = {
@@ -86,7 +88,7 @@ class PlainIconButton extends PureComponent {
 				</a>
 			</div>
 		);
-	} 
+	}
 }
 
-export default muiThemeable()(PlainIconButton);
+export default withTheme()(PlainIconButton);

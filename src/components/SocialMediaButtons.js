@@ -1,5 +1,5 @@
 import React from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 import SocialMediaButton from '../elements/SocialMediaButton';
 import PropTypes from 'prop-types';
 
@@ -18,8 +18,9 @@ class SocialMediaButtons extends React.PureComponent {
 
 	getStyles() {
 
-		let palette = this.props.muiTheme.palette;
+    let palette = this.props.theme.palette;
 
+ console.log(palette.primary1Color);
 		let backTinyColor = tinycolor(palette.primary1Color.toString());
 		let background = backTinyColor.isDark() ? backTinyColor.lighten(10) : backTinyColor.darken(10);
 
@@ -52,4 +53,4 @@ class SocialMediaButtons extends React.PureComponent {
 }
 
 
-export default muiThemeable()(SocialMediaButtons);
+export default withTheme()(SocialMediaButtons);

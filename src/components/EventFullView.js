@@ -10,12 +10,13 @@ import dateFormat from 'dateformat';
 import EventbriteEventView from './EventbriteEventView';
 import FacebookEventView from './FacebookEventView';
 
+import PropTypes from 'prop-types';
 
 class EventFullView extends React.PureComponent
 {
 
     static propTypes = {
-        eventId: React.PropTypes.string
+        eventId: PropTypes.string
     };
 
     static defaultProps = {

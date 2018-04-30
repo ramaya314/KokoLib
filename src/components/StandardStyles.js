@@ -1,23 +1,23 @@
 import React from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 
 class StandardStyles extends React.PureComponent
 {
 	render() {
 
-		let palette = this.props.muiTheme.palette;
+		let palette = this.props.theme.palette;
 
 		return(
 			<div dangerouslySetInnerHTML={{
 			__html: `
-				<style> 
-					body 
+				<style>
+					body
 					{
 						background-color: ${palette.primary1Color};
 						margin: 0;
 						padding: 0;
 					}
-					a 
+					a
 					{
 						color: ${palette.anchorColor || palette.primary3Color};
 						text-decoration: none;
@@ -28,12 +28,12 @@ class StandardStyles extends React.PureComponent
 						text-decoration: none !important;
 					}
 
-					h1 
+					h1
 					{
 						color: ${palette.primary2Color};
 						font-weight: 500;
 						border-bottom: 2px solid ${palette.accent1Color};
-						font-family: ${this.props.muiTheme.headerFontFamily};
+						font-family: ${palette.headerFontFamily};
 					}
 
 					/*========= BOOTSTRAP BUTTONS ==================*/
@@ -54,7 +54,7 @@ class StandardStyles extends React.PureComponent
 					}
 
 					/* styles to make react tables smaller on phones*/
-					@media all and (max-width: 599px)   and (orientation : portrait), (max-width: 899px)  and (orientation : landscape) 
+					@media all and (max-width: 599px)   and (orientation : portrait), (max-width: 899px)  and (orientation : landscape)
 					{
 						.reactTableContainer
 						{
@@ -103,4 +103,4 @@ class StandardStyles extends React.PureComponent
 	}
 }
 
-export default muiThemeable()(StandardStyles);
+export default withTheme()(StandardStyles);

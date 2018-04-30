@@ -7,7 +7,7 @@ import { Navbar, NavItem, NavDropdown, MenuItem, Nav,
 import { IndexLinkContainer } from 'react-router-bootstrap';
 
 import Dimensions from 'react-dimensions';
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 
 class PrimaryNavBarCSS extends React.PureComponent {
 	render() {
@@ -64,14 +64,14 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					.navbar-inverse .navbar-nav>.open>a,
 					.navbar-inverse .navbar-nav>.open>a:focus,
 					.navbar-inverse .navbar-nav>.open>a:hover,
-					.navbar-inverse .navbar-nav>.active>a, 
-					.navbar-inverse .navbar-nav>.active>a:focus, 
+					.navbar-inverse .navbar-nav>.active>a,
+					.navbar-inverse .navbar-nav>.active>a:focus,
 					.navbar-inverse .navbar-nav>.active>a:hover
 					{
 						background-color: ${selectedBackgroundColor} !important;
 					}
 
-					.kokolib_navbarcontainer .dropdown-menu 
+					.kokolib_navbarcontainer .dropdown-menu
 					{
 					    background-color: ${backgroundColor};
 					}
@@ -81,14 +81,14 @@ class PrimaryNavBarCSS extends React.PureComponent {
 					    color: #fff;
 					}
 
-					.kokolib_navbarcontainer .dropdown-menu>li>a:focus, 
+					.kokolib_navbarcontainer .dropdown-menu>li>a:focus,
 					.kokolib_navbarcontainer .dropdown-menu>li>a:hover
 					{
 						color: ${hoverTextColor};
 					    background-color: ${hoverBackgroundColor};
 					}
-					.kokolib_navbarcontainer .dropdown-menu>.active>a, 
-					.kokolib_navbarcontainer .dropdown-menu>.active>a:focus, 
+					.kokolib_navbarcontainer .dropdown-menu>.active>a,
+					.kokolib_navbarcontainer .dropdown-menu>.active>a:focus,
 					.kokolib_navbarcontainer .dropdown-menu>.active>a:hover {
 
 						color: ${selectedTextColor};
@@ -123,13 +123,13 @@ class PrimaryNavBarCSS extends React.PureComponent {
 						color:${textColor} !important;
 					    border-bottom: 3px transparent solid;
 					}
-					.nav .open>a, 
-					.nav .open>a:focus, 
+					.nav .open>a,
+					.nav .open>a:focus,
 					.nav .open>a:hover {
 					    border-bottom: 3px ${decorationColor} solid;
 					}
 
-					.navbar-inverse .navbar-nav>.active>a, 
+					.navbar-inverse .navbar-nav>.active>a,
 					.navbar-nav>li>a:hover
 					{
 					    border-bottom: 3px ${decorationColor} solid;
@@ -141,7 +141,7 @@ class PrimaryNavBarCSS extends React.PureComponent {
     					margin-right: 40px;
 					}
 
-					.navbar-inverse .navbar-toggle:focus, 
+					.navbar-inverse .navbar-toggle:focus,
 					.navbar-inverse .navbar-toggle:hover
 					{
 					    background-color: ${hoverBackgroundColor};
@@ -162,9 +162,9 @@ class PrimaryNavBarCSS extends React.PureComponent {
 class NavigationGroup extends React.PureComponent{
 
     static propTypes = {
-        title: React.PropTypes.string,
-        index: React.PropTypes.number,
-        children: React.PropTypes.array
+        title: PropTypes.string,
+        index: PropTypes.number,
+        children: PropTypes.array
     };
 
     static defaultProps = {
@@ -176,8 +176,8 @@ class NavigationGroup extends React.PureComponent{
 	render() {
 		return(
 
-			<NavDropdown eventKey={this.props.index} 
-				title={this.props.title} 
+			<NavDropdown eventKey={this.props.index}
+				title={this.props.title}
 				id={"navigation-group-dropdown-" + this.props.index} >
 
 				{this.props.children.map(function(link, i) {
@@ -282,12 +282,12 @@ class PrimaryNavBar extends React.PureComponent {
 		return(
 			<div className="kokolib_navbarcontainer">
 
-				<PrimaryNavBarCSS palette={this.props.muiTheme.palette} theme={this.props.muiTheme} />
+				<PrimaryNavBarCSS palette={this.props.theme.palette} theme={this.props.theme} />
 
-				<Navbar collapseOnSelect inverse={this.props.inverse} staticTop fixedTop fluid style={styles.navBar}  
+				<Navbar collapseOnSelect inverse={this.props.inverse} staticTop fixedTop fluid style={styles.navBar}
 				className={this.getNavBarStyle()} >
 					<Navbar.Header>
-						{this.state.navbarBrandVisible && 
+						{this.state.navbarBrandVisible &&
 							<Navbar.Brand>
 								<a href="/" style={styles.navBarLogoImageContainer}>
 									<Image src={this.props.logoImagePath} responsive style={styles.navBarLogoImage}/>
@@ -322,7 +322,7 @@ class PrimaryNavBar extends React.PureComponent {
 
 				</Navbar>
 
-				<Waypoint topOffset={this.props.visibilityToggleOffset * -1} 
+				<Waypoint topOffset={this.props.visibilityToggleOffset * -1}
 					onPositionChange={this.handleWaypointOnPositionChange} />
 			</div>
 		);
@@ -330,4 +330,4 @@ class PrimaryNavBar extends React.PureComponent {
 }
 
 
-export default muiThemeable()(Dimensions()(PrimaryNavBar));
+export default withTheme()(Dimensions()(PrimaryNavBar));

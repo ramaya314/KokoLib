@@ -1,6 +1,6 @@
 {
   "name": "kokolib",
-  "version": "1.0.42",
+  "version": "1.0.43",
   "description": "React component library",
   "main": "build/index.js",
   "devDependencies": {

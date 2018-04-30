@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 
 class NewsLetterSignupFormCss extends Component {
@@ -33,7 +34,7 @@ class NewsLetterSignupFormCss extends Component {
 					#mc_embed_signup .datefield label, #mc_embed_signup .phonefield-us label{display:none;}
 
 					#mc_embed_signup .indicates-required {text-align:right; font-size:11px; margin-right:4%;}
-					#mc_embed_signup .asterisk {color:#e85c41; font-size:150%; font-weight:normal; position:relative; top:5px;}     
+					#mc_embed_signup .asterisk {color:#e85c41; font-size:150%; font-weight:normal; position:relative; top:5px;}
 					#mc_embed_signup .clear {clear:both;}
 
 					#mc_embed_signup .mc-field-group.input-group ul {margin:0; padding:5px 0; list-style:none;}
@@ -63,9 +64,9 @@ class NewsLetterSignupFormCss extends Component {
 class NewsLetterSignupForm extends Component {
 
     static propTypes = {
-        nameOne: React.PropTypes.string,
-        nameTwo: React.PropTypes.string,
-        fullActionUrl: React.PropTypes.string
+        nameOne: PropTypes.string,
+        nameTwo: PropTypes.string,
+        fullActionUrl: PropTypes.string
     };
 
     static defaultProps = {
@@ -100,7 +101,7 @@ class NewsLetterSignupForm extends Component {
 					<div id="mce-responses" className="clear">
 						<div className="response" id="mce-error-response" style={{display:'none'}} ></div>
 						<div className="response" id="mce-success-response" style={{display:'none'}}></div>
-					</div> 
+					</div>
 				    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name={`b_${this.props.nameOne}_${this.props.nameTwo}`} tabIndex="-1" value="" /></div>
 				    <div className="clear">
 				    	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" />

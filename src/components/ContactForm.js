@@ -1,9 +1,8 @@
 import React from 'react';
 
-import RaisedButton from 'material-ui/RaisedButton'
-import FlatButton from 'material-ui/FlatButton'
+import Button from 'material-ui/Button';
 import Dialog from 'material-ui/Dialog';
-import CommunicationEmail from 'material-ui/svg-icons/communication/email';
+//import CommunicationEmail from 'material-ui/svg-icons/communication/email';
 
 import EnhancedTextField from './EnhancedTextField';
 import DataContainer from './DataContainer';
@@ -47,7 +46,7 @@ class ContactForm extends React.PureComponent
 			humanVerified : false,
 		}
 		this.validatingInputs = [];
-	} 
+	}
 
 	componentWillMount() {
 		window.atVAl = (verified) => {
@@ -88,7 +87,7 @@ class ContactForm extends React.PureComponent
 
 		let that = this;
 
-		let subject = "Contact From " + this.state.firstNameField + ' ' + this.state.lastNameField; 
+		let subject = "Contact From " + this.state.firstNameField + ' ' + this.state.lastNameField;
 		let dc = new DataContainer();
 		let action = "/api/v1/SendMail";
 		let parameters = [
@@ -140,31 +139,31 @@ class ContactForm extends React.PureComponent
 
 				<SwipeableViews index={this.state.currentView}>
 					<div style={{overflow:"hidden"}}>
-					    <EnhancedTextField name="firstNameField" 
+					    <EnhancedTextField name="firstNameField"
 					    	value={this.state.firstNameField}
-					    	hintText="First Name" 
-					    	floatingLabelText="First Name" 
+					    	hintText="First Name"
+					    	floatingLabelText="First Name"
 					    	isRequired={true}
-							fullWidth={true} 
+							fullWidth={true}
 					    	requiredErrorText="Your name is required"
-					    	onChange={this.handleTextFieldChange} 
+					    	onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
-					    <EnhancedTextField name="lastNameField" 
+					    <EnhancedTextField name="lastNameField"
 					    	value={this.state.lastNameField}
-					    	hintText="Last Name" 
-					    	floatingLabelText="Last Name" 
+					    	hintText="Last Name"
+					    	floatingLabelText="Last Name"
 					    	isRequired={true}
-							fullWidth={true} 
+							fullWidth={true}
 					    	requiredErrorText="Your last name is required"
 					    	onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
-					    <EnhancedTextField name="emailField" 
+					    <EnhancedTextField name="emailField"
 					    	value={this.state.emailField}
-					    	hintText="Email" 
-					    	floatingLabelText="Email" 
-							fullWidth={true} 
+					    	hintText="Email"
+					    	floatingLabelText="Email"
+							fullWidth={true}
 					    	isRequired={true}
 					    	validationType="email"
 					    	formatErrorText="Please enter a valid email address"
@@ -172,9 +171,9 @@ class ContactForm extends React.PureComponent
 							onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
-					    <EnhancedTextField name="mailBodyField" 
+					    <EnhancedTextField name="mailBodyField"
 					    	value={this.state.mailBodyField}
-					    	hintText="Comment"  
+					    	hintText="Comment"
 					    	floatingLabelText="Comment"
 							multiLine={true}
 							rows={4}
@@ -184,18 +183,17 @@ class ContactForm extends React.PureComponent
 							onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
-					    {this.state.humanVerified || !this.props.useRecaptcha ? 
-							<RaisedButton
+					    {this.state.humanVerified || !this.props.useRecaptcha ?
+							<Button
 								label="Submit"
 								labelPosition="before"
 								onTouchTap={this.handleSubmitTap}
-								primary={true}
-								icon={<CommunicationEmail />}/>
-					    	: 
+								primary={true}/>
+					    	:
 							<Recaptcha
 								style={{maxWidth: '100%'}}
 	          					render="explicit"
-								sitekey="6Lfgbw4UAAAAALo2c-sShjsMqKg4AR1j4I3yFA6D" 
+								sitekey="6Lfgbw4UAAAAALo2c-sShjsMqKg4AR1j4I3yFA6D"
 								verifyCallback={verifyCaptchaCallback}
 	          					onloadCallback={captchaLoadCallback} />
 					    }
@@ -204,7 +202,7 @@ class ContactForm extends React.PureComponent
 
 					<div>
 						<div style={{
-							padding:10, 
+							padding:10,
 							font: '17px/1 "Oxygen", sans-serif',
 							color: '#7c7c7c',
 							lineHeight: 1.5,
@@ -213,7 +211,7 @@ class ContactForm extends React.PureComponent
 							Message sent succesfully!
 						</div>
 
-						<RaisedButton
+						<Button
 							label="Go Back"
 							labelPosition="before"
 							onTouchTap={this.handleSendAnotherTap}
@@ -224,7 +222,7 @@ class ContactForm extends React.PureComponent
 
 		        <Dialog
 		          actions={[
-				      <FlatButton
+				      <Button
 				        label="Ok"
 				        primary={true}
 				        onTouchTap={this.handleToggleErrorDialog}
@@ -242,4 +240,3 @@ class ContactForm extends React.PureComponent
 }
 
 export default ContactForm;
-

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Image, Grid, Row, Col} from 'react-bootstrap';
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 import Dimensions from 'react-dimensions';
 import PropTypes from 'prop-types';
 
@@ -57,11 +57,11 @@ class ImageHeaderBannerCSS extends React.PureComponent {
 class ImageHeaderBanner extends React.Component {
 
     static propTypes = {
-        bannerContent: React.PropTypes.node,
-        pageTitle: React.PropTypes.string,
-        bannerLogoImagePath: React.PropTypes.string,
-        backgroundImage: React.PropTypes.string,
-        fixedAttachment: React.PropTypes.bool,
+        bannerContent: PropTypes.node,
+        pageTitle: PropTypes.string,
+        bannerLogoImagePath: PropTypes.string,
+        backgroundImage: PropTypes.string,
+        fixedAttachment: PropTypes.bool,
         addShadowScreen: PropTypes.bool,
     };
 
@@ -154,7 +154,7 @@ class ImageHeaderBanner extends React.Component {
 
   			<div style={styles.headerBanner}>
 
-  				{this.props.addShadowScreen && 
+  				{this.props.addShadowScreen &&
   					<ImageHeaderBannerCSS palette={this.props.muiTheme.palette}/>
   				}
 
@@ -171,7 +171,7 @@ class ImageHeaderBanner extends React.Component {
 					</div>
 				</div>
 
-				{this.props.pageTitle && 
+				{this.props.pageTitle &&
 					<div style={styles.bannerTitle}>
 						<Grid>
 							<Row>
@@ -188,5 +188,4 @@ class ImageHeaderBanner extends React.Component {
 
 
 
-export default muiThemeable()(Dimensions()(ImageHeaderBanner));
-
+export default withTheme()(Dimensions()(ImageHeaderBanner));

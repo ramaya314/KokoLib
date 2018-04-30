@@ -8,7 +8,7 @@ import AlbumView from './AlbumView';
 
 import { LinkContainer } from 'react-router-bootstrap';
 
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 
 class GalleryCollection extends React.Component
 {
@@ -104,4 +104,4 @@ class GalleryCollection extends React.Component
 	}
 }
 
-export default muiThemeable()(GalleryCollection);
+export default withTheme()(GalleryCollection);

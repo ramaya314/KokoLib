@@ -3,7 +3,7 @@ import SocialMediaButtons from './SocialMediaButtons';
 import CryptoButtons from './CryptoButtons';
 import PropTypes from 'prop-types';
 
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 
 class MainFooter extends React.PureComponent {
 
@@ -15,7 +15,7 @@ class MainFooter extends React.PureComponent {
     };
 
     static defaultProps = {
-        buttons: [],   
+        buttons: [],
         cryptoLinks: [],
         orgName: "Your Organization",
         transparent: false
@@ -23,7 +23,7 @@ class MainFooter extends React.PureComponent {
 
 	getStyles() {
 
-		let palette = this.props.muiTheme.palette;
+    let palette = this.props.theme.palette;
 
 		const styles = {
 			footer: {
@@ -70,7 +70,7 @@ class MainFooter extends React.PureComponent {
 
   					<SocialMediaButtons {...this.props} />
 
-					
+
   					{this.props.cryptoLinks && this.props.cryptoLinks.length > 0 &&
   						<CryptoButtons {...this.props} />
   					}
@@ -80,7 +80,7 @@ class MainFooter extends React.PureComponent {
 							<li style={{listStyle:"none"}} >&copy; {this.props.orgName}. All rights reserved.</li>
 						</ul>
 					</div>
-					
+
 				</div>
   			</div>
 		);
@@ -88,4 +88,4 @@ class MainFooter extends React.PureComponent {
 }
 
 
-export default muiThemeable()(MainFooter);
+export default withTheme()(MainFooter);

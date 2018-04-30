@@ -1,5 +1,5 @@
 import React from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 import Utils from '../Utils';
 import PropTypes from 'prop-types';
 import {Image} from 'react-bootstrap';
@@ -13,7 +13,7 @@ class CryptoButton extends React.PureComponent {
             focused: false,
             showModal: false
         }
-    } 
+    }
 
     static propTypes = {
     	name: PropTypes.string,
@@ -26,7 +26,7 @@ class CryptoButton extends React.PureComponent {
     	name: 'crypto',
         icon: 'envelope',
         address: 'asdasdasdasdasdas',
-        qrCode: 'Email', 
+        qrCode: 'Email',
     };
 
 	getStyles() {
@@ -96,17 +96,17 @@ class CryptoButton extends React.PureComponent {
 						</style>
 						`
 					}} />
-					<a onClick={() => this.setState({ showModal: true })} 
+					<a onClick={() => this.setState({ showModal: true })}
 						style={styles.link} >
 						<div className={componentClasses.join(' ')} >
-							<Image src={this.props.icon} 
+							<Image src={this.props.icon}
 								onMouseEnter={this.onHoverEnter}
 			                    onMouseLeave={this.onHoverLeave}
 			                    style={styles.icon} />
 		                </div>
 					</a>
 
-        			<CryptoDonationModal  {...this.props} show={this.state.showModal} 
+        			<CryptoDonationModal  {...this.props} show={this.state.showModal}
         				onHide={() => this.setState({ showModal: false })}  />
 				</li>
 		);
@@ -114,4 +114,4 @@ class CryptoButton extends React.PureComponent {
 }
 
 
-export default muiThemeable()(CryptoButton);
+export default withTheme()(CryptoButton);

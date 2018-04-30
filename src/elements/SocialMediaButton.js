@@ -1,5 +1,5 @@
 import React from 'react';
-import muiThemeable from 'material-ui/styles/muiThemeable';
+import { withTheme } from 'material-ui/styles';
 import Utils from '../Utils';
 import PropTypes from 'prop-types';
 
@@ -14,12 +14,12 @@ class SocialMediaButton extends React.PureComponent {
     static defaultProps = {
         icon: 'envelope',
         link: 'mailto:you@email.com',
-        name: 'Email', 
+        name: 'Email',
     };
 
 	getStyles() {
 
-		let palette = this.props.muiTheme.palette;
+    let palette = this.props.theme.palette;
 
 		const styles = {
 			container: {
@@ -64,13 +64,13 @@ class SocialMediaButton extends React.PureComponent {
 							}
 
 							.kokoLib_socialMediaIcon:hover {
-								color: ${this.props.muiTheme.palette.accent1Color} !important;
+								color: ${this.props.theme.palette.accent1Color} !important;
 							}
 						</style>
 						`
 					}} />
-					<a className={"kokoLib_socialMediaIcon fa-" + this.props.icon} 
-						href={this.props.link} 
+					<a className={"kokoLib_socialMediaIcon fa-" + this.props.icon}
+						href={this.props.link}
 						style={styles.link} >
 						<span className="label" style={{display:"none"}}>
 							{Utils.toTitleCase(this.props.name)}
@@ -82,4 +82,4 @@ class SocialMediaButton extends React.PureComponent {
 }
 
 
-export default muiThemeable()(SocialMediaButton);
+export default withTheme()(SocialMediaButton);

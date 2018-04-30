@@ -10,6 +10,8 @@ import {stateFromMarkdown} from 'draft-js-import-markdown';
 import {stateToHTML} from 'draft-js-export-html';
 import MetaTags from 'react-meta-tags';
 
+import PropTypes from 'prop-types';
+
 class FacebookEventAddressArea  extends React.PureComponent {
 
 	render() {
@@ -29,7 +31,7 @@ class FacebookEventAddressArea  extends React.PureComponent {
 							<span>{this.props.endDateTime}</span>
 						</p>
 					</Col>
-					{this.props.place && 
+					{this.props.place &&
 						<Col xs={12} sm={6}>
 							<h2>
 								<b>Location</b>
@@ -65,10 +67,10 @@ class FacebookEventView extends React.PureComponent
 		this.state = {
 			description : "",
 		}
-	}   
+	}
 
     static propTypes = {
-        data: React.PropTypes.object
+        data: PropTypes.object
     };
 
     static defaultProps = {
@@ -90,7 +92,7 @@ class FacebookEventView extends React.PureComponent
     getValidDate(dateString, utc) {
     	if(utc)
 	    	return new Date(moment.utc(dateString).valueOf());
-	    else 
+	    else
 	    	return new Date(moment(dateString).valueOf());
     }
 
@@ -139,7 +141,7 @@ class FacebookEventView extends React.PureComponent
 
 				<Row>
 					<Col xs={12} sm={6} md={4} lg={3}>
-						<DataContainer action="/api/v1/GetFacebookEventPicture" 
+						<DataContainer action="/api/v1/GetFacebookEventPicture"
 							parameters={[
 								{id:"eventId", value: data.id}
 							]}
