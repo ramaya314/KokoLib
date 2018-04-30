@@ -1,6 +1,6 @@
 {
   "name": "kokolib",
-  "version": "1.0.41",
+  "version": "1.0.42",
   "description": "React component library",
   "main": "build/index.js",
   "devDependencies": {
@@ -41,7 +41,7 @@
     "react-dom": "^16.3.2",
     "react-grid-gallery": "^0.4.11",
     "react-loading": "^0.1.4",
-    "react-meta-tags": "^0.3.0",
+    "react-meta-tags": "^0.4.0",
     "react-moment": "^0.6.9",
     "react-process-string": "^1.2.0",
     "react-recaptcha": "^2.3.7",
