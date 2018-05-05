@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import cheerio from 'cheerio';
 
-class Utils 
+class Utils
 {
 	static prepareGSArrayForTable(gsArray) {
 
@@ -70,23 +70,44 @@ class Utils
 		return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 	}
 
-    static getValidDate(dateString, utc) {
-    	if(utc)
-	    	return new Date(moment.utc(dateString).valueOf());
-	    else 
-	    	return new Date(moment(dateString).valueOf());
+  static getValidDate(dateString, utc) {
+  	if(utc)
+    	return new Date(moment.utc(dateString).valueOf());
+    else
+    	return new Date(moment(dateString).valueOf());
 
-    }
+  }
 
-    static stripHtml(htmlString) {
-    	return htmlString.replace(/<[^>]+>/g, '');
-    }
+  static stripHtml(htmlString) {
+  	return htmlString.replace(/<[^>]+>/g, '');
+  }
 
-    static getFirstImageSourceFromHtml(htmlString) {
-		const $ = cheerio.load(htmlString);
-		var matches = $('img').attr('src');
-    	return matches;
-    }
+  static getFirstImageSourceFromHtml(htmlString) {
+	const $ = cheerio.load(htmlString);
+	var matches = $('img').attr('src');
+  	return matches;
+  }
+
+	static groupByField(groupField, array) {
+		var reducer = (
+			result,
+			currItem
+		) => {
+		    // Create new group
+		    if (!result[currItem[groupField]]) result[currItem[groupField]] = {
+						title: currItem[groupField],
+						items: []
+		    };
+		    // Append to group
+		    result[currItem[groupField]].items.push(currItem);
+
+				delete currItem[groupField];
+
+		    return result;
+		};
+		var groupedArray = Object.values(array.reduce(reducer, {}));
+		return groupedArray;
+	};
 }
 
 export default Utils
