@@ -36,6 +36,9 @@ import PdfViewer from './components/PdfViewer';
 import AlbumView from './components/AlbumView';
 import Countdown from './components/Countdown';
 
+import SocialMediaButton from './elements/SocialMediaButton';
+import Search from './components/Search';
+
 //containers
 import BlogArchiveContainer from './containers/BlogArchiveContainer';
 import BlogPostContainer from './containers/BlogPostContainer';
@@ -44,7 +47,7 @@ import BlogPostContainer from './containers/BlogPostContainer';
 //We export reducers individually and as a package to give the developer options
 //we can also import all the reducers at once with KokoLibReducers
 //however if this is done, we must use flat-combine-reducers package to combine
-//site reducers with our library reducers, 
+//site reducers with our library reducers,
 //otherwise the state will be nested and not accessible by our containers
 import KokoLibReducers from './reducers';
 import BlogArchiveReducer from './reducers/BlogArchiveReducer';
@@ -95,6 +98,9 @@ module.exports = {
   ActiveBlogPostReducer,
   BlogNextPageTokenReducer,
   KokoLibReducers,
-  
+
+  SocialMediaButton,
+  Search,
+
   Utils
 }

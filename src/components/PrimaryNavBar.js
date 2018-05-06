@@ -205,7 +205,8 @@ class PrimaryNavBar extends React.PureComponent {
         visibilityToggleOffset: PropTypes.number,
         navigationScheme: PropTypes.array,
         alwaysOpaque: PropTypes.bool,
-        inverse: PropTypes.bool
+        inverse: PropTypes.bool,
+				rightNavigation: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -213,7 +214,8 @@ class PrimaryNavBar extends React.PureComponent {
         visibilityToggleOffset: 0,
         navigationScheme: [],
         alwaysOpaque: false,
-        inverse: false
+        inverse: false,
+				rightNavigation: true,
     };
 
 	constructor(props) {
@@ -298,7 +300,7 @@ class PrimaryNavBar extends React.PureComponent {
 					</Navbar.Header>
 
 					<Navbar.Collapse>
-						<Nav pullRight >
+						<Nav pullRight={this.props.rightNavigation} >
 
 							{this.props.navigationScheme.map(function(link, i) {
 
