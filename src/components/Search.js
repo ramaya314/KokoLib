@@ -20,11 +20,13 @@ class Search extends React.PureComponent
   }
 
   static propTypes = {
-      onSearch: PropTypes.func
+      onSearch: PropTypes.func,
+      onSearchTermChange: PropTypes.func,
   };
 
   static defaultProps = {
-      onSearch: null
+      onSearch: null,
+      onSearchTermChange: () => {},
   };
 
   getCss = () => {
@@ -65,6 +67,7 @@ class Search extends React.PureComponent
 
   handleSearchTermChange = (e) => {
     this.setState({ searchTerm: e.target.value });
+    this.props.onSearchTermChange(e.target.value);
   }
 
 	render() {
