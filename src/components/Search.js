@@ -25,7 +25,7 @@ class Search extends React.PureComponent
   };
 
   static defaultProps = {
-      onSearch: null,
+      onSearch: (searchTerm) => {},
       onSearchTermChange: () => {},
   };
 
@@ -58,10 +58,12 @@ class Search extends React.PureComponent
   }
 
   onSearchClick = () => {
-    if(this.state.searchTerm.length <= 0)
-      this.setState({open:!this.state.open});
-    else
-      this.setState({open:true});
+    if(this.state.searchTerm.length <= 0) {
+      this.setState({open:!this.state.open});}
+    else {
+      console.log("on search 1");
+      this.props.onSearch(this.state.searchTerm);
+    }
   }
 
 
