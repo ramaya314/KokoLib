@@ -138,8 +138,8 @@ class ImageHeaderBanner extends React.Component {
 			styles.headerBanner.backgroundAttachment = "fixed";
 		}
 
-		if(this.props.muiTheme.headerFontFamily) {
-			styles.bannerTitle.fontFamily = this.props.muiTheme.headerFontFamily;
+		if(this.props.theme.headerFontFamily) {
+			styles.bannerTitle.fontFamily = this.props.theme.headerFontFamily;
 		}
 
 		return styles;
@@ -155,7 +155,7 @@ class ImageHeaderBanner extends React.Component {
   			<div style={styles.headerBanner}>
 
   				{this.props.addShadowScreen &&
-  					<ImageHeaderBannerCSS palette={this.props.muiTheme.palette}/>
+  					<ImageHeaderBannerCSS palette={this.props.theme.palette}/>
   				}
 
 				<div style={styles.bannerScreen} className="headerBannerScreen" />

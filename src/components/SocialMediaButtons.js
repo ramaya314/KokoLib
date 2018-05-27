@@ -20,8 +20,9 @@ class SocialMediaButtons extends React.PureComponent {
 
     let palette = this.props.theme.palette;
 
- console.log(palette.primary1Color);
-		let backTinyColor = tinycolor(palette.primary1Color.toString());
+    let backColor = palette.footerBackgroundColor || palette.primary1Color;
+
+		let backTinyColor = tinycolor(backColor.toString());
 		let background = backTinyColor.isDark() ? backTinyColor.lighten(10) : backTinyColor.darken(10);
 
 		const styles = {

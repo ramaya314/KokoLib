@@ -141,46 +141,46 @@ class ContactForm extends React.PureComponent
 					<div style={{overflow:"hidden"}}>
 					    <EnhancedTextField name="firstNameField"
 					    	value={this.state.firstNameField}
-					    	hintText="First Name"
+					    	helperText="First Name"
 					    	floatingLabelText="First Name"
 					    	isRequired={true}
-							fullWidth={true}
+								fullWidth={true}
 					    	requiredErrorText="Your name is required"
 					    	onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    <EnhancedTextField name="lastNameField"
 					    	value={this.state.lastNameField}
-					    	hintText="Last Name"
+					    	helperText="Last Name"
 					    	floatingLabelText="Last Name"
 					    	isRequired={true}
-							fullWidth={true}
+								fullWidth={true}
 					    	requiredErrorText="Your last name is required"
 					    	onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    <EnhancedTextField name="emailField"
 					    	value={this.state.emailField}
-					    	hintText="Email"
+					    	helperText="Email"
 					    	floatingLabelText="Email"
-							fullWidth={true}
+								fullWidth={true}
 					    	isRequired={true}
 					    	validationType="email"
 					    	formatErrorText="Please enter a valid email address"
 					    	requiredErrorText="Your contact email is required"
-							onChange={this.handleTextFieldChange}
+								onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    <EnhancedTextField name="mailBodyField"
 					    	value={this.state.mailBodyField}
-					    	hintText="Comment"
+					    	helperText="Comment"
 					    	floatingLabelText="Comment"
-							multiLine={true}
-							rows={4}
+								multiline={true}
+								rows={4}
 					    	isRequired={true}
 					    	requiredErrorText="A comment is required"
-							fullWidth={true}
-							onChange={this.handleTextFieldChange}
+								fullWidth={true}
+								onChange={this.handleTextFieldChange}
 					    	onFormRegister={this.registerValidatingInput}/>
 
 					    {this.state.humanVerified || !this.props.useRecaptcha ?

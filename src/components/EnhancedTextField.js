@@ -8,7 +8,7 @@ import validator from 'validator';
 var textMaskCore = require('text-mask-core')
 
 
-class EnhancedTextField extends React.PureComponent 
+class EnhancedTextField extends React.PureComponent
 {
 
 	constructor(props) {
@@ -57,11 +57,11 @@ class EnhancedTextField extends React.PureComponent
 
 	validateFormat(value) {
 
-		if(this.props.validationType && 
-			this.props.validationType.length > 0 && 
-			value != null && 
+		if(this.props.validationType &&
+			this.props.validationType.length > 0 &&
+			value != null &&
 			value.length > 0){
-			
+
 			let isValid = true;
 			switch(this.props.validationType) {
 				case "email":
@@ -101,16 +101,18 @@ class EnhancedTextField extends React.PureComponent
 				defaultValue={this.props.defaultValue}
 				disabled={this.props.disabled}
 				errorStyle={this.props.errorStyle}
-				errorText={this.state.errorText}
+				error={(this.state.errorText && this.state.errorText.length > 0)}
+				label={this.state.errorText}
 				floatingLabelFixed={this.props.floatingLabelFixed}
 				floatingLabelFocusStyle={this.props.floatingLabelFocusStyle}
 				floatingLabelStyle={this.props.floatingLabelStyle}
 				floatingLabelText={this.props.floatingLabelText}
 				fullWidth={this.props.fullWidth}
 				hintStyle={this.props.hintStyle}
-				hintText={this.props.hintText}
+				helperText={this.props.helperText}
 				inputStyle={this.props.inputStyle}
-				multiLine={this.props.multiLine}
+				multiline={this.props.multiline}
+				margin="normal"
 				name={this.props.name}
 				rows={this.props.rows}
 				rowsMax={this.props.rowsMax}
@@ -121,7 +123,7 @@ class EnhancedTextField extends React.PureComponent
 				value={this.props.value}/>
 		);
 	}
-} 
+}
 
 
 export default EnhancedTextField;

@@ -27,7 +27,7 @@ class MainFooter extends React.PureComponent {
 
 		const styles = {
 			footer: {
-				backgroundColor: (this.props.transparent ? 'transparent' : palette.primary1Color),
+				backgroundColor: (this.props.transparent ? 'transparent' : palette.footerBackgroundColor || palette.primary1Color),
 				position: "relative",
 				overflow: "hidden",
 				padding: '4em 0 4em 0',
