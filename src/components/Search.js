@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
 import Button from 'material-ui/Button';
@@ -22,11 +23,13 @@ class Search extends React.PureComponent
   static propTypes = {
       onSearch: PropTypes.func,
       onSearchTermChange: PropTypes.func,
+      placeholder: PropTypes.string,
   };
 
   static defaultProps = {
       onSearch: (searchTerm) => {},
       onSearchTermChange: () => {},
+      placeholder: 'search',
   };
 
   getCss = () => {
@@ -59,10 +62,18 @@ class Search extends React.PureComponent
 
   onSearchClick = () => {
     if(this.state.searchTerm.length <= 0) {
-      this.setState({open:!this.state.open});}
+      this.setState({open:!this.state.open});
+      this.focus();
+    }
     else {
-      console.log("on search 1");
       this.props.onSearch(this.state.searchTerm);
+    }
+  }
+
+  focus = () => {
+    let node = ReactDOM.findDOMNode(this.searchInput);
+    if (node && node.focus instanceof Function) {
+      node.focus();
     }
   }
 
@@ -70,6 +81,12 @@ class Search extends React.PureComponent
   handleSearchTermChange = (e) => {
     this.setState({ searchTerm: e.target.value });
     this.props.onSearchTermChange(e.target.value);
+  }
+
+  handleKeyPress = (event) => {
+    if(event.key == 'Enter' && this.state.searchTerm.length > 0){
+      this.props.onSearch(this.state.searchTerm);
+    }
   }
 
 	render() {
@@ -84,10 +101,12 @@ class Search extends React.PureComponent
 
         <FormGroup style={{display: 'inline-block', paddingRight:10}} className={entryClasses.join(' ')}>
           <FormControl
+            onKeyPress={this.handleKeyPress}
             type="text"
+            ref={(input) => { this.searchInput = input; }}
             value={this.state.searchTerm}
             onChange={this.handleSearchTermChange}
-            placeholder="Search" />
+            placeholder={this.props.placeholder} />
         </FormGroup>
         <Button mini variant="fab" color="primary" aria-label="add"
           onClick={this.onSearchClick}>

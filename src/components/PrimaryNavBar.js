@@ -207,6 +207,9 @@ class PrimaryNavBar extends React.PureComponent {
         alwaysOpaque: PropTypes.bool,
         inverse: PropTypes.bool,
 				rightNavigation: PropTypes.bool,
+				staticTop: PropTypes.bool,
+				fixedTop: PropTypes.bool,
+				fluid: PropTypes.bool,
     };
 
     static defaultProps = {
@@ -216,6 +219,9 @@ class PrimaryNavBar extends React.PureComponent {
         alwaysOpaque: false,
         inverse: false,
 				rightNavigation: true,
+				staticTop: true,
+				fixedTop: true,
+				fluid: true,
     };
 
 	constructor(props) {
@@ -281,13 +287,19 @@ class PrimaryNavBar extends React.PureComponent {
 		let mediumScreen = !smallScreen && !largeScreen;
 
 		let that = this;
+
 		return(
 			<div className="kokolib_navbarcontainer">
 
 				<PrimaryNavBarCSS palette={this.props.theme.palette} theme={this.props.theme} />
 
-				<Navbar collapseOnSelect inverse={this.props.inverse} staticTop fixedTop fluid style={styles.navBar}
-				className={this.getNavBarStyle()} >
+				<Navbar collapseOnSelect
+					inverse={this.props.inverse}
+					staticTop={this.props.staticTop}
+					fixedTop={this.props.fixedTop}
+					fluid={this.props.fluid}
+					style={styles.navBar}
+					className={this.getNavBarStyle()} >
 					<Navbar.Header>
 						{this.state.navbarBrandVisible &&
 							<Navbar.Brand>

@@ -35,6 +35,7 @@ import FacebookLiveStream from './components/FacebookLiveStream';
 import PdfViewer from './components/PdfViewer';
 import AlbumView from './components/AlbumView';
 import Countdown from './components/Countdown';
+import ShareMenu from './components/ShareMenu';
 
 import SocialMediaButton from './elements/SocialMediaButton';
 import Search from './components/Search';
@@ -100,6 +101,7 @@ module.exports = {
   KokoLibReducers,
 
   SocialMediaButton,
+  ShareMenu,
   Search,
 
   Utils
