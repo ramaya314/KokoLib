@@ -65,11 +65,11 @@ export default class ShareMenu  extends React.Component {
 
 	render() {
 		return(
-      <Menu
+      <Menu className="kokolib_shareMenu"
         anchorEl={this.props.anchorEl}
         open={this.props.open}
         onClose={this.props.onClose} >
-        <MenuItem onClick={this.onClose}>
+        <MenuItem onClick={this.onClose} className="kokolib_shareMenu_menuItem">
             <FacebookShareButton
               url={this.props.shareUrl}
               quote={this.props.title}
@@ -78,7 +78,7 @@ export default class ShareMenu  extends React.Component {
             </FacebookShareButton>
         </MenuItem>
 
-        <MenuItem >
+        <MenuItem  className="kokolib_shareMenu_menuItem">
 					<TwitterShareButton
 						url={this.props.shareUrl}
 						title={this.props.title}
@@ -87,7 +87,7 @@ export default class ShareMenu  extends React.Component {
 					</TwitterShareButton>
         </MenuItem>
 
-        <MenuItem >
+        <MenuItem  className="kokolib_shareMenu_menuItem">
 					<WhatsappShareButton
 						url={this.props.shareUrl}
 						title={this.props.title}
@@ -97,7 +97,7 @@ export default class ShareMenu  extends React.Component {
 					</WhatsappShareButton>
         </MenuItem>
 
-        <MenuItem >
+        <MenuItem  className="kokolib_shareMenu_menuItem">
 					<GooglePlusShareButton
 						url={this.props.shareUrl}
 						className="kokoLib_articles_GPButton_button">
@@ -105,7 +105,7 @@ export default class ShareMenu  extends React.Component {
 					</GooglePlusShareButton>
         </MenuItem>
 
-        <MenuItem >
+        <MenuItem  className="kokolib_shareMenu_menuItem">
 					<LinkedinShareButton
 						url={this.props.shareUrl}
 						title={this.props.title}
@@ -116,7 +116,7 @@ export default class ShareMenu  extends React.Component {
 					</LinkedinShareButton>
         </MenuItem>
 
-        <MenuItem >
+        <MenuItem  className="kokolib_shareMenu_menuItem">
 					<RedditShareButton
 						url={this.props.shareUrl}
 						title={this.props.title}
@@ -127,7 +127,7 @@ export default class ShareMenu  extends React.Component {
 					</RedditShareButton>
         </MenuItem>
 
-        <MenuItem >
+        <MenuItem  className="kokolib_shareMenu_menuItem">
 					<TumblrShareButton
 						url={this.props.shareUrl}
 						title={this.props.title}
