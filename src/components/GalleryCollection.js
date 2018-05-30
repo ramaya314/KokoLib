@@ -8,7 +8,7 @@ import AlbumView from './AlbumView';
 
 import { LinkContainer } from 'react-router-bootstrap';
 
-import { withTheme } from 'material-ui/styles';
+import { withTheme } from '@material-ui/core/styles';
 
 class GalleryCollection extends React.Component
 {

@@ -1,8 +1,7 @@
 import React from 'react';
 
-import Button from 'material-ui/Button';
-import Dialog from 'material-ui/Dialog';
-//import CommunicationEmail from 'material-ui/svg-icons/communication/email';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
 
 import EnhancedTextField from './EnhancedTextField';
 import DataContainer from './DataContainer';

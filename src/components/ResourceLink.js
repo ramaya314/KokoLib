@@ -1,5 +1,5 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 
 import { Thumbnail } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -38,7 +38,7 @@ class ResourceLink extends React.PureComponent
         this.state = {
             focused: false
         }
-    } 
+    }
 
 	getStyles() {
 		const styles = {
@@ -104,7 +104,7 @@ class ResourceLink extends React.PureComponent
 				<ResourceLinkCSS />
 				<a href={this.props.link} target="_blank" style={styles.anchor}>
 
-					<div className={componentClasses.join(' ')}  
+					<div className={componentClasses.join(' ')}
 						onMouseEnter={this.onHoverEnter}
 	                    onMouseLeave={this.onHoverLeave}>
 
@@ -114,7 +114,7 @@ class ResourceLink extends React.PureComponent
 									<p style={styles.title}>{this.props.title}</p>
 									<p style={styles.description}>{this.props.description}</p>
 							</Thumbnail>
-							
+
 						</Paper>
 					</div>
 				</a>

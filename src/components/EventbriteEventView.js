@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Image, Grid, Col, Row, Button } from 'react-bootstrap';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import dateFormat from 'dateformat';
 import PropTypes from 'prop-types';
 import MetaTags from 'react-meta-tags';
@@ -104,7 +104,7 @@ class EventbriteEventView extends React.PureComponent
 											<div key={i}>
 												{line}
 											</div>
-										);	
+										);
 									})}
 								</Col>
 							</Row>
@@ -145,7 +145,7 @@ class EventbriteEventView extends React.PureComponent
 									<div key={i}>
 										{line}
 									</div>
-								);	
+								);
 							})}
 						</div>
 
@@ -162,7 +162,7 @@ class EventbriteEventView extends React.PureComponent
 							<Col xs={12} sm={12} md={6} lg={4}>
 								<div style={{padding:20}}>
 									<Button  bsStyle="primary" bsSize="large" block onClick={() => {
-										window.open(data.url + '#tickets', '_blank');	
+										window.open(data.url + '#tickets', '_blank');
 									}}>Register</Button>
 								</div>
 							</Col>

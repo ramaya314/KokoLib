@@ -1,12 +1,12 @@
 import React from 'react';
 import {Image, Col, Row, OverlayTrigger, Tooltip,
-	//Modal, 
+	//Modal,
 	Button} from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import Modal from './modal-shim';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
-import Snackbar from 'material-ui/Snackbar';
+import Snackbar from '@material-ui/core/Snackbar';
 
 
 
@@ -17,7 +17,7 @@ class CryptoDonationModal extends React.PureComponent {
         this.state = {
             copiedToClipboard: false
         }
-    } 
+    }
 
     static propTypes = {
         qrCode: PropTypes.string,
@@ -87,7 +87,7 @@ class CryptoDonationModal extends React.PureComponent {
 					<Modal.Header closeButton>
 						<Modal.Title id="contained-modal-title-sm">
 
-							<Image src={this.props.icon} 
+							<Image src={this.props.icon}
 			                    style={styles.coinicon} />
 
 		                    <div style={{display: 'inline-block', verticalAlign: "middle"}} >
@@ -98,7 +98,7 @@ class CryptoDonationModal extends React.PureComponent {
 					</Modal.Header>
 					<Modal.Body style={{textAlign:"center"}}>
 
-						<Image src={this.props.qrCode} 
+						<Image src={this.props.qrCode}
 							style={styles.icon} />
 
 						<div>
@@ -132,7 +132,7 @@ class CryptoDonationModal extends React.PureComponent {
 					message="Address copied to clipboard."
 					autoHideDuration={2000}
 					onRequestClose={this.handleRequestClose} />
-				
+
 			</div>
 		);
 	}

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Image, Grid, Row, Col} from 'react-bootstrap';
-import { withTheme } from 'material-ui/styles';
+import { withTheme } from '@material-ui/core/styles';
 import Dimensions from 'react-dimensions';
 import PropTypes from 'prop-types';
 

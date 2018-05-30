@@ -1,5 +1,5 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import {Col, Row, Image} from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import Spacer from './Spacer';

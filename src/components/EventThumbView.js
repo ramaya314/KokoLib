@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, Col, Row} from 'react-bootstrap';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import dateFormat from 'dateformat';
 import DataContainer from './DataContainer';
 import Utils from '../Utils';
@@ -41,7 +41,7 @@ class EventThumbView extends React.PureComponent {
         this.state = {
             focused: false
         }
-    } 
+    }
 
 	getStyles() {
 		const styles = {
@@ -103,9 +103,9 @@ class EventThumbView extends React.PureComponent {
 
 		if(this.props.targetPageRoot && this.props.targetPageRoot.length > 0) {
 			linkUrl += `${this.props.targetPageRoot}/`;
-		} 
+		}
 
-		
+
 		if(this.props.data.fbEvent)
 			linkUrl += "fb";
 
@@ -124,12 +124,12 @@ class EventThumbView extends React.PureComponent {
 			<div>
 				<EventThumbViewAnimationCSS />
 				<a  href={linkUrl} >
-					<div className={componentClasses.join(' ')}  
+					<div className={componentClasses.join(' ')}
 						onMouseEnter={this.onHoverEnter}
 	                    onMouseLeave={this.onHoverLeave}>
 
 		    			<Paper style={styles.paperStyle} zDepth={3} >
-							{false && 
+							{false &&
 								<pre>{JSON.stringify(this.props.data, null, 4) }</pre>
 							}
 							<Row>
@@ -138,8 +138,8 @@ class EventThumbView extends React.PureComponent {
 										<Image src={this.props.data.logo.url} style={styles.logoStyle}/>
 									}
 
-									{this.props.data.fbEvent && 
-										<DataContainer action="/api/v1/GetFacebookEventPicture" 
+									{this.props.data.fbEvent &&
+										<DataContainer action="/api/v1/GetFacebookEventPicture"
 											parameters={[
 												{id:"eventId", value: this.props.data.id}
 											]}
@@ -174,8 +174,8 @@ class EventThumbView extends React.PureComponent {
 											{!this.props.data.fbEvent && this.props.data.logo && this.props.data.logo.url &&
 												<Image src={this.props.data.logo.url} style={styles.logoStyle} />
 											}
-											{this.props.data.fbEvent && 
-												<DataContainer action="/api/v1/GetFacebookEventPicture" 
+											{this.props.data.fbEvent &&
+												<DataContainer action="/api/v1/GetFacebookEventPicture"
 													parameters={[
 														{id:"eventId", value: this.props.data.id}
 													]}
@@ -185,7 +185,7 @@ class EventThumbView extends React.PureComponent {
 															return <div />;
 
 														console.log(pictureData.cover.source);
-												
+
 
 														return (
 															<div style={{

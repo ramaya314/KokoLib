@@ -1,5 +1,5 @@
 import React from 'react';
-import { withTheme } from 'material-ui/styles';
+import { withTheme } from '@material-ui/core/styles';
 import Utils from '../Utils';
 import PropTypes from 'prop-types';
 

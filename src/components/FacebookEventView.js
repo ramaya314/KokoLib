@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Image, Grid, Col, Row, Button } from 'react-bootstrap';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import dateFormat from 'dateformat';
 import DataContainer from './DataContainer';
 import moment from 'moment';

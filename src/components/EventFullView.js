@@ -4,7 +4,7 @@ import MetaTags from 'react-meta-tags';
 import DataContainer from './DataContainer';
 
 import {Image, Grid, Col, Row, Button } from 'react-bootstrap';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import dateFormat from 'dateformat';
 
 import EventbriteEventView from './EventbriteEventView';

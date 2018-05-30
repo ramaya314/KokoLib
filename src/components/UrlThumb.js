@@ -1,5 +1,5 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import {Col, Row, Image} from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import Spacer from './Spacer';
@@ -39,7 +39,7 @@ class UrlThumb extends React.Component
         this.state = {
             focused: false
         }
-    } 
+    }
 
 
     static propTypes = {
@@ -103,14 +103,14 @@ class UrlThumb extends React.Component
 
 		return(
 			<Row>
-				{hasImage && 
+				{hasImage &&
 					<Col xs={12} sm={5} md={4} lg={4}>
 						<Image src={this.props.image} style={styles.image} />
 					</Col>
 				}
-				<Col xs={12} 
-					sm={hasImage ? 7 : 12} 
-					md={hasImage ? 8 : 12} 
+				<Col xs={12}
+					sm={hasImage ? 7 : 12}
+					md={hasImage ? 8 : 12}
 					lg={hasImage ? 8 : 12} >
 					<h2> {this.props.title}</h2>
 					<div style={styles.contentContainer}>
@@ -137,7 +137,7 @@ class UrlThumb extends React.Component
 					<UrlThumbCss />
 					<a  href={this.props.url} target="_blank">
 
-						<div className={componentClasses.join(' ')}  
+						<div className={componentClasses.join(' ')}
 							onMouseEnter={this.onHoverEnter}
 		                    onMouseLeave={this.onHoverLeave}>
 							<Paper  style={styles.paperStyle} zDepth={3} >

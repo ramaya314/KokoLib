@@ -1,6 +1,6 @@
 import React from 'react';
-import Menu from 'material-ui/Menu';
-import MenuItem from 'material-ui/Menu/MenuItem';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
 
 import {

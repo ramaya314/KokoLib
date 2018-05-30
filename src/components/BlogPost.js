@@ -1,5 +1,5 @@
 import React from 'react';
-import Paper from 'material-ui/Paper';
+import Paper from '@material-ui/core/Paper';
 import {Col, Row} from 'react-bootstrap';
 import dateFormat from 'dateformat';
 import Spacer from './Spacer';
@@ -62,7 +62,7 @@ class BlogPostShareButtons  extends React.Component {
 					<style>
 						.kokoLib_articles_SMButtons_Container {
 							float:right;
-						}	
+						}
 						.separator {
 							clear:none !important;
 						}
@@ -216,10 +216,10 @@ class BlogPost extends React.Component
 					<Col xs={12}>
 						<MetaTags>
 							<meta id="ogTitle" property="og:title" content={this.props.data.title} />
-							{metaImageSource && metaImageSource.length > 0 && 
+							{metaImageSource && metaImageSource.length > 0 &&
 								<meta id="ogImage" property="og:image" content={metaImageSource} />
 							}
-							{metaImageSource && metaImageSource.length > 0 && 
+							{metaImageSource && metaImageSource.length > 0 &&
 								<meta id="ogSecureImage" property="og:image:secure_url" content={metaImageSource} />
 							}
 							<meta id="ogDescription" property="og:description" content={metaDescription} />

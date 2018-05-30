@@ -7,7 +7,7 @@ import { Navbar, NavItem, NavDropdown, MenuItem, Nav,
 import { IndexLinkContainer } from 'react-router-bootstrap';
 
 import Dimensions from 'react-dimensions';
-import { withTheme } from 'material-ui/styles';
+import { withTheme } from '@material-ui/core/styles';
 
 class PrimaryNavBarCSS extends React.PureComponent {
 	render() {

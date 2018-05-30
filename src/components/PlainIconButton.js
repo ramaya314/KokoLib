@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 
-import { withTheme } from 'material-ui/styles';
+import { withTheme } from '@material-ui/core/styles';
 
 import PropTypes from 'prop-types';
 

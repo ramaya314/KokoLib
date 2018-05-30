@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import Button from 'material-ui/Button';
-//import AddIcon from 'material-ui/icons/Add';
-import Icon from 'material-ui/Icon';
-import SvgIcon from 'material-ui/SvgIcon';
+import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import SearchIcon from '@material-ui/icons/Search';
 
 import  {FormGroup, FormControl} from 'react-bootstrap';
