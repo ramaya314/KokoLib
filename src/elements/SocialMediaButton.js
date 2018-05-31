@@ -71,6 +71,7 @@ class SocialMediaButton extends React.PureComponent {
 					}} />
 					<a className={"kokoLib_socialMediaIcon fa-" + this.props.icon}
 						href={this.props.link}
+            target="_blank"
 						style={styles.link} >
 						<span className="label" style={{display:"none"}}>
 							{Utils.toTitleCase(this.props.name)}
