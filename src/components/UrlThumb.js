@@ -105,18 +105,19 @@ class UrlThumb extends React.Component
 			<Row>
 				{hasImage &&
 					<Col xs={12} sm={5} md={4} lg={4}>
-						<Image src={this.props.image} style={styles.image} />
+						<Image src={this.props.image} style={styles.image}  className="kokolib_url_thumb_image"/>
 					</Col>
 				}
 				<Col xs={12}
 					sm={hasImage ? 7 : 12}
 					md={hasImage ? 8 : 12}
 					lg={hasImage ? 8 : 12} >
-					<h2> {this.props.title}</h2>
-					<div style={styles.contentContainer}>
-						{this.props.description}
+					<div className="kokolib_url_thumb_container">
+						<h2 className="kokolib_url_thumb_title"> {this.props.title}</h2>
+						<div style={styles.contentContainer}  className="kokolib_url_thumb_description">
+							{this.props.description}
+						</div>
 					</div>
-
 				</Col>
 			</Row>
 		);

@@ -210,17 +210,17 @@ class EventThumbView extends React.PureComponent {
 
 										<Col xs={12} lg={4} >
 											<div style={{padding:10}}>
-												<div style={styles.eventTitle}>
+												<div style={styles.eventTitle} className="kokolib_event_thumb_title">
 													{this.props.data.name.text}
 												</div>
-												<div style={styles.eventDate}>
+												<div style={styles.eventDate} className="kokolib_event_thumb_date">
 													{startDateTime}
 												</div>
 											</div>
 										</Col>
 
 										<Col xsHidden={true} mdHidden={true} smHidden={true} lg={5} >
-											<div style={styles.descriptionBody} >
+											<div style={styles.descriptionBody} className="kokolib_event_thumb_description">
 												{ellipsedText}
 											</div>
 										</Col>
@@ -229,7 +229,7 @@ class EventThumbView extends React.PureComponent {
 										<Col xs={12} lgHidden={true} >
 											<hr style={{margin:0}} />
 												<div style={{padding:"5px 25px"}}>
-													<div style={styles.descriptionBody} >
+													<div style={styles.descriptionBody} className="kokolib_event_thumb_description" >
 														{ellipsedText}
 													</div>
 												</div>
