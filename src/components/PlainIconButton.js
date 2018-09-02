@@ -20,11 +20,11 @@ class PlainIconButton extends PureComponent {
 
 	getStyles() {
 
-		let palette = this.props.muiTheme.palette;
+		let palette = this.props.theme.palette;
 		const styles = {
 
 			container : {
-				color: palette.primary1Color,
+				color: palette.primary2Color,
 				fontSize: '26px',
 				fontWeight: '600',
 				margin: 10,
@@ -39,7 +39,7 @@ class PlainIconButton extends PureComponent {
 			content : {
 				display: 'table-cell',
 				verticalAlign: 'bottom',
-				color: palette.primary1Color,
+				color: palette.primary2Color,
 			    ':hover': {
 			    	color: palette.accent1Color +' !important',
 			    }
