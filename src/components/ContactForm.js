@@ -1,7 +1,12 @@
 import React from 'react';
 
 import Button from '@material-ui/core/Button';
+
 import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 
 import EnhancedTextField from './EnhancedTextField';
 import DataContainer from './DataContainer';
@@ -102,7 +107,7 @@ class ContactForm extends React.PureComponent
 				currentView: 1
 			});
 		}, function(error) {
-			this.setState({
+			that.setState({
 				errorDialogOpen: true,
 				errorDialogText: 'Error: ' + error,
 			});
@@ -185,9 +190,11 @@ class ContactForm extends React.PureComponent
 					    {this.state.humanVerified || !this.props.useRecaptcha ?
 							<Button
 								label="Submit"
+								 color="primary"
 								labelPosition="before"
-								onTouchTap={this.handleSubmitTap}
-								primary={true}/>
+								onClick={this.handleSubmitTap}>
+								Submit
+							</Button>
 					    	:
 							<Recaptcha
 								style={{maxWidth: '100%'}}
@@ -211,27 +218,32 @@ class ContactForm extends React.PureComponent
 						</div>
 
 						<Button
-							label="Go Back"
-							labelPosition="before"
-							onTouchTap={this.handleSendAnotherTap}
-							primary={true}/>
+							onClick={this.handleSendAnotherTap}>
+							Go Back
+						</Button>
 					</div>
 
 				</SwipeableViews>
 
-		        <Dialog
-		          actions={[
-				      <Button
-				        label="Ok"
-				        primary={true}
-				        onTouchTap={this.handleToggleErrorDialog}
-				      />,
-				    ]}
-		          modal={false}
-		          open={this.state.errorDialogOpen}
-		        >
-		          {this.state.errorDialogText}
-		        </Dialog>
+				      <Dialog onClose={this.handleToggleErrorDialog}
+          				open={this.state.errorDialogOpen}
+									aria-labelledby="dialog-title" >
+				        <DialogTitle id="dialog-title">Error</DialogTitle>
+
+			          <DialogContent>
+			            <DialogContentText id="alert-dialog-description">
+					          {this.state.errorDialogText}
+			            </DialogContentText>
+			          </DialogContent>
+
+			          <DialogActions>
+			            <Button onClick={this.handleToggleErrorDialog} color="primary" autoFocus>
+			              Ok
+			            </Button>
+			          </DialogActions>
+
+				      </Dialog>
+
 
       		</div>
 		);
