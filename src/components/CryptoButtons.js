@@ -18,10 +18,9 @@ class CryptoButtons extends React.PureComponent {
 
 	getStyles() {
 
-		let palette = this.props.muiTheme.palette;
+    let palette = this.props.theme.palette;
 
-		let backTinyColor = tinycolor(palette.primary1Color.toString());
-		let background = backTinyColor.isDark() ? backTinyColor.lighten(10) : backTinyColor.darken(10);
+    let backColor = palette.footerBackgroundColor || palette.primary1Color;
 
 		const styles = {
 			container: {
@@ -30,7 +29,7 @@ class CryptoButtons extends React.PureComponent {
 			icons: {
 				position: 'relative',
 				display: 'inline-block',
-				background: background.toString(),
+				background: backColor,
 				borderRadius: '4em',
 				padding: '0.35em 0.75em 0.35em 0.75em',
 				fontSize: '1.25em',

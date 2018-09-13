@@ -31,8 +31,7 @@ class CryptoButton extends React.PureComponent {
 
 	getStyles() {
 
-		let palette = this.props.muiTheme.palette;
-
+    let palette = this.props.theme.palette;
 		const styles = {
 			container: {
 				listStyle: 'none',

@@ -211,7 +211,7 @@ class BlogPost extends React.Component
     	}
 
 		return(
-			<Paper  style={styles.paperStyle} zDepth={3} >
+			<Paper  style={styles.paperStyle} elevation={3} >
 				<Row>
 					<Col xs={12}>
 						<MetaTags>

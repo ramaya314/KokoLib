@@ -102,9 +102,11 @@ class NewsLetterSignupForm extends Component {
 						<div className="response" id="mce-error-response" style={{display:'none'}} ></div>
 						<div className="response" id="mce-success-response" style={{display:'none'}}></div>
 					</div>
-				    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input type="text" name={`b_${this.props.nameOne}_${this.props.nameTwo}`} tabIndex="-1" value="" /></div>
+				    <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
+							<input type="text" name={`b_${this.props.nameOne}_${this.props.nameTwo}`} tabIndex="-1" />
+						</div>
 				    <div className="clear">
-				    	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" />
+				    	<input type="submit" defaultValue="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" />
 				    	</div>
 				    </div>
 					</form>

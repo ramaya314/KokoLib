@@ -22,13 +22,10 @@ class SocialMediaButtons extends React.PureComponent {
 
     let backColor = palette.footerBackgroundColor || palette.primary1Color;
 
-		let backTinyColor = tinycolor(backColor.toString());
-		let background = backTinyColor.isDark() ? backTinyColor.lighten(10) : backTinyColor.darken(10);
-
 		const styles = {
 			icons: {
 				position: 'relative',
-				background: background.toString(),
+				background: backColor,
 				borderRadius: '4em',
 				display: 'inline-block',
 				padding: '0.35em 0.75em 0.35em 0.75em',

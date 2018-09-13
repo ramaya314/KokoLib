@@ -32,12 +32,12 @@ class GalleryCollection extends React.Component
 			albumThumbTitle: {
 				fontSize:'1.2em',
 				fontWeight: 'bold',
-				color: this.props.muiTheme.palette.accent1Color,
-				borderTop: '2px solid ' + this.props.muiTheme.palette.primary2Color,
+				color: this.props.theme.palette.accent1Color,
+				borderTop: '2px solid ' + this.props.theme.palette.primary2Color,
 				marginTop: 3,
 			},
 			albumThumNumPics: {
-				color: this.props.muiTheme.palette.primary2Color,
+				color: this.props.theme.palette.primary2Color,
 			},
 		}
 		return styles;

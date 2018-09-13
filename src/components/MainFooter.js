@@ -49,7 +49,7 @@ class MainFooter extends React.PureComponent {
 			},
 			copyRight: {
 				textAlign: 'center',
-				color: palette.primary2Color,
+				color: palette.footerCopyrightColor || palette.primary2Color,
 				fontSize: '0.9em',
 				cursor: 'default',
 			}

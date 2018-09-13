@@ -190,8 +190,7 @@ class ContactForm extends React.PureComponent
 					    {this.state.humanVerified || !this.props.useRecaptcha ?
 							<Button
 								label="Submit"
-								 color="primary"
-								labelPosition="before"
+								color="primary"
 								onClick={this.handleSubmitTap}>
 								Submit
 							</Button>

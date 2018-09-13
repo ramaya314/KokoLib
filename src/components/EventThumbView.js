@@ -128,7 +128,7 @@ class EventThumbView extends React.PureComponent {
 						onMouseEnter={this.onHoverEnter}
 	                    onMouseLeave={this.onHoverLeave}>
 
-		    			<Paper style={styles.paperStyle} zDepth={3} >
+		    			<Paper style={styles.paperStyle} elevation={3} >
 							{false &&
 								<pre>{JSON.stringify(this.props.data, null, 4) }</pre>
 							}
