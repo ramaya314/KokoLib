@@ -45,7 +45,7 @@ class EventbriteEventView extends React.PureComponent
 		let eventImage = (data.logo && data.logo.url) || '';
 
 		return (
-			<Paper  style={styles.paperStyle} zDepth={3} >
+			<Paper  style={styles.paperStyle} elevation={3} >
 
 				<MetaTags>
 					<title>{data.name.text}</title>
@@ -66,6 +66,11 @@ class EventbriteEventView extends React.PureComponent
 							<p>by {data.organizer.name} </p>
 						</div>
 
+            {data.status == 'canceled' &&
+              <div style={{padding:20, fontSize: "1.2em", color: "#ab003c"}}>
+                CANCELED
+              </div>
+            }
 					</Col>
 
 				</Row>
@@ -160,11 +165,19 @@ class EventbriteEventView extends React.PureComponent
 							<Col xs={12} sm={12} md={6} lg={8}>
 							</Col>
 							<Col xs={12} sm={12} md={6} lg={4}>
-								<div style={{padding:20}}>
-									<Button  bsStyle="primary" bsSize="large" block onClick={() => {
-										window.open(data.url + '#tickets', '_blank');
-									}}>Register</Button>
-								</div>
+                {data.status != 'canceled' &&
+  								<div style={{padding:20}}>
+  									<Button  bsStyle="primary" bsSize="large" block onClick={() => {
+  										window.open(data.url + '#tickets', '_blank');
+  									}}>Register</Button>
+  								</div>
+                }
+
+                {data.status == 'canceled' &&
+                  <div style={{padding:20, color: "#ab003c"}}>
+                    CANCELED
+                  </div>
+                }
 							</Col>
 						</Row>
 					</div>

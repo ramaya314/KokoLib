@@ -65,7 +65,7 @@ class EventListView extends React.PureComponent
     	if(!events || events.length <= 0)
     		return events;
 
-    	//console.log(events);
+    	console.log(events);
 
 		events = events.filter(function(event) {
 			var today = new Date(Date.now());
@@ -73,16 +73,17 @@ class EventListView extends React.PureComponent
 			var yesterday = yesterdayCompareDate.setDate(yesterdayCompareDate.getDate() - 1);
 
 
-
+console.log("1");
 			var startDate = Utils.getValidDate(event.start.utc);
 
+      console.log("1");
 			//past events
-			if(that.props.pastEvents && !that.props.nextEvents) 
-				return (startDate) <= yesterday;
+			if(that.props.pastEvents && !that.props.nextEvents)
+				return (startDate) <= yesterday || (event.status && event.status == "canceled");
 
 			//future events
-			if(!that.props.pastEvents && that.props.nextEvents) 
-				return (startDate) > today;
+			if(!that.props.pastEvents && that.props.nextEvents)
+				return (startDate) > today && (!event.status || (event.status && event.status != "canceled"));
 
 			//all events
 			if(that.props.pastEvents && that.props.nextEvents)
@@ -119,7 +120,7 @@ class EventListView extends React.PureComponent
 
 			//future events
 			//show earliest first
-			if(!that.props.pastEvents && that.props.nextEvents) 
+			if(!that.props.pastEvents && that.props.nextEvents)
 				return (dateA < dateB) ? -1 : (dateA > dateB) ? 1 : 0;
 
 			return (dateA < dateB) ? 1 : (dateA > dateB) ? -1 : 0;
@@ -129,6 +130,55 @@ class EventListView extends React.PureComponent
 		return events;
     }
 
+  renderMergedEvents = (events) => {
+
+    let that = this;
+
+		events = that.processEventsForPresentation(events);
+
+
+		if(that.props.maxResults > 0 && events && events.length > 0) {
+			events = events.slice(0, that.props.maxResults);
+		}
+
+		return (
+
+			<div>
+      			{events.length > 0 &&
+					events.map(function(event, i) {
+
+						//return <div key={i} style={{ background:"red", width:100, height:100, padding:30}} />
+
+						return (
+              <div  style={{marginBottom:15}}>
+							   <EventThumbView key={i} data={event} match={that.props.match} targetPageRoot={that.props.targetPageRoot} />
+              </div>
+						);
+					})
+				}
+
+      			{events.length <= 0 &&
+      				<div>
+						<div dangerouslySetInnerHTML={{
+						__html: `
+							<style>
+								.ghostEventList { display:none;}
+							</style>
+							`
+						}} />
+	      				<div style={{
+	      					fontSize: '26px',
+	      					textAlign: 'center',
+	      					padding: 30,
+	      				}}>
+	      					There are currently no events to show. Please check again later.
+	      				</div>
+      				</div>
+				}
+			</div>
+		);
+  }
+
 	render() {
 
 		let that = this;
@@ -136,15 +186,16 @@ class EventListView extends React.PureComponent
 		return(
 
 
-			<DataContainer action="api/v1/GetEventbriteEvents" 
+			<DataContainer action="api/v1/GetEventbriteEvents"
 				parameters={[
 					{id:"additionalUsers", value: this.props.aditionalUsers}
 				]}
 				resultRender={function(data) {
+          //console.log(data);
 
 					return (
 
-						<DataContainer action="api/v1/GetFacebookEvents" 
+						<DataContainer action="api/v1/GetFacebookEvents"
 							resultRender={function(fbdata) {
 
 								console.log(fbdata);
@@ -156,50 +207,12 @@ class EventListView extends React.PureComponent
 
 								var mergedEvents = data.events.concat(processedFbEvents);
 
-								data.events = that.processEventsForPresentation(mergedEvents);
-
-
-								if(that.props.maxResults > 0 && data.events && data.events.length > 0) {
-									data.events = data.events.slice(0, that.props.maxResults);
-								}
-
-
-								return (
-
-									<div>
-						      			{data.events.length > 0 &&
-											data.events.map(function(event, i) {
-
-												//return <div key={i} style={{ background:"red", width:100, height:100, padding:30}} />
-
-												return (
-													<EventThumbView key={i} data={event} match={that.props.match} targetPageRoot={that.props.targetPageRoot} />
-												);
-											})
-										}
-
-						      			{data.events.length <= 0 &&
-						      				<div>
-												<div dangerouslySetInnerHTML={{
-												__html: `
-													<style> 
-														.ghostEventList { display:none;}
-													</style>
-													`
-												}} />
-							      				<div style={{
-							      					fontSize: '26px',
-							      					textAlign: 'center',
-							      					padding: 30,
-							      				}}>
-							      					There are currently no events to show. Please check again later.
-							      				</div>
-						      				</div>
-										}
-									</div>
-								);
-							}
-						} />
+                return that.renderMergedEvents(mergedEvents);
+							}} errorRender={function(error) {
+                console.log(error);
+                return that.renderMergedEvents(data.events);
+              }}
+					 />
 					);
 				}
 			}>

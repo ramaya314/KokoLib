@@ -216,6 +216,11 @@ class EventThumbView extends React.PureComponent {
 												<div style={styles.eventDate} className="kokolib_event_thumb_date">
 													{startDateTime}
 												</div>
+												{this.props.data.status == 'canceled' &&
+													<div style={{color: "#ab003c"}}>
+														CANCELED
+													</div>
+												}
 											</div>
 										</Col>
 

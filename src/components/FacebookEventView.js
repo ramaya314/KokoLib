@@ -131,7 +131,7 @@ class FacebookEventView extends React.PureComponent
 		let metaDescription = data.description.length > 170 ? data.description.substr(0, 160) + "..." : data.description;
 
 		return (
-			<Paper  style={styles.paperStyle} zDepth={3} >
+			<Paper  style={styles.paperStyle} elevation={3} >
 
 				<MetaTags>
 					<title>{data.name}</title>
